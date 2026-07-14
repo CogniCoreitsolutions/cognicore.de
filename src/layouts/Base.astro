@@ -9,10 +9,32 @@ interface Props {
   active?: string;
 }
 const {
-  title = 'CogniCore IT Solutions — HubSpot-Partner für skalierbaren B2B-Vertrieb',
-  description = 'CogniCore ist HubSpot-Partner für B2B-Unternehmen, die systematisch wachsen wollen – mit klaren Prozessen, skalierbarer Technologie und technischer Tiefe.',
+  title = 'HubSpot-Partner für B2B in Köln — Onboarding, Integration & RevOps | CogniCore',
+  description = 'CogniCore IT Solutions ist offizieller HubSpot Solutions Partner aus Köln: HubSpot sauber implementiert, in Ihre Systeme integriert und laufend betreut — mit Tiefgang in Datenmodell, Prozess- und API-Integration.',
   active,
 } = Astro.props;
+
+const canonical = new URL(Astro.url.pathname, Astro.site ?? 'https://new.cognicore.de').href;
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'ProfessionalService',
+  name: 'CogniCore IT Solutions GmbH',
+  description: 'HubSpot Solutions Partner & IT-Dienstleister für den B2B-Mittelstand.',
+  url: 'https://cognicore.de',
+  telephone: '+49 221 6505 3000',
+  email: 'info@cognicore.de',
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: 'Im Mediapark 6B',
+    postalCode: '50670',
+    addressLocality: 'Köln',
+    addressCountry: 'DE',
+  },
+  areaServed: ['DE', 'AT', 'CH'],
+  knowsAbout: ['HubSpot', 'CRM', 'RevOps', 'Prozessautomatisierung', 'API-Integration', 'Managed IT'],
+  logo: 'https://cognicore.de/hubfs/Logos/2024-08%20CogniCore-Logo-blau-rot.png',
+};
 ---
 <!doctype html>
 <html lang="de">
@@ -21,38 +43,38 @@ const {
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>{title}</title>
   <meta name="description" content={description} />
-  <link rel="icon" type="image/png" href="/img/icon.png" />
+  <link rel="canonical" href={canonical} />
+  <link rel="icon" type="image/png" href="/brand/cognicore-icon-blue-orange.png" />
   <link rel="preload" href="/fonts/Raleway-VariableFont_wght.ttf" as="font" type="font/ttf" crossorigin />
+  <meta property="og:type" content="website" />
   <meta property="og:title" content={title} />
   <meta property="og:description" content={description} />
-  <meta property="og:type" content="website" />
   <meta property="og:locale" content="de_DE" />
-  <!-- Solange im Aufbau: nicht indexieren. Zum Launch entfernen. -->
+  <meta property="og:url" content={canonical} />
+  <!-- Staging: bis zum Go-live nicht indexieren. Zum Launch entfernen. -->
   <meta name="robots" content="noindex" />
+  <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+  <script is:inline>document.documentElement.classList.add('js');</script>
 </head>
 <body>
   <Nav active={active} />
-  <slot />
+  <main id="inhalt">
+    <slot />
+  </main>
   <Footer />
 
   <script>
     // Mobile-Navigation
     const header = document.getElementById('site-header');
-    document.getElementById('ham')?.addEventListener('click', () => header?.classList.toggle('open'));
-    document.querySelectorAll('#nav .nav-links a').forEach((a) =>
+    document.getElementById('cc-burger')?.addEventListener('click', () => header?.classList.toggle('open'));
+    document.querySelectorAll('#cc-mobile a').forEach((a) =>
       a.addEventListener('click', () => header?.classList.remove('open')),
     );
-
-    // Reveal beim Scrollen
-    const io = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((e) => {
-          if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
-        });
-      },
-      { threshold: 0.1, rootMargin: '0px 0px -40px 0px' },
-    );
-    document.querySelectorAll('.reveal:not(.in)').forEach((el) => io.observe(el));
+    // Reveal (Progressive Enhancement — Inhalt ist ohne JS sichtbar)
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((e) => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+    document.querySelectorAll('.cc-reveal:not(.in)').forEach((el) => io.observe(el));
   </script>
 </body>
 </html>

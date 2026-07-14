@@ -1,96 +1,59 @@
 ---
 import Base from '../layouts/Base.astro';
 ---
-<Base
-  active=""
-  title="Datenschutzerklärung — CogniCore IT Solutions GmbH"
-  description="Informationen zur Verarbeitung personenbezogener Daten auf cognicore.de gemäß DSGVO."
->
-  <header class="legal-hero">
-    <div class="wrap legal-wrap reveal in">
-      <span class="label">Rechtliches</span>
+<Base active="" title="Datenschutzerklärung | CogniCore IT Solutions GmbH" description="Informationen zur Verarbeitung personenbezogener Daten auf dieser Website gemäß DSGVO.">
+  <section class="cc-legal-hero">
+    <div class="cc-section cc-legal">
+      <div class="cc-eyebrow cc-eyebrow--on-dark">// Rechtliches</div>
       <h1>Datenschutzerklärung</h1>
-      <p class="lede">Informationen zur Verarbeitung personenbezogener Daten auf cognicore.de gemäß DSGVO.</p>
+      <p>Informationen zur Verarbeitung personenbezogener Daten auf dieser Website gemäß DSGVO.</p>
     </div>
-  </header>
-
-  <section style="padding-top:24px">
-    <div class="wrap legal-wrap">
-      <p class="note reveal">
-        Entwurf/Prüfung: 1:1 aus dem Bestand übernommen. Vor Launch sicherstellen, dass
-        HubSpot-Tracking und der Cookie-Banner (Abschnitte 5–6) auf cognicore.de tatsächlich
-        aktiv sind — sonst diese Abschnitte anpassen. Bitte final juristisch prüfen und diesen
-        Hinweis dann entfernen.
-      </p>
-
-      <div class="callout reveal">
-        <strong>Kurzfassung:</strong> Diese Website nutzt <strong>HubSpot</strong> für das
-        Kontaktformular und die Reichweitenmessung. Analyse-Cookies werden erst nach Ihrer
-        <strong>Einwilligung</strong> über den Cookie-Banner gesetzt; Ihre Auswahl können Sie
-        jederzeit über „Cookie-Einstellungen" im Seitenfuß ändern.
+  </section>
+  <section class="cc-section">
+    <div class="cc-legal">
+      <div class="cc-legal-card" style="border-color:var(--cc-orange-100); background:var(--cc-beige-200)">
+        <p style="margin:0"><strong>In Kürze:</strong> Diese Website ist statisch und <strong>ohne Tracking</strong> aufgebaut. Es werden keine Analyse- oder Marketing-Cookies gesetzt, es findet kein Profiling statt. Schriften werden lokal ausgeliefert (keine Google Fonts). Personenbezogene Daten fallen nur an, wenn Sie uns über das Kontaktformular oder per E-Mail/Telefon aktiv kontaktieren.</p>
       </div>
 
-      <div class="legal-card reveal">
+      <div class="cc-legal-card">
         <h2>1. Verantwortlicher</h2>
-        <p>Verantwortlich für die Datenverarbeitung auf dieser Website ist:</p>
         <dl>
           <dt>Unternehmen</dt><dd>CogniCore IT Solutions GmbH</dd>
           <dt>Anschrift</dt><dd>Im Mediapark 6B, 50670 Köln, Deutschland</dd>
           <dt>Vertreten durch</dt><dd>Dominik Siegers, Michael Lohmar</dd>
           <dt>E-Mail</dt><dd><a href="mailto:info@cognicore.de">info@cognicore.de</a></dd>
-          <dt>Telefon</dt><dd><a href="tel:+4922165053000">+49 221 6505 3000</a></dd>
+          <dt>Telefon</dt><dd>+49 221 6505 3000</dd>
         </dl>
       </div>
 
-      <div class="legal-card reveal">
-        <h2>2. Ihre Rechte</h2>
-        <p>Ihnen stehen gegenüber uns hinsichtlich Ihrer personenbezogenen Daten folgende Rechte zu:</p>
-        <ul>
-          <li>Recht auf <strong>Auskunft</strong> (Art. 15 DSGVO)</li>
-          <li>Recht auf <strong>Berichtigung</strong> (Art. 16 DSGVO)</li>
-          <li>Recht auf <strong>Löschung</strong> (Art. 17 DSGVO)</li>
-          <li>Recht auf <strong>Einschränkung</strong> der Verarbeitung (Art. 18 DSGVO)</li>
-          <li>Recht auf <strong>Datenübertragbarkeit</strong> (Art. 20 DSGVO)</li>
-          <li>Recht auf <strong>Widerspruch</strong> gegen die Verarbeitung (Art. 21 DSGVO)</li>
-          <li>Recht auf <strong>Widerruf</strong> erteilter Einwilligungen (Art. 7 Abs. 3 DSGVO)</li>
-        </ul>
-        <p style="margin-top:12px">Zudem haben Sie das Recht, sich bei einer Datenschutz-Aufsichtsbehörde zu beschweren (Art. 77 DSGVO). Für uns zuständig ist die <strong>Landesbeauftragte für Datenschutz und Informationsfreiheit Nordrhein-Westfalen (LDI NRW)</strong>, Kavalleriestraße 2–4, 40213 Düsseldorf.</p>
+      <div class="cc-legal-card">
+        <h2>2. Hosting &amp; Server-Logs</h2>
+        <p>Diese Website wird über <strong>GitHub Pages</strong> (GitHub, Inc., USA) ausgeliefert. Beim Aufruf verarbeitet der Hoster technisch notwendige Zugriffsdaten (u. a. IP-Adresse, Datum/Uhrzeit, angeforderte Ressource, User-Agent) in Server-Logs, um die Auslieferung und Sicherheit zu gewährleisten. Rechtsgrundlage ist unser berechtigtes Interesse an einem sicheren, stabilen Betrieb (Art. 6 Abs. 1 lit. f DSGVO). Für die Übermittlung in die USA stützt sich GitHub auf die EU-Standardvertragsklauseln bzw. das EU-US Data Privacy Framework.</p>
       </div>
 
-      <div class="legal-card reveal">
-        <h2>3. Hosting &amp; Server-Logfiles</h2>
-        <p>Diese Website wird über <strong>GitHub Pages</strong> bereitgestellt, einen Dienst der GitHub, Inc., San Francisco, USA (Tochterunternehmen der Microsoft Corporation).</p>
-        <p>Beim Aufruf der Seiten werden durch den Hoster automatisch technisch notwendige Verbindungsdaten in Server-Logfiles erfasst, insbesondere: IP-Adresse, Datum und Uhrzeit des Zugriffs, abgerufene Datei, übertragene Datenmenge sowie Browsertyp und Betriebssystem.</p>
-        <p>Rechtsgrundlage ist unser berechtigtes Interesse an einer sicheren, stabilen und effizienten Bereitstellung der Website (Art. 6 Abs. 1 lit. f DSGVO). Mit der Verarbeitung ist eine Übermittlung in die USA verbunden. GitHub bzw. Microsoft ist unter dem <strong>EU-US Data Privacy Framework</strong> zertifiziert; ergänzend werden Standardvertragsklauseln herangezogen.</p>
+      <div class="cc-legal-card">
+        <h2>3. Schriften (lokal)</h2>
+        <p>Die verwendete Schrift „Raleway" wird von unserem Server ausgeliefert. Es werden <strong>keine externen Font-Dienste</strong> (z. B. Google Fonts) eingebunden; beim Seitenaufruf wird keine Verbindung zu Drittanbietern hergestellt.</p>
       </div>
 
-      <div class="legal-card reveal">
-        <h2>4. Verschlüsselung (SSL/TLS)</h2>
-        <p>Diese Seite nutzt aus Sicherheitsgründen und zum Schutz der Übertragung vertraulicher Inhalte eine TLS-Verschlüsselung. Eine verschlüsselte Verbindung erkennen Sie am „https://" in der Adresszeile und am Schloss-Symbol Ihres Browsers.</p>
+      <div class="cc-legal-card">
+        <h2>4. Keine Cookies, kein Tracking</h2>
+        <p>Diese Website setzt <strong>keine Cookies</strong> zu Analyse- oder Marketingzwecken, bindet keine Analyse-/Werbe-Pixel ein und führt kein Profiling im Sinne des Art. 22 DSGVO durch. Ein Cookie-Consent-Banner ist daher nicht erforderlich.</p>
       </div>
 
-      <div class="legal-card reveal">
-        <h2>5. Kontaktformular &amp; CRM (HubSpot)</h2>
-        <p>Wenn Sie uns über das Kontaktformular eine Anfrage senden, verarbeiten wir die von Ihnen angegebenen Daten — <strong>Name, Unternehmen, E-Mail-Adresse und Ihre Nachricht</strong> — zum Zweck der Bearbeitung Ihrer Anfrage und einer möglichen Anschlusskommunikation.</p>
-        <p>Das Formular sowie unser Kundenbeziehungs-Management (CRM) werden über <strong>HubSpot</strong> betrieben. Anbieter ist die HubSpot, Inc., 2 Canal Park, Cambridge, MA 02141, USA; in der EU vertreten durch die HubSpot Ireland Limited, Dublin. Ihre Eingaben werden an HubSpot übermittelt und in unserem HubSpot-CRM gespeichert. Die Verarbeitung erfolgt im EU-Rechenzentrum von HubSpot; eine Übermittlung in die USA kann jedoch nicht ausgeschlossen werden. HubSpot ist unter dem <strong>EU-US Data Privacy Framework</strong> zertifiziert; ergänzend bestehen Standardvertragsklauseln. Mit HubSpot besteht ein Vertrag zur Auftragsverarbeitung.</p>
-        <p>Rechtsgrundlage ist Art. 6 Abs. 1 lit. b DSGVO (Durchführung vorvertraglicher Maßnahmen auf Ihre Anfrage hin) bzw. Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse an der effizienten Bearbeitung von Anfragen). Die Daten werden gelöscht, sobald Ihre Anfrage abschließend bearbeitet ist und keine gesetzlichen Aufbewahrungspflichten entgegenstehen.</p>
+      <div class="cc-legal-card">
+        <h2>5. Kontaktformular, E-Mail &amp; Telefon</h2>
+        <p>Wenn Sie uns über das Kontaktformular, per E-Mail oder Telefon kontaktieren, verarbeiten wir die von Ihnen mitgeteilten Daten (z. B. Name, Firma, E-Mail, Telefon, Nachricht), um Ihre Anfrage zu bearbeiten. Rechtsgrundlage ist Art. 6 Abs. 1 lit. b DSGVO (Anbahnung/Erfüllung eines Vertrags) bzw. lit. f (Interesse an der Bearbeitung Ihrer Anfrage).</p>
+        <p>Zur Bearbeitung und Nachverfolgung von Anfragen setzen wir das CRM-System <strong>HubSpot</strong> (HubSpot, Inc.) mit Datenspeicherung in der EU als Auftragsverarbeiter ein. Ihre Daten werden nur so lange gespeichert, wie es für die Bearbeitung erforderlich ist bzw. gesetzliche Aufbewahrungsfristen es verlangen.</p>
       </div>
 
-      <div class="legal-card reveal">
-        <h2>6. Webanalyse &amp; Cookies (HubSpot)</h2>
-        <p>Zur Analyse der Nutzung und zur Verbesserung unseres Angebots setzen wir die Analyse-Funktionen von <strong>HubSpot</strong> ein. Dabei werden u. a. Seitenaufrufe und Interaktionen erfasst und Cookies in Ihrem Browser gespeichert (z. B. <strong>__hstc</strong>, <strong>hubspotutk</strong>, <strong>__hssc</strong>, <strong>__hssrc</strong>).</p>
-        <p>Diese Analyse-Cookies werden <strong>erst gesetzt, nachdem Sie über unseren Cookie-Banner eingewilligt</strong> haben. Rechtsgrundlage ist Ihre Einwilligung (§ 25 Abs. 1 TDDDG i. V. m. Art. 6 Abs. 1 lit. a DSGVO). Sie können Ihre Einwilligung jederzeit mit Wirkung für die Zukunft widerrufen oder anpassen — über die Schaltfläche <strong>„Cookie-Einstellungen"</strong> im Seitenfuß. Mit der Nutzung von HubSpot kann eine Datenübermittlung in die USA verbunden sein (siehe Abschnitt 5).</p>
+      <div class="cc-legal-card">
+        <h2>6. Ihre Rechte</h2>
+        <p>Sie haben das Recht auf Auskunft, Berichtigung, Löschung, Einschränkung der Verarbeitung, Datenübertragbarkeit sowie Widerspruch. Wenden Sie sich dazu an <a href="mailto:info@cognicore.de">info@cognicore.de</a>. Zudem besteht ein Beschwerderecht bei einer Datenschutz-Aufsichtsbehörde.</p>
       </div>
 
-      <div class="legal-card reveal">
-        <h2>7. Lokale Speicherung (Anzeige-Einstellungen)</h2>
-        <p>Zur Speicherung Ihrer Anzeige-Einstellungen (Hell-/Dunkel-Modus und Sprachauswahl) nutzen wir den lokalen Speicher Ihres Browsers (localStorage). Diese Informationen verbleiben ausschließlich auf Ihrem Gerät, werden <strong>nicht an uns übertragen</strong> und dienen allein der Funktion der Website. Sie sind technisch erforderlich im Sinne des § 25 Abs. 2 TDDDG; eine Einwilligung ist hierfür nicht notwendig.</p>
-      </div>
-
-      <div class="legal-card reveal">
-        <h2>8. Änderungen dieser Erklärung</h2>
-        <p>Wir passen diese Datenschutzerklärung an, sobald Änderungen an der Website oder der Rechtslage dies erforderlich machen. Es gilt jeweils die hier veröffentlichte aktuelle Fassung.</p>
-        <p class="stand">Stand: Juli 2026</p>
+      <div class="cc-legal-card" style="background:var(--cc-surface-2)">
+        <p style="margin:0; color:var(--cc-fg-3); font-size:14px"><strong>Hinweis:</strong> Diese Erklärung beschreibt den aktuellen technischen Stand der Website. Sie ersetzt keine anwaltliche Prüfung — vor dem Go-live und bei Aktivierung weiterer Dienste (z. B. HubSpot-Formular-Einbettung, Terminbuchung) sollte sie fachlich final abgenommen werden.</p>
       </div>
     </div>
   </section>

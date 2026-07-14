@@ -1,0 +1,222 @@
+/* =========================================================
+   CogniCore IT Solutions — Design Tokens
+   Source: CCIT Corporate Design (2024) + brand notes
+   ========================================================= */
+
+/* Brand font — Raleway (variable, supplied by client). */
+@font-face {
+  font-family: 'Raleway';
+  src: url('fonts/Raleway-VariableFont_wght.ttf') format('truetype-variations'),
+       url('fonts/Raleway-VariableFont_wght.ttf') format('truetype');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  /* ---------- Brand colors (from Corporate Guide) ---------- */
+  --cc-blue:        #071B3E; /* "Blau"   — primary, dominant */
+  --cc-blue-deep:   #050F2A; /* darker shade for layering */
+  --cc-blue-700:    #0E2A5C;
+  --cc-blue-500:    #1E4083;
+  --cc-blue-300:    #6B7FA8;
+  --cc-blue-100:    #C7D0E2;
+
+  --cc-orange:      #EC6945; /* "Orange" — accent, highlights only */
+  --cc-orange-600:  #D9542F;
+  --cc-orange-300:  #F4A287;
+  --cc-orange-100:  #FBDDD0;
+
+  --cc-beige:       #F9EBD9; /* "Beige"  — soft surface accents */
+  --cc-beige-200:   #FCF4E9;
+
+  --cc-green:       #4A7B52; /* "Grün"   — success / secondary tag */
+  --cc-green-200:   #B7CDB9;
+
+  /* ---------- Neutrals ---------- */
+  --cc-bg:          #F4F6FA; /* Background light (per brief) */
+  --cc-bg-soft:     #FFFFFF;
+  --cc-surface:     #FFFFFF;
+  --cc-surface-2:   #F4F6FA;
+  --cc-line:        #E2E6EF;
+  --cc-line-strong: #C8CFDC;
+
+  --cc-fg-1:        #071B3E;  /* primary text = navy */
+  --cc-fg-2:        #3A4763;  /* secondary text */
+  --cc-fg-3:        #6B7587;  /* tertiary / meta */
+  --cc-fg-on-blue:  #FFFFFF;
+  --cc-fg-on-blue-2:#C7D0E2;
+
+  /* ---------- Semantic ---------- */
+  --cc-success:     var(--cc-green);
+  --cc-warning:     #C77A1F;
+  --cc-danger:      #B23A2A;
+  --cc-info:        var(--cc-blue-500);
+  --cc-focus-ring:  rgba(236,105,69,.45);
+
+  /* ---------- Type ---------- */
+  /* Brand book lists Raleway (Bold, Regular). User brief says
+     Calibri for office/long-form. Web defaults to Raleway with
+     Calibri fallback, then system. */
+  --cc-font-display: 'Raleway', 'Calibri', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --cc-font-body:    'Raleway', 'Calibri', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --cc-font-mono:    ui-monospace, 'JetBrains Mono', 'SF Mono', Menlo, Consolas, monospace;
+
+  /* Office / document mode (Calibri only) */
+  --cc-font-office:  'Calibri', 'Carlito', system-ui, sans-serif;
+
+  /* Type scale — geared to 16px root */
+  --cc-fs-display: 56px;  --cc-lh-display: 1.05;  --cc-tr-display: -0.02em;
+  --cc-fs-h1:      40px;  --cc-lh-h1:      1.10;  --cc-tr-h1:      -0.015em;
+  --cc-fs-h2:      30px;  --cc-lh-h2:      1.18;  --cc-tr-h2:      -0.01em;
+  --cc-fs-h3:      22px;  --cc-lh-h3:      1.25;  --cc-tr-h3:       0;
+  --cc-fs-h4:      18px;  --cc-lh-h4:      1.30;
+  --cc-fs-body:    16px;  --cc-lh-body:    1.55;
+  --cc-fs-small:   14px;  --cc-lh-small:   1.50;
+  --cc-fs-meta:    12px;  --cc-lh-meta:    1.40;
+  --cc-tracking-eyebrow: 0.12em;
+
+  /* Weights */
+  --cc-w-light:    300;
+  --cc-w-regular:  400;
+  --cc-w-medium:   500;
+  --cc-w-semi:     600;
+  --cc-w-bold:     700;
+
+  /* ---------- Spacing (4px base) ---------- */
+  --cc-s-1:  4px;
+  --cc-s-2:  8px;
+  --cc-s-3:  12px;
+  --cc-s-4:  16px;
+  --cc-s-5:  20px;
+  --cc-s-6:  24px;
+  --cc-s-8:  32px;
+  --cc-s-10: 40px;
+  --cc-s-12: 48px;
+  --cc-s-16: 64px;
+  --cc-s-20: 80px;
+
+  /* ---------- Radii ---------- */
+  --cc-r-xs: 2px;
+  --cc-r-sm: 4px;
+  --cc-r-md: 8px;
+  --cc-r-lg: 12px;
+  --cc-r-xl: 20px;
+  --cc-r-pill: 999px;
+
+  /* ---------- Borders ---------- */
+  --cc-border:        1px solid var(--cc-line);
+  --cc-border-strong: 1px solid var(--cc-line-strong);
+  --cc-border-blue:   1px solid var(--cc-blue);
+
+  /* ---------- Shadows (restrained, navy-tinted) ---------- */
+  --cc-shadow-1: 0 1px 2px rgba(7,27,62,.06), 0 1px 1px rgba(7,27,62,.04);
+  --cc-shadow-2: 0 4px 14px rgba(7,27,62,.08);
+  --cc-shadow-3: 0 12px 32px rgba(7,27,62,.12);
+  --cc-shadow-inset: inset 0 0 0 1px rgba(7,27,62,.06);
+
+  /* ---------- Motion ---------- */
+  --cc-ease-out:  cubic-bezier(.2,.7,.2,1);
+  --cc-ease-in-out: cubic-bezier(.4,0,.2,1);
+  --cc-dur-fast: 120ms;
+  --cc-dur-base: 200ms;
+  --cc-dur-slow: 360ms;
+}
+
+/* =========================================================
+   Semantic element styles — drop-in for prototypes
+   ========================================================= */
+
+html, body {
+  background: var(--cc-bg);
+  color: var(--cc-fg-1);
+  font-family: var(--cc-font-body);
+  font-size: var(--cc-fs-body);
+  line-height: var(--cc-lh-body);
+  font-weight: var(--cc-w-regular);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+.cc-display, h1.cc-display {
+  font-family: var(--cc-font-display);
+  font-size: var(--cc-fs-display);
+  line-height: var(--cc-lh-display);
+  letter-spacing: var(--cc-tr-display);
+  font-weight: var(--cc-w-bold);
+  color: var(--cc-fg-1);
+}
+
+h1, .cc-h1 {
+  font-family: var(--cc-font-display);
+  font-size: var(--cc-fs-h1);
+  line-height: var(--cc-lh-h1);
+  letter-spacing: var(--cc-tr-h1);
+  font-weight: var(--cc-w-bold);
+  color: var(--cc-fg-1);
+  margin: 0 0 var(--cc-s-4);
+}
+
+h2, .cc-h2 {
+  font-family: var(--cc-font-display);
+  font-size: var(--cc-fs-h2);
+  line-height: var(--cc-lh-h2);
+  letter-spacing: var(--cc-tr-h2);
+  font-weight: var(--cc-w-bold);
+  color: var(--cc-fg-1);
+  margin: 0 0 var(--cc-s-3);
+}
+
+h3, .cc-h3 {
+  font-family: var(--cc-font-display);
+  font-size: var(--cc-fs-h3);
+  line-height: var(--cc-lh-h3);
+  font-weight: var(--cc-w-semi);
+  color: var(--cc-fg-1);
+  margin: 0 0 var(--cc-s-2);
+}
+
+h4, .cc-h4 {
+  font-size: var(--cc-fs-h4);
+  line-height: var(--cc-lh-h4);
+  font-weight: var(--cc-w-semi);
+  color: var(--cc-fg-1);
+  margin: 0 0 var(--cc-s-2);
+}
+
+p, .cc-p {
+  font-size: var(--cc-fs-body);
+  line-height: var(--cc-lh-body);
+  color: var(--cc-fg-2);
+  margin: 0 0 var(--cc-s-3);
+  text-wrap: pretty;
+}
+
+small, .cc-small {
+  font-size: var(--cc-fs-small);
+  line-height: var(--cc-lh-small);
+  color: var(--cc-fg-3);
+}
+
+.cc-eyebrow {
+  font-size: var(--cc-fs-meta);
+  letter-spacing: var(--cc-tracking-eyebrow);
+  text-transform: uppercase;
+  font-weight: var(--cc-w-semi);
+  color: var(--cc-orange);
+}
+
+code, kbd, pre, .cc-mono {
+  font-family: var(--cc-font-mono);
+  font-size: 0.92em;
+}
+
+a, .cc-link {
+  color: var(--cc-blue-500);
+  text-decoration: none;
+  border-bottom: 1px solid currentColor;
+  transition: color var(--cc-dur-fast) var(--cc-ease-out);
+}
+a:hover, .cc-link:hover { color: var(--cc-orange); }
+
+::selection { background: var(--cc-orange); color: #fff; }

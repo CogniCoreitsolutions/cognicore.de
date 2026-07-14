@@ -2,39 +2,29 @@
 interface Props { active?: string }
 const { active } = Astro.props;
 const links = [
-  { href: '/', label: 'Startseite', key: 'start' },
-  { href: '/leistungen', label: 'Leistungen', key: 'leistungen', dd: [
-    { href: '/leistungen#onboarding', label: 'HubSpot Onboarding' },
-    { href: '/leistungen#support', label: 'Begleitung & Optimierung' },
-    { href: '/leistungen#integration', label: 'Prozessintegration & APIs' },
-  ] },
+  { href: '/leistungen', label: 'Leistungen', key: 'leistungen' },
   { href: '/ueber-uns', label: 'Über uns', key: 'ueber-uns' },
   { href: '/kontakt', label: 'Kontakt', key: 'kontakt' },
 ];
 ---
-<header class="site-header" id="site-header">
-  <div class="wrap">
-    <a href="/" aria-label="CogniCore IT Solutions — Startseite">
-      <img class="logo" src="/img/logo.png" alt="CogniCore IT Solutions" width="184" height="52" />
-    </a>
-    <nav class="nav" id="nav" aria-label="Hauptnavigation">
-      <div class="nav-links">
-        {links.map((l) => l.dd ? (
-          <div class="has-dd">
-            <a href={l.href} class={active === l.key ? 'current' : ''}>
-              {l.label}
-              <svg class="caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
-            </a>
-            <div class="dd">{l.dd.map((d) => (<a href={d.href}>{d.label}</a>))}</div>
-          </div>
-        ) : (
-          <a href={l.href} class={active === l.key ? 'current' : ''}>{l.label}</a>
-        ))}
-      </div>
-      <a href="/kontakt" class="btn btn-primary nav-cta">Let's talk!</a>
-    </nav>
-    <button class="hamburger" id="ham" aria-label="Menü öffnen">
-      <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
-    </button>
+<header class="cc-nav" id="site-header">
+  <a class="cc-nav__logo" href="/" aria-label="CogniCore IT Solutions — Startseite">
+    <img src="/brand/cognicore-logo-blue-orange.png" alt="CogniCore IT Solutions" width="150" height="34" />
+  </a>
+  <nav class="cc-nav__links" aria-label="Hauptnavigation">
+    {links.map((l) => (
+      <a href={l.href} class={`cc-nav__link${active === l.key ? ' is-active' : ''}`}>{l.label}</a>
+    ))}
+  </nav>
+  <div class="cc-nav__cta">
+    <a class="cc-btn cc-btn--ghost" href="/kontakt">Kontakt</a>
+    <a class="cc-btn cc-btn--accent" href="/kontakt#termin">Erstgespräch vereinbaren</a>
+  </div>
+  <button class="cc-nav__burger" id="cc-burger" aria-label="Menü öffnen" aria-controls="cc-mobile">
+    <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+  </button>
+  <div class="cc-mobile" id="cc-mobile">
+    {links.map((l) => (<a href={l.href}>{l.label}</a>))}
+    <a class="cc-btn cc-btn--accent cc-btn--block" href="/kontakt#termin">Erstgespräch vereinbaren</a>
   </div>
 </header>
