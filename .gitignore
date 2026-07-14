@@ -21,3 +21,6 @@ pnpm-debug.log*
 
 # macOS
 .DS_Store
+
+# lokale Capture-Referenzen (nicht deployen)
+public/_capture/

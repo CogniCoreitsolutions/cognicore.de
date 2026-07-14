@@ -1,137 +1,137 @@
 ---
 import Base from '../layouts/Base.astro';
+
+const cards = [
+  { title: 'HubSpot Onboarding', href: '#onboarding', img: '/img/card-onboarding.jpg' },
+  { title: 'HubSpot Begleitung & Optimierung', href: '#support', img: '/img/card-support.jpg' },
+  { title: 'Prozessintegration & API-Schnittstellen', href: '#integration', img: '/img/card-integration.jpg' },
+];
+
+const feats = [
+  {
+    id: 'onboarding', title: 'HubSpot Onboarding', img: '/img/feat-onboarding.png', rev: false,
+    text: 'Ein HubSpot-Onboarding muss mehr sein als nur eine technische Einrichtung – es ist der Startpunkt für ein nachhaltiges CRM-Setup. Wir begleiten euch von der ersten Zieldefinition über strukturierte Workshops bis hin zur vollständigen Einrichtung und Schulung eures Teams. Ob ihr einen schnellen Einstieg braucht oder ein strategisch abgestimmtes Setup für mehrere Teams plant: Unser Onboarding ist modular aufgebaut und skaliert mit euren Anforderungen. So bekommt ihr genau das, was ihr braucht – nicht mehr und nicht weniger. Standard-Setups setzen wir effizient um, bei komplexeren Strukturen entwickeln wir gemeinsam euer Zielbild, Mappings und Datenstrukturen. Auf Wunsch integrieren wir auch erste Prozesse oder übernehmen die Migration aus bestehenden Tools. Dabei arbeiten wir eng mit euren Ansprechpartnern und Usern zusammen, um sicherzustellen, dass das System nicht nur technisch funktioniert, sondern im Alltag trägt. Am Ende steht ein HubSpot-Portal, das zu euch passt – einsatzbereit, verständlich und zukunftssicher.',
+  },
+  {
+    id: 'support', title: 'HubSpot Begleitung & Optimierung', img: '/img/feat-support.png', rev: true,
+    text: 'Nach dem Onboarding ist vor dem echten Erfolg: Wir unterstützen euch laufend dabei, HubSpot nicht nur zu betreiben, sondern aktiv weiterzuentwickeln. Egal ob ihr nur gelegentlich Support benötigt oder eine intensive Zusammenarbeit mit festen Ansprechpartnern wünscht – unsere Begleitmodelle wachsen mit euch mit. Wir helfen bei der Umsetzung neuer Anforderungen, analysieren bestehende Prozesse und beraten proaktiv, wenn es um Automatisierungen, Dashboards oder neue Features geht. Unsere Begleitung ist nicht reaktiv, sondern mitdenkend – auf Wunsch inklusive regelmäßiger Reviews, Schulungseinheiten und strategischem Sparring. So bleibt euer HubSpot-System lebendig und leistungsfähig. Gleichzeitig entlasten wir euer Team, damit es sich auf Inhalte und Ziele konzentrieren kann. Ihr entscheidet, wie eng die Zusammenarbeit ist – und wir liefern zuverlässig in dem Rahmen, der zu euch passt.',
+  },
+  {
+    id: 'integration', title: 'Prozessintegration & API-Schnittstellen', img: '/img/feat-integration.png', rev: false,
+    text: 'HubSpot ist leistungsfähig – aber der volle Nutzen entsteht erst, wenn es gut mit eurer restlichen Systemwelt zusammenspielt. Wir unterstützen euch bei der Integration von Tools, Prozessen und Datenflüssen – sei es mit Standardverbindungen oder individuell entwickelten Schnittstellen. Ob ERP, Abrechnung, Lizenzmanagement oder individuelle SaaS-Plattformen: Wir analysieren eure Anforderungen, beraten zur passenden Architektur und sorgen für eine saubere Umsetzung. Dabei arbeiten wir mit modernen Tools, eigenem Code oder bestehenden Schnittstellen – je nach Bedarf. Für einfache Anbindungen liefern wir schnell funktionierende Lösungen, bei komplexeren Szenarien entwickeln wir gemeinsam mit euch ein skalierbares Integrationskonzept. So wird HubSpot zur Schaltzentrale für euer Unternehmen – stabil, automatisiert und zukunftsfähig.',
+  },
+];
+
+const tiers = [
+  { num: '01', name: 'Essential', text: 'Für den klaren Einstieg – pragmatisch, schnell und zielgerichtet. Diese Stufe richtet sich an Unternehmen mit überschaubaren Anforderungen, die einen funktionierenden HubSpot-Start oder gezielte Unterstützung benötigen. Der Fokus liegt auf dem Wesentlichen: effizienter Umsetzung, schnellem Nutzen und einem klaren Rahmen.' },
+  { num: '02', name: 'Advanced', text: 'Für alle, die HubSpot aktiv weiterentwickeln wollen. Advanced ist ideal für Teams, die bereits mit HubSpot arbeiten oder einen durchdachten Einstieg planen – inklusive Workshops, Optimierungen und regelmäßiger Zusammenarbeit. Hier verbinden wir Strategie, Struktur und Umsetzung zu einem ganzheitlichen Support.' },
+  { num: '03', name: 'Excellence', text: 'Für komplexe Setups und hohe Anforderungen – mit persönlicher Begleitung auf Top-Niveau. In der Excellence-Stufe bieten wir individuelle Strategieberatung, maßgeschneiderte Prozesse, technische Tiefe und SLA-basierten Support. Ideal für Unternehmen mit mehreren Teams, Integrationen und dem Anspruch, mit HubSpot skalierbar zu wachsen.' },
+];
+
+const faqs = [
+  { q: 'Bei welchen Fragestellungen kann die CogniCore mich unterstützen?', a: 'Von der strategischen HubSpot-Einführung über die Prozessoptimierung bis hin zur Integration in eure Systemlandschaft – wir begleiten euch da, wo ihr gerade steht.' },
+  { q: 'Wie sieht ein typischer Projektverlauf aus und wie ist die Zusammenarbeit organisiert?', a: 'Wir starten mit einem gemeinsamen Zielbild, setzen um in klaren Phasen und begleiten euch partnerschaftlich – mit festen Ansprechpartnern, transparenter Kommunikation und skalierbarem Support.' },
+  { q: 'Warum ist die Kombination von CRM und Marketing Automation wichtig?', a: 'Weil sie Silos aufbricht: Daten, Prozesse und Teams arbeiten endlich zusammen – für bessere Kundenerlebnisse und messbaren Vertriebserfolg.' },
+  { q: 'Warum ist eine kontinuierliche HubSpot-Begleitung notwendig?', a: 'Weil sich eure Anforderungen und HubSpot selbst ständig weiterentwickeln. Mit einer aktiven Begleitung bleibt euer Setup wirksam, effizient und wachstumsfähig.' },
+  { q: 'Welche Stufe ist für unser Unternehmen die richtige?', a: 'Im Erstgespräch klären wir eure Ziele, den aktuellen HubSpot-Reifegrad und die interne Ressourcenlage. Daraus leiten wir ab, ob ein schlankes Essential-Setup genügt oder ob Advanced bzw. Excellence den größeren Mehrwert bringt.' },
+  { q: 'Können wir später problemlos in eine höhere Stufe wechseln?', a: 'Ja. Alle Stufen sind aufeinander aufgebaut, sodass ihr jederzeit upgraden könnt, wenn die Anforderungen wachsen. Eure bisherigen Einstellungen und Daten bleiben dabei vollständig erhalten.' },
+  { q: 'Gibt es Mindestlaufzeiten oder feste Vertragsbindungen pro Stufe?', a: 'Essential läuft projekt- oder ticketbasiert ohne langfristige Bindung. Für Advanced und Excellence empfehlen wir quartalsweise oder jährliche Retainer, damit kontinuierliche Optimierung und SLA-Support planbar bleiben – jedoch mit fairen Kündigungsfristen.' },
+];
+
+const ringSvg = `<svg class="feat-ring" viewBox="0 0 89.91 91.04" aria-hidden="true"><path class="cc-c" d="M69.68,57.69c-4.46,8.82-13.61,14.89-24.16,14.89-14.92,0-27.06-12.14-27.06-27.06s12.14-27.06,27.06-27.06c10.54,0,19.69,6.07,24.16,14.89,2.96-2.74,6.91-4.43,11.25-4.43,2.77,0,5.38.69,7.67,1.89C82.49,12.9,65.52,0,45.52,0,20.38,0,0,20.38,0,45.52s20.38,45.52,45.52,45.52c19.99,0,36.97-12.9,43.08-30.82-2.3,1.2-4.9,1.89-7.67,1.89-4.34,0-8.29-1.69-11.25-4.43Z"/><path class="cc-node" d="M80.93,36.55c-3.84,0-7.12,2.43-8.4,5.83h-7.85c-1.51-9.22-9.51-16.29-19.16-16.29-10.72,0-19.44,8.72-19.44,19.44s8.72,19.44,19.44,19.44c9.64,0,17.65-7.07,19.16-16.29h7.85c1.28,3.4,4.55,5.83,8.4,5.83,4.95,0,8.98-4.03,8.98-8.98s-4.03-8.98-8.98-8.98Z"/></svg>`;
 ---
-<Base
-  active="leistungen"
-  title="Leistungen — HubSpot-Onboarding, Support & Integration | CogniCore"
-  description="Die HubSpot-Leistungen von CogniCore IT Solutions: sauberes Onboarding, laufender Support & Optimierung sowie Prozess-Integration und API-Anbindungen — im Stufenmodell Essential, Advanced und Excellence."
->
-  <header class="page-hero">
-    <div class="wrap reveal in">
-      <span class="label">Leistungen</span>
-      <h1>HubSpot, das trägt.</h1>
+<Base active="leistungen" title="Unsere HubSpot-Leistungen: CRM-Einführung, Automatisierung & Beratung" description="Modulare HubSpot-Leistungen: Onboarding, Begleitung & Optimierung sowie Prozessintegration & API-Schnittstellen – im Drei-Stufen-Modell Essential, Advanced und Excellence.">
+  <!-- HERO -->
+  <section class="page-hero" style="background-image:url('/img/leistungen-hero.jpg')">
+    <div class="wrap">
+      <h1>Unsere Leistungen</h1>
       <p class="lede">
-        Wir setzen HubSpot nicht nur auf — wir sorgen dafür, dass es zu Ihren Prozessen passt,
-        mit Ihren Systemen spricht und mit Ihnen mitwächst. Drei Leistungsbereiche, ein Ziel:
-        ein Portal, auf das Sie sich verlassen können.
+        So skalierbar wie eure Anforderungen: Ob ihr HubSpot gerade erst einführt oder euer Setup
+        technisch und strategisch aufs nächste Level bringen wollt – wir bieten modulare Lösungen
+        mit wachsendem Leistungsumfang. In drei klaren Bereichen – vom Onboarding über Begleitung
+        bis zur Integration.
       </p>
     </div>
-  </header>
+  </section>
 
-  <!-- ONBOARDING -->
-  <section id="onboarding" style="padding-top:56px">
+  <!-- KARTEN -->
+  <section class="section">
     <div class="wrap">
-      <div class="split">
-        <div class="reveal">
-          <span class="label">HubSpot-Onboarding</span>
-          <h2 style="margin-top:16px; font-size:clamp(26px,3.4vw,36px); letter-spacing:-.025em">Von der Strategie bis in den Betrieb.</h2>
-          <p class="lede" style="margin-top:18px; max-width:48ch">
-            Ein sauber aufgesetztes Portal ist die halbe Miete. Wir übersetzen Ihre Vertriebs- und
-            Marketingprozesse in ein durchdachtes HubSpot-Setup — statt Funktionen einfach
-            zusammenzuklicken.
-          </p>
-        </div>
-        <ul class="checks reveal" style="transition-delay:.06s">
-          <li><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>Datenmodell, Pipelines und Lifecycle-Stufen, die zu Ihnen passen</li>
-          <li><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>Automatisierungen für wiederkehrende Abläufe</li>
-          <li><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>Saubere Datenmigration aus Ihren Altsystemen</li>
-          <li><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>Team-Enablement, damit HubSpot auch genutzt wird</li>
-        </ul>
+      <div class="svc-cards">
+        {cards.map((c) => (
+          <a class="svc-card" href={c.href} style={`background-image:url('${c.img}')`}>
+            <span></span>
+            <h3>{c.title}</h3>
+          </a>
+        ))}
       </div>
     </div>
   </section>
 
-  <!-- SUPPORT -->
-  <section id="support" style="padding-top:0">
+  <!-- DETAIL-ABSCHNITTE -->
+  <section class="feat">
     <div class="wrap">
-      <div class="split">
-        <ul class="checks reveal">
-          <li><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>Proaktive Weiterentwicklung statt reinem Ticket-Abarbeiten</li>
-          <li><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>Belastbares Reporting und Dashboards, die Entscheidungen tragen</li>
-          <li><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>Ein fester Ansprechpartner, der Ihr Setup kennt</li>
-          <li><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>Klare Priorisierung — wir sagen, was wirklich Wirkung hat</li>
-        </ul>
-        <div class="reveal" style="transition-delay:.06s">
-          <span class="label">Support &amp; Optimierung</span>
-          <h2 style="margin-top:16px; font-size:clamp(26px,3.4vw,36px); letter-spacing:-.025em">Weiterentwicklung, proaktiv.</h2>
-          <p class="lede" style="margin-top:18px; max-width:48ch">
-            HubSpot ist kein Projekt, das einmal fertig wird. Wir betreuen Ihr Portal laufend,
-            erkennen Optimierungspotenziale früh und entwickeln es Schritt für Schritt weiter —
-            damit es mit Ihrem Geschäft mitwächst.
-          </p>
+      {feats.map((f) => (
+        <div class={`feat-row ${f.rev ? 'rev' : ''} reveal`} id={f.id}>
+          <div class="feat-media">
+            <img src={f.img} alt={f.title} width="640" height="480" loading="lazy" />
+            <Fragment set:html={ringSvg} />
+          </div>
+          <div class="feat-body">
+            <h2>{f.title}</h2>
+            <p>{f.text}</p>
+          </div>
         </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- INTEGRATION -->
-  <section id="integration" style="padding-top:0">
-    <div class="wrap">
-      <div class="split">
-        <div class="reveal">
-          <span class="label">Prozess-Integration &amp; APIs</span>
-          <h2 style="margin-top:16px; font-size:clamp(26px,3.4vw,36px); letter-spacing:-.025em">Ihre Systeme, verbunden.</h2>
-          <p class="lede" style="margin-top:18px; max-width:48ch">
-            HubSpot entfaltet seine Wirkung erst, wenn es mit dem Rest Ihrer IT spricht. Wir binden
-            Ihre Fachsysteme an — über native Integrationen, etablierte Tools oder maßgeschneiderte
-            Schnittstellen.
-          </p>
-        </div>
-        <ul class="checks reveal" style="transition-delay:.06s">
-          <li><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>Microsoft 365: Kalender, E-Mail und SSO</li>
-          <li><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>DATEV und Buchhaltung sauber angebunden</li>
-          <li><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>Individuelle REST-API-Schnittstellen zu Ihren Fachsystemen</li>
-          <li><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>Automatisierte Datenflüsse ohne doppelte Pflege</li>
-        </ul>
-      </div>
+      ))}
     </div>
   </section>
 
   <!-- STUFENMODELL -->
-  <section class="band">
+  <section class="section" style="background:var(--grey)">
     <div class="wrap">
-      <div class="sec-head reveal">
-        <span class="label">Stufenmodell</span>
-        <h2>Essential, Advanced, Excellence.</h2>
-        <p style="color:rgba(234,240,250,.72)">Drei Ausbaustufen — Sie starten dort, wo es für Sie passt, und wachsen hoch, wenn der Bedarf steigt.</p>
+      <h2 class="reveal">Für jeden Reifegrad und jede Unternehmensstufe das passende Modell. Von Basis bis High-End.</h2>
+      <p class="lead reveal">
+        Unsere Leistungen folgen einem klaren Drei-Stufen-Modell – Essential, Advanced und Excellence.
+        So erhaltet ihr exakt den Support, der zu eurer aktuellen Phase passt, ohne Kompromisse beim
+        Ergebnis. Essential bietet den fokussierten Einstieg mit schnellem Setup und klarem Kostenrahmen.
+        Advanced baut darauf auf und ergänzt Workshops, proaktive Optimierung sowie regelmäßige Reviews.
+        Excellence steht für maximale Individualisierung, Strategie-Sparring und technische Tiefe mit
+        SLA-basiertem Support. Ihr könnt jederzeit in die nächste Stufe wechseln – euer HubSpot wächst
+        einfach mit euren Zielen.
+      </p>
+      <div class="tier-cards reveal">
+        {tiers.map((t) => (
+          <article class="tier-card">
+            <span class="num">{t.num}</span>
+            <h3>{t.name}</h3>
+            <p>{t.text}</p>
+          </article>
+        ))}
       </div>
-      <div class="tiers reveal">
-        <article class="tier">
-          <span class="tname">Essential</span>
-          <h3>Der saubere Start.</h3>
-          <p>Kernkonfiguration, die wichtigsten Automatisierungen und ein strukturierter Go-live.</p>
-          <p class="who">Für Teams, die geordnet mit HubSpot starten wollen.</p>
-        </article>
-        <article class="tier featured">
-          <span class="tname">Advanced</span>
-          <h3>Mehr Tiefe, mehr Automatisierung.</h3>
-          <p>Ausgebaute Prozesse über Marketing, Sales und Service, belastbares Reporting und Integrationen.</p>
-          <p class="who">Für wachsende Teams, die HubSpot voll ausschöpfen.</p>
-        </article>
-        <article class="tier">
-          <span class="tname">Excellence</span>
-          <h3>HubSpot als Steuerungssystem.</h3>
-          <p>Individuelle Architektur, tiefe Integrationen und kontinuierliche Optimierung als Partnerschaft.</p>
-          <p class="who">Für anspruchsvolle RevOps-Setups.</p>
-        </article>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section">
+    <div class="wrap">
+      <h2 style="text-align:center">Häufig gestellte Fragen</h2>
+      <div class="faq">
+        {faqs.map((f) => (
+          <details>
+            <summary>{f.q}</summary>
+            <div class="ans">{f.a}</div>
+          </details>
+        ))}
       </div>
     </div>
   </section>
 
   <!-- CTA -->
-  <section class="contact">
+  <section class="section cta-band">
     <div class="wrap">
-      <div class="sec-head center reveal">
-        <span class="label">Erstgespräch</span>
-        <h2>Nicht sicher, welche Stufe zu Ihnen passt?</h2>
-        <p>Das finden wir gemeinsam heraus. Im Erstgespräch schauen wir uns Ihre Situation an — unverbindlich und ehrlich.</p>
-        <div class="cta-row" style="justify-content:center; display:flex; gap:18px; margin-top:26px; flex-wrap:wrap; align-items:center">
-          <a href="/kontakt" class="btn primary">Erstgespräch vereinbaren</a>
-          <a href="/ueber-uns" class="textlink">Mehr über uns
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-          </a>
-        </div>
-      </div>
+      <h2>Vereinbare jetzt einen Termin mit unseren Experten</h2>
+      <p>Erfahre mehr über die Potenziale deines Unternehmens, in einem persönlichen Gespräch mit unseren Experten.</p>
+      <a href="/kontakt" class="btn btn-primary">Termin vereinbaren</a>
     </div>
   </section>
 </Base>

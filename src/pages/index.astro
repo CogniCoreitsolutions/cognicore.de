@@ -1,163 +1,181 @@
 ---
 import Base from '../layouts/Base.astro';
+
+const team = [
+  { name: 'Dominik', img: '/img/team-dominik.jpg' },
+  { name: 'Michael', img: '/img/team-michael.jpg' },
+  { name: 'Rafael', img: '/img/team-rafael.jpg' },
+  { name: 'Adrian', img: '/img/team-adrian.jpg' },
+];
 ---
 <Base active="start">
   <!-- ===================== HERO ===================== -->
-  <header class="hero">
+  <section class="hero" style="background-image:url('/img/hero.png')">
     <div class="wrap">
-      <div class="hero-top reveal in">
-        <span class="label">HubSpot-Partner</span>
-        <h1 style="margin-top:18px">Wachstum, das skaliert.<br />Nicht eskaliert.</h1>
-        <p class="lede">
-          Wir machen HubSpot zum belastbaren Fundament Ihres Vertriebs und Marketings —
-          sauber implementiert, laufend optimiert und mit Ihren Systemen verbunden.
-          Damit Ihre Prozesse mitwachsen, statt Sie auszubremsen.
-        </p>
-        <div class="cta-row">
-          <a href="/kontakt" class="btn primary">Erstgespräch vereinbaren</a>
-          <a href="/leistungen" class="textlink">
-            Leistungen ansehen
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-          </a>
-        </div>
-        <div class="proof">
-          <span><b>Zertifizierter</b> HubSpot-Partner</span><span class="sep"></span>
-          <span><b>B2B</b>-Fokus</span><span class="sep"></span>
-          <span>Mediapark <b>Köln</b></span>
-        </div>
-      </div>
+      <h1>Damit es <span class="u">skaliert</span>, nicht eskaliert!</h1>
+      <p class="lede">
+        CogniCore ist HubSpot-Partner für B2B-Unternehmen, die systematisch wachsen wollen –
+        mit klaren Prozessen, skalierbarer Technologie und technischer Tiefe.
+      </p>
+      <a href="/kontakt" class="btn btn-primary">
+        Jetzt Erstgespräch buchen
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
     </div>
-  </header>
-
-  <!-- ===================== INTEGRATIONS ===================== -->
-  <div class="integrations">
-    <div class="wrap">
-      <span class="lbl">Arbeitet mit Ihrem Stack:</span>
-      <div class="names">
-        <span>HubSpot</span><span>Microsoft 365</span><span>DATEV</span><span>Make</span><span>REST-APIs</span>
-      </div>
-    </div>
-  </div>
+  </section>
 
   <!-- ===================== LEISTUNGEN ===================== -->
-  <section id="leistungen">
+  <section class="section">
     <div class="wrap">
-      <div class="sec-head reveal">
-        <span class="label">Leistungen</span>
-        <h2>Drei Wege, wie wir Ihr HubSpot stark machen.</h2>
-        <p>Vom sauberen Aufsetzen über die laufende Weiterentwicklung bis zur Verbindung mit Ihren Fachsystemen — je nach dem, wo Sie gerade stehen.</p>
+      <h2 class="reveal">Das tun wir für unsere Kunden</h2>
+
+      <div class="svc-cards reveal">
+        <article class="svc-card" style="background-image:url('/img/card-onboarding.jpg')">
+          <span class="svc-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="8" y="2" width="8" height="4" rx="1"/><path d="M9 4H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2h-3"/><path d="m9 14 2 2 4-4"/></svg>
+          </span>
+          <h3>HubSpot Onboarding</h3>
+        </article>
+
+        <article class="svc-card" style="background-image:url('/img/card-support.jpg')">
+          <span class="svc-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2 11 13"/><path d="M22 2 15 22l-4-9-9-4 20-7z"/></svg>
+          </span>
+          <h3>HubSpot Begleitung &amp; Optimierung</h3>
+        </article>
+
+        <article class="svc-card" style="background-image:url('/img/card-integration.jpg')">
+          <span class="svc-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="m8.6 13.5 6.8 4M15.4 6.5 8.6 10.5"/></svg>
+          </span>
+          <h3>Prozessintegration &amp; API-Schnittstellen</h3>
+        </article>
       </div>
 
-      <div class="cards reveal">
-        <article class="card">
-          <span class="ci">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/><path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"/><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/></svg>
-          </span>
-          <h3>HubSpot-Onboarding</h3>
-          <p>Von der Strategie bis in den produktiven Betrieb: Datenmodell, Pipelines, Automatisierungen und Team-Enablement — sauber aufgesetzt statt zusammengeklickt.</p>
-          <a href="/leistungen#onboarding" class="textlink">Mehr erfahren
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-          </a>
-        </article>
-
-        <article class="card">
-          <span class="ci">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"/><path d="M8 16H3v5"/></svg>
-          </span>
-          <h3>Support &amp; Optimierung</h3>
-          <p>Laufende Weiterentwicklung Ihres Portals: proaktive Verbesserungen, sauberes Reporting und ein Ansprechpartner, der Ihr Setup wirklich kennt.</p>
-          <a href="/leistungen#support" class="textlink">Mehr erfahren
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-          </a>
-        </article>
-
-        <article class="card">
-          <span class="ci">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 17H7A5 5 0 0 1 7 7h2"/><path d="M15 7h2a5 5 0 1 1 0 10h-2"/><line x1="8" x2="16" y1="12" y2="12"/></svg>
-          </span>
-          <h3>Prozess-Integration &amp; APIs</h3>
-          <p>HubSpot verbunden mit Microsoft 365, DATEV und Ihren Fachsystemen — über native Integrationen oder maßgeschneiderte Schnittstellen.</p>
-          <a href="/leistungen#integration" class="textlink">Mehr erfahren
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-          </a>
-        </article>
+      <div class="svc-more">
+        <a href="/leistungen" class="btn btn-primary">Hier mehr über unsere Leistungen erfahren →</a>
       </div>
     </div>
   </section>
 
   <!-- ===================== STUFENMODELL ===================== -->
-  <section id="stufen" style="padding-top:0">
+  <section class="section" style="padding-top:0">
     <div class="wrap">
-      <div class="sec-head reveal">
-        <span class="label">Stufenmodell</span>
-        <h2>Starten Sie auf dem passenden Niveau.</h2>
-        <p>Sie müssen nicht mit allem gleichzeitig anfangen. Steigen Sie dort ein, wo es für Sie Sinn ergibt — und wachsen Sie hoch, wenn der Bedarf steigt.</p>
-      </div>
-
-      <div class="tiers reveal">
-        <article class="tier">
-          <span class="tname">Essential</span>
-          <h3>Der saubere Start.</h3>
-          <p>Fundament richtig gelegt: Kernkonfiguration, die wichtigsten Automatisierungen und ein strukturierter Go-live.</p>
-          <p class="who">Für Teams, die geordnet mit HubSpot starten wollen.</p>
-        </article>
-        <article class="tier featured">
-          <span class="tname">Advanced</span>
-          <h3>Mehr Tiefe, mehr Automatisierung.</h3>
-          <p>Ausgebaute Prozesse über Marketing, Sales und Service, belastbares Reporting und erste Integrationen.</p>
-          <p class="who">Für wachsende Teams, die HubSpot voll ausschöpfen.</p>
-        </article>
-        <article class="tier">
-          <span class="tname">Excellence</span>
-          <h3>HubSpot als Steuerungssystem.</h3>
-          <p>Individuelle Architektur, tiefe Integrationen und kontinuierliche Optimierung als laufende Partnerschaft.</p>
-          <p class="who">Für anspruchsvolle RevOps-Setups.</p>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===================== ÜBER UNS TEASER ===================== -->
-  <section id="warum">
-    <div class="wrap">
-      <div class="split">
-        <div class="reveal">
-          <span class="label">Über uns</span>
-          <h2 style="margin-top:16px; font-size:clamp(26px,3.4vw,38px); letter-spacing:-.025em">Technische Tiefe. Klare Kommunikation.</h2>
-          <p class="lede" style="margin-top:18px; max-width:46ch">
-            Wir sind Techniker und Berater in einem: Wir verstehen Ihre Prozesse, bilden sie
-            sauber in HubSpot ab — und erklären jeden Schritt so, dass Ihr Team mitkommt.
-            Kein Fachchinesisch, kein Verkaufsdruck.
+      <h2 class="reveal">Skalierbare Lösungen – unser Modell für den HubSpot-Erfolg.</h2>
+      <div class="tier-split reveal">
+        <div>
+          <p>
+            Unsere Leistungen folgen einem Drei-Stufen-Modell: Essential, Advanced und Excellence.
+            Damit bekommt ihr genau den Support, der zu eurer aktuellen Phase passt – vom schnellen
+            Einstieg bis zur durchdachten Systemarchitektur. So wächst euer HubSpot mit euren Zielen –
+            strukturiert, nachvollziehbar und jederzeit ausbaubar.
           </p>
-          <a href="/ueber-uns" class="textlink" style="margin-top:22px">Mehr über uns
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-          </a>
         </div>
-        <ul class="checks reveal" style="transition-delay:.06s">
-          <li><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>Zertifizierte HubSpot-Expertise</li>
-          <li><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>Ehrliche Empfehlungen statt Lizenz-Verkauf</li>
-          <li><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>Feste Ansprechpartner, die Ihr Setup kennen</li>
-          <li><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>Aus Köln, für den Mittelstand im DACH-Raum</li>
-        </ul>
+        <div>
+          <p style="font-weight:600;color:var(--navy)">Unsere Leistungen folgen einem Drei-Stufen-Modell:</p>
+          <ul class="tier-list">
+            <li>
+              <span class="tier-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M2 12h20M5 5l14 14M19 5 5 19"/></svg></span>
+              Essential
+            </li>
+            <li>
+              <span class="tier-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 2 7l10 5 10-5-10-5z"/><path d="m2 17 10 5 10-5M2 12l10 5 10-5"/></svg></span>
+              Advanced
+            </li>
+            <li>
+              <span class="tier-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m2 7 4.5 3L12 4l5.5 6L22 7l-2 12H4L2 7z"/></svg></span>
+              Excellence
+            </li>
+          </ul>
+          <p>
+            So könnt ihr genau dort starten, wo es für euch passt – und jederzeit in die nächste
+            Stufe wachsen, wenn Prozesse, Anforderungen oder Teams komplexer werden.
+          </p>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- ===================== CTA BAND ===================== -->
-  <section class="band">
+  <!-- ===================== TEAM ===================== -->
+  <section class="section team">
     <div class="wrap">
-      <div class="reveal">
-        <span class="label">Erstgespräch</span>
-        <h2 style="margin-top:16px">Lassen Sie uns über Ihr HubSpot sprechen.</h2>
-        <p class="lede">
-          Unverbindlich und ohne Verkaufsdruck. Wir schauen uns Ihre Situation an und sagen
-          ehrlich, was sinnvoll ist — und was nicht.
-        </p>
-        <div class="cta-row">
-          <a href="/kontakt" class="btn primary">Erstgespräch vereinbaren</a>
-          <a href="mailto:info@cognicore.de" class="textlink">info@cognicore.de</a>
-        </div>
+      <h2 class="reveal">Ein Team mit technischer Tiefe, klaren Köpfen und guter Laune.</h2>
+      <p class="lead reveal">
+        Wir sind ein interdisziplinäres Team aus Strateg:innen, Solution Architects und
+        HubSpot-Spezialist:innen – mit einem gemeinsamen Anspruch: saubere Prozesse, skalierbare
+        Systeme und ehrliche Zusammenarbeit. Unser Hauptsitz liegt im Mediapark Köln, aber wir
+        arbeiten flexibel – häufig vor Ort aber auch mal verteilt auf der ganzen Welt. Was uns
+        verbindet: fachliche Tiefe, klare Kommunikation und die Überzeugung, dass Technologie nur
+        dann funktioniert, wenn Menschen sie verstehen und nutzen wollen.
+        <a href="/ueber-uns" class="textlink">Hier mehr über uns erfahren.</a>
+      </p>
+      <div class="team-grid reveal">
+        {team.map((m) => (
+          <figure class="team-card">
+            <img src={m.img} alt={`${m.name} – CogniCore Team`} width="300" height="400" loading="lazy" />
+            <figcaption class="name">{m.name}</figcaption>
+          </figure>
+        ))}
       </div>
+    </div>
+  </section>
+
+  <!-- ===================== KONTAKT-INTRO ===================== -->
+  <section class="section contact-intro">
+    <div class="wrap">
+      <h2 class="reveal">Ein kurzes Gespräch, das Klarheit bringt.</h2>
+      <p class="reveal">
+        In einem ersten Gespräch lernen wir uns kennen, klären eure Ausgangssituation und schauen
+        gemeinsam, welcher Betreuungsansatz zu euch passt – vom schnellen HubSpot-Start bis zur
+        langfristigen Begleitung.
+      </p>
+      <p class="reveal" style="margin-top:14px">
+        Du bekommst erste Impulse, wir stellen dir unser Vorgehen vor – ein Termin, kein Pitch.
+        Ganz ohne Verkaufsdruck. Dafür mit echtem Interesse an eurem Fortschritt.
+      </p>
+    </div>
+  </section>
+
+  <!-- ===================== KONTAKTFORMULAR ===================== -->
+  <section class="section contact-form-sec" id="talk">
+    <div class="wrap">
+      <h2 class="reveal">Jetzt einfach kontaktieren</h2>
+      <!-- TODO: an HubSpot Forms API (Portal 144804770, EU) anbinden -->
+      <form class="form-card reveal" method="post" action="#">
+        <div class="form-row">
+          <div class="field">
+            <label for="vorname">Vorname*</label>
+            <input id="vorname" name="firstname" type="text" required />
+          </div>
+          <div class="field">
+            <label for="nachname">Nachname*</label>
+            <input id="nachname" name="lastname" type="text" required />
+          </div>
+        </div>
+        <div class="field">
+          <label for="email">E-Mail*</label>
+          <input id="email" name="email" type="email" required />
+        </div>
+        <div class="field">
+          <label for="telefon">Telefonnummer</label>
+          <input id="telefon" name="phone" type="tel" />
+        </div>
+        <div class="field">
+          <label for="nachricht">Nachricht*</label>
+          <textarea id="nachricht" name="message" required></textarea>
+        </div>
+        <label class="consent">
+          <input type="checkbox" name="newsletter" />
+          <span>Ja, ich möchte zusätzlich regelmäßig die CogniCore-News mit Insights, Tipps und Angeboten per E-Mail erhalten.</span>
+        </label>
+        <p class="consent" style="margin-bottom:20px">
+          Mit dem Absenden dieses Formulars erklärst du dich einverstanden, dass CogniCore deine
+          Angaben verarbeitet, um dir den angeforderten Inhalt bereitzustellen und dir relevante
+          Informationen zu senden. Du kannst deine Einwilligung jederzeit widerrufen. Mehr dazu in
+          unserer <a href="/datenschutz">Datenschutzerklärung</a>.
+        </p>
+        <button type="submit" class="btn btn-primary">Absenden</button>
+      </form>
     </div>
   </section>
 </Base>
