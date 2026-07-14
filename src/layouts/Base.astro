@@ -1,0 +1,80 @@
+---
+import '../styles/global.css';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+
+interface Props {
+  title?: string;
+  description?: string;
+  active?: string;
+}
+const {
+  title = 'CogniCore IT Solutions — HubSpot-Partner für skalierbaren B2B-Vertrieb',
+  description = 'CogniCore IT Solutions ist Ihr HubSpot-Partner in Köln: Onboarding, Support & Optimierung sowie Prozess-Integration und API-Anbindungen. Damit Ihr Wachstum skaliert, statt zu eskalieren.',
+  active,
+} = Astro.props;
+---
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>{title}</title>
+  <meta name="description" content={description} />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="apple-touch-icon" href="/favicon.svg" />
+  <link rel="preload" href="/fonts/Raleway-VariableFont_wght.ttf" as="font" type="font/ttf" crossorigin />
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={description} />
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="de_DE" />
+  <!-- Solange im Aufbau: nicht indexieren. Zum Launch entfernen. -->
+  <meta name="robots" content="noindex" />
+  <!-- Theme ohne Flash setzen (vor dem Rendern) -->
+  <script is:inline>
+    (function () {
+      try {
+        var t = localStorage.getItem('cc_theme') ||
+          (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+        document.documentElement.setAttribute('data-theme', t);
+      } catch (e) {}
+    })();
+  </script>
+</head>
+<body>
+  <Nav active={active} />
+  <slot />
+  <Footer />
+
+  <script>
+    // Theme-Toggle (persistiert)
+    const root = document.documentElement;
+    document.getElementById('theme')?.addEventListener('click', () => {
+      const next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+      root.setAttribute('data-theme', next);
+      try { localStorage.setItem('cc_theme', next); } catch (e) {}
+    });
+
+    // Mobile-Navigation
+    const nav = document.getElementById('nav');
+    document.getElementById('ham')?.addEventListener('click', () => nav?.classList.toggle('open'));
+    nav?.querySelectorAll('.nav-links a').forEach((a) =>
+      a.addEventListener('click', () => nav.classList.remove('open')),
+    );
+
+    // Reveal beim Scrollen
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((e) => {
+          if (e.isIntersecting) {
+            e.target.classList.add('in');
+            io.unobserve(e.target);
+          }
+        });
+      },
+      { threshold: 0.1, rootMargin: '0px 0px -40px 0px' },
+    );
+    document.querySelectorAll('.reveal:not(.in)').forEach((el) => io.observe(el));
+  </script>
+</body>
+</html>
