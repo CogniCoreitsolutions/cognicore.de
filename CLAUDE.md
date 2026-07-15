@@ -86,14 +86,14 @@ Vollständig in [`docs/analyse-webauftritt.md`](docs/analyse-webauftritt.md). Di
 **Vor Go-live (Gates & Blocker):**
 - [ ] **Buchung scharfschalten:** HubSpot-Meetings-Scheduler in `#termin` + Forms API (Portal 144804770) — aktuell Platzhalter (`action="#"`).
 - [ ] **DSGVO-Gate:** Ein HubSpot-Client-Embed kippt die „keine Cookies"-Aussage der DSE → **serverseitige Forms API bevorzugen** (bleibt cookiefrei) ODER Consent-Layer + DSE-Update + CSP gemeinsam ausrollen.
-- [ ] **Accessibility:** Akzent-Orange für weißen Text auf ≥ 4,5:1 abdunkeln (WCAG 1.4.3, bestätigter Fail auf dem Primär-CTA), Blau-300 aufhellen — **vor** dem Entfernen des `noindex`.
+- [x] **Accessibility-Kontrast erledigt:** `--cc-orange-ink #BE4A24` für weißen Text / Text-auf-Hell (WCAG 1.4.3 ≥ 4,5:1), Blau-300 → `#8195BE`. (Weiterer a11y-Feinschliff optional.)
 - [ ] **Go-live-Checkliste:** `noindex` raus, `site` in `astro.config.mjs` auf Apex, totes hubfs-Logo im JSON-LD (`Base.astro`) → lokales `/brand/`-Asset, `sitemap.xml` + `robots.txt` (`@astrojs/sitemap`).
-- [ ] **Startseiten-Formular** um Consent-Zeile + `/datenschutz`-Link angleichen (wie `kontakt.astro`).
+- [x] **Startseiten-Formular** um Consent-Zeile + `/datenschutz`-Link angeglichen (Parität mit `kontakt.astro`). Rest-Punkt: `required`-Einwilligung vs. Rechtsgrundlage sauber lösen.
 
-**Quick-Wins (Stunden, hohe Wirkung, kein Redesign):**
-- [ ] **Marketplace-App verlinken** (+ Kurz-Steckbrief) und auf `/leistungen` verankern — stärkster Eigenbeweis, aktuell nur beschrieben, nirgends verlinkt.
-- [ ] **CTA-Verben trennen** („vereinbaren" nur wo wirklich gebucht wird, sonst „Anfrage senden"); Self-Check ehrlich framen oder Dropdown-Option bis zum Bau entfernen.
-- [ ] **FAQPage-JSON-LD** aus den 9 FAQs; **Raleway → WOFF2** (Subset); **404-Seite** im DS; `security.txt`; Burger-`aria-expanded`, Skip-Link.
+**Quick-Wins — ✅ erledigt (Commit `aedd738`, 2026-07-15):**
+- [x] **Marketplace-App/HubSpot-Verzeichnis verlinkt** (Startseite Proof-of-Build + Leistungen-Integration) → `ecosystem.hubspot.com/de/marketplace/solutions/cognicore`.
+- [x] **CTA-Verben getrennt:** Formular-Submit → „Anfrage senden" (Start + Kontakt); „vereinbaren" nur noch für den Booking-CTA.
+- [x] **FAQPage-JSON-LD** (Leistungen); **Raleway → WOFF2** (ohne Subset, Umlaute erhalten, 305→125 KB); **404-Seite** im DS; `security.txt`; Burger-`aria-expanded`, Skip-Link.
 
 **Beweis-Schicht (der eigentliche strategische Hebel):**
 - [ ] **Echte Cases** (anonymisiert, quantifiziert) + **externer Reputationslayer** (HubSpot-Directory-Reviews, Google/ProvenExpert, `sameAs`/LinkedIn) — nichts erfinden.
