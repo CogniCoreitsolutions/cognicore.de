@@ -80,14 +80,31 @@ Vollständig in [`docs/analyse-webauftritt.md`](docs/analyse-webauftritt.md). Di
 5. **Positionierung begraben** → POV in den Hero; Titles/H1 mit „HubSpot"/„Köln"; JSON-LD.
 6. **„Buchen" bucht nicht** → CTA einheitlich „Erstgespräch vereinbaren".
 
-## Offene Arbeit (Roadmap)
-- [ ] **Formulare** anbinden (HubSpot Forms API, Portal 144804770) — aktuell Platzhalter (`action="#"`).
-- [ ] **HubSpot-Meetings-Scheduler** in Kontakt/`#termin` einbetten (Selbstbuchung).
-- [ ] **Echte Referenzen/Cases/Testimonials** ergänzen (mit Kundenfreigabe).
-- [ ] **Datenschutzerklärung** final juristisch prüfen lassen.
-- [ ] **Self-Check-Funnel** und **PLZ-Lookup-Doku-Seiten** im neuen Design nachbauen.
-- [ ] **Accessibility-Feinschliff** (Orange-Kontrast auf Buttons ≥ 4,5:1 prüfen).
-- [ ] Zum Launch: `noindex` in `Base.astro` entfernen; `site` in `astro.config.mjs` auf Apex umstellen.
+**Re-Analyse nach dem Relaunch** (dieselben 13 Rollen gegen `new.cognicore.de`, [`docs/analyse-redesign.md`](docs/analyse-redesign.md)): Bilanz **2 behoben** (Datenschutz, Positionierung), **1 weitgehend** (Team), **2 teilweise** (Proof, Tiefe), **1 offen** (Buchungs-Mechanik). Der Engpass hat sich von „Botschaft/Design" zu **„Beweis & Mechanik"** verschoben — der dauerhafte strategische Kern: *belegte Ergebnisse statt Selbstauskunft, und das eigene Angebot am eigenen Haus sichtbar praktizieren.*
+
+## Offene Arbeit (Roadmap) — nach Re-Analyse priorisiert
+**Vor Go-live (Gates & Blocker):**
+- [ ] **Buchung scharfschalten:** HubSpot-Meetings-Scheduler in `#termin` + Forms API (Portal 144804770) — aktuell Platzhalter (`action="#"`).
+- [ ] **DSGVO-Gate:** Ein HubSpot-Client-Embed kippt die „keine Cookies"-Aussage der DSE → **serverseitige Forms API bevorzugen** (bleibt cookiefrei) ODER Consent-Layer + DSE-Update + CSP gemeinsam ausrollen.
+- [ ] **Accessibility:** Akzent-Orange für weißen Text auf ≥ 4,5:1 abdunkeln (WCAG 1.4.3, bestätigter Fail auf dem Primär-CTA), Blau-300 aufhellen — **vor** dem Entfernen des `noindex`.
+- [ ] **Go-live-Checkliste:** `noindex` raus, `site` in `astro.config.mjs` auf Apex, totes hubfs-Logo im JSON-LD (`Base.astro`) → lokales `/brand/`-Asset, `sitemap.xml` + `robots.txt` (`@astrojs/sitemap`).
+- [ ] **Startseiten-Formular** um Consent-Zeile + `/datenschutz`-Link angleichen (wie `kontakt.astro`).
+
+**Quick-Wins (Stunden, hohe Wirkung, kein Redesign):**
+- [ ] **Marketplace-App verlinken** (+ Kurz-Steckbrief) und auf `/leistungen` verankern — stärkster Eigenbeweis, aktuell nur beschrieben, nirgends verlinkt.
+- [ ] **CTA-Verben trennen** („vereinbaren" nur wo wirklich gebucht wird, sonst „Anfrage senden"); Self-Check ehrlich framen oder Dropdown-Option bis zum Bau entfernen.
+- [ ] **FAQPage-JSON-LD** aus den 9 FAQs; **Raleway → WOFF2** (Subset); **404-Seite** im DS; `security.txt`; Burger-`aria-expanded`, Skip-Link.
+
+**Beweis-Schicht (der eigentliche strategische Hebel):**
+- [ ] **Echte Cases** (anonymisiert, quantifiziert) + **externer Reputationslayer** (HubSpot-Directory-Reviews, Google/ProvenExpert, `sameAs`/LinkedIn) — nichts erfinden.
+- [ ] **Tiefe zeigen** statt behaupten: Referenz-/Datenfluss-Schema, Deliverables je Phase, eigene Migrations-Story (HubSpot CMS → Astro) als Proof-of-Build.
+- [ ] **Preis-/Größen-Anker** je Stufe; Tier über Outcome differenzieren statt nur Bindung.
+
+**Weiter (nach Launch, planbar):**
+- [ ] **Datenschutz** final juristisch prüfen; **Self-Check-Funnel** & **PLZ-Doku** im neuen Design bauen.
+- [ ] **Karriere** ausbauen (echte Rolle, Recruiting-Kontakt Lara statt `info@`, Nav-Punkt); **Team** konsistent (Nachnamen/LinkedIn/Fotos für Delivery-Rollen).
+- [ ] **Content-/Wissens-Hub** + dedizierte Leistungs-Landingpages (SEO-Tiefe); cookiefreies Analytics (Plausible/Matomo) — eigenes Dogfooding sichtbar machen.
+- [ ] **Positionierung schärfen:** HubSpot-Kern über „und mehr" stellen, Managed IT nachordnen, Signatur-Claim durchtragen.
 
 ## Arbeitskonventionen
 - **Sprache:** deutsche Inhalte, „Sie". Commit-Messages knapp und aussagekräftig.
