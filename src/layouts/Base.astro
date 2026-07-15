@@ -33,7 +33,7 @@ const jsonLd = {
   },
   areaServed: ['DE', 'AT', 'CH'],
   knowsAbout: ['HubSpot', 'CRM', 'RevOps', 'Prozessautomatisierung', 'API-Integration', 'Managed IT'],
-  logo: 'https://cognicore.de/hubfs/Logos/2024-08%20CogniCore-Logo-blau-rot.png',
+  logo: new URL('/brand/cognicore-logo-blue-orange.png', Astro.site ?? 'https://new.cognicore.de').href,
 };
 ---
 <!doctype html>
@@ -45,7 +45,7 @@ const jsonLd = {
   <meta name="description" content={description} />
   <link rel="canonical" href={canonical} />
   <link rel="icon" type="image/png" href="/brand/cognicore-icon-blue-orange.png" />
-  <link rel="preload" href="/fonts/Raleway-VariableFont_wght.ttf" as="font" type="font/ttf" crossorigin />
+  <link rel="preload" href="/fonts/Raleway-VariableFont_wght.woff2" as="font" type="font/woff2" crossorigin />
   <meta property="og:type" content="website" />
   <meta property="og:title" content={title} />
   <meta property="og:description" content={description} />
@@ -57,6 +57,7 @@ const jsonLd = {
   <script is:inline>document.documentElement.classList.add('js');</script>
 </head>
 <body>
+  <a href="#inhalt" class="cc-skip">Zum Inhalt springen</a>
   <Nav active={active} />
   <main id="inhalt">
     <slot />
@@ -66,7 +67,11 @@ const jsonLd = {
   <script>
     // Mobile-Navigation
     const header = document.getElementById('site-header');
-    document.getElementById('cc-burger')?.addEventListener('click', () => header?.classList.toggle('open'));
+    const burger = document.getElementById('cc-burger');
+    burger?.addEventListener('click', () => {
+      const open = header?.classList.toggle('open');
+      burger.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
     document.querySelectorAll('#cc-mobile a').forEach((a) =>
       a.addEventListener('click', () => header?.classList.remove('open')),
     );

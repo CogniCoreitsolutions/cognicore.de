@@ -57,6 +57,11 @@ const faqs = [
   { q: 'Gibt es Mindestlaufzeiten?', a: 'Essential läuft projekt- oder ticketbasiert ohne langfristige Bindung. Für Advanced und Excellence empfehlen wir Retainer mit fairen Kündigungsfristen.' },
   { q: 'Was kostet das?', a: 'Konkrete Preise nennen wir transparent im Erstgespräch — abhängig von Umfang und Reifegrad. Der Self-Check und das Erstgespräch sind kostenlos und unverbindlich.' },
 ];
+
+const faqSchema = {
+  '@context': 'https://schema.org', '@type': 'FAQPage',
+  mainEntity: faqs.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })),
+};
 ---
 <Base active="leistungen" title="HubSpot-Leistungen: Onboarding, Integration & Managed IT | CogniCore Köln" description="HubSpot Onboarding, Begleitung & Optimierung sowie Prozess- und API-Integration — plus IT-Projekte und Managed IT. Im Drei-Stufen-Modell Essential, Advanced und Excellence.">
   <!-- HERO -->
@@ -80,6 +85,7 @@ const faqs = [
           <h2 style="font-size:32px; margin-top:8px">{p.title}</h2>
           <p>{p.copy}</p>
           <ul class="cc-checks">{p.bullets.map((b) => <li set:html={check + ' ' + b} />)}</ul>
+          {p.id === 'integration' && <a class="cc-textlink" href="https://ecosystem.hubspot.com/de/marketplace/solutions/cognicore" target="_blank" rel="noopener" style="display:inline-block; margin-top:16px; font-weight:600">Beispiel: unsere PLZ-Lookup-App im HubSpot-Verzeichnis ↗</a>}
         </div>
         <div class="cc-split__media"><img src={p.img} alt={p.title} width="640" height="480" loading="lazy" /></div>
       </div>
@@ -125,12 +131,13 @@ const faqs = [
     </div>
     <div class="cc-grid cc-grid--3 cc-reveal">
       {tiers.map((t) => (
-        <article class="cc-card"><div class="cc-card__num">{t.num}</div><h3>{t.name}</h3><p style="color:var(--cc-orange); font-weight:600; font-size:13px; margin:-4px 0 0">{t.who}</p><p>{t.copy}</p></article>
+        <article class="cc-card"><div class="cc-card__num">{t.num}</div><h3>{t.name}</h3><p style="color:var(--cc-orange-ink); font-weight:600; font-size:13px; margin:-4px 0 0">{t.who}</p><p>{t.copy}</p></article>
       ))}
     </div>
   </section>
 
   <!-- FAQ -->
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
   <section class="cc-section cc-section--surface">
     <div class="cc-section__head center cc-reveal"><div class="cc-eyebrow">// FAQ</div><h2>Häufige Fragen.</h2></div>
     <div class="cc-legal" style="max-width:840px">

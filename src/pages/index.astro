@@ -170,7 +170,10 @@ const team = [
           <li set:html={ic.check + ' Automatische Anreicherung via HubSpot-API'} />
           <li set:html={ic.check + ' Und: Diese Website und unser eigener Betrieb laufen auf demselben Stack'} />
         </ul>
-        <a class="cc-btn cc-btn--primary" href="/leistungen#integration" style="margin-top:20px">Integration &amp; APIs ansehen</a>
+        <div style="display:flex; gap:12px; flex-wrap:wrap; margin-top:20px">
+          <a class="cc-btn cc-btn--primary" href="/leistungen#integration">Integration &amp; APIs ansehen</a>
+          <a class="cc-btn cc-btn--ghost" href="https://ecosystem.hubspot.com/de/marketplace/solutions/cognicore" target="_blank" rel="noopener">Im HubSpot-Verzeichnis ansehen ↗</a>
+        </div>
       </div>
       <div class="cc-split__media">
         <img src="/img/card-integration.jpg" alt="CogniCore Team bei der HubSpot-Integration" width="640" height="480" loading="lazy" />
@@ -201,7 +204,7 @@ const team = [
       {team.map((m) => (
         <figure class="cc-card" style="align-items:center; text-align:center; gap:14px">
           <img src={m.img} alt={m.name} width="120" height="120" loading="lazy" style="width:104px; height:104px; border-radius:999px; object-fit:cover" />
-          <figcaption><b style="display:block; color:var(--cc-blue); font-weight:700">{m.name}</b><span style="color:var(--cc-orange); font-size:13px; font-weight:600">{m.role}</span></figcaption>
+          <figcaption><b style="display:block; color:var(--cc-blue); font-weight:700">{m.name}</b><span style="color:var(--cc-orange-ink); font-size:13px; font-weight:600">{m.role}</span></figcaption>
         </figure>
       ))}
     </div>
@@ -231,7 +234,11 @@ const team = [
           </select>
         </label>
         <label>Nachricht<textarea name="message" rows="3" placeholder="Was beschäftigt Sie gerade?"></textarea></label>
-        <button type="submit" class="cc-btn cc-btn--accent cc-btn--block">Erstgespräch vereinbaren</button>
+        <label style="flex-direction:row; align-items:flex-start; gap:10px; text-transform:none; letter-spacing:0; font-size:12px; color:var(--cc-blue-100)">
+          <input type="checkbox" name="consent" required style="width:auto; margin-top:2px" />
+          <span>Ich bin einverstanden, dass CogniCore meine Angaben zur Bearbeitung meiner Anfrage verarbeitet. Mehr in der <a href="/datenschutz" style="color:#fff">Datenschutzerklärung</a>.</span>
+        </label>
+        <button type="submit" class="cc-btn cc-btn--accent cc-btn--block">Anfrage senden</button>
         <small>Wir antworten werktags in der Regel innerhalb von 24 Stunden.</small>
       </form>
     </div>
