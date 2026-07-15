@@ -141,6 +141,28 @@ a { color:inherit; text-decoration:none; }
 .cc-hero__panel-link { align-self:flex-start; margin-top:4px; font-family:var(--cc-font-display); font-weight:700; font-size:14px; color:var(--cc-orange-ink); text-decoration:none; }
 .cc-hero__panel-link:hover { color:var(--cc-orange-ink-600); }
 
+/* ---------- Hero: Editorial (Foto-getragen, Menschen zuerst) ---------- */
+.cc-hero-photo { position:relative; background:var(--cc-blue); color:#fff; overflow:hidden; min-height:660px; display:flex; align-items:center; }
+.cc-hero-photo__bg { position:absolute; inset:0; }
+.cc-hero-photo__bg img { width:100%; height:100%; object-fit:cover; object-position:74% center; }
+.cc-hero-photo::after { content:""; position:absolute; inset:0; background:linear-gradient(90deg, var(--cc-blue-deep) 2%, rgba(7,27,62,.92) 33%, rgba(7,27,62,.55) 60%, rgba(7,27,62,.08) 100%); }
+.cc-hero-photo__inner { position:relative; z-index:1; max-width:var(--cc-maxw); margin:0 auto; padding:96px 56px; width:100%; }
+.cc-hero-photo__copy { max-width:640px; }
+.cc-hero-photo .cc-eyebrow { color:var(--cc-orange); }
+.cc-hero-photo__title { color:#fff; font-size:64px; line-height:1.04; letter-spacing:-.02em; font-weight:700; margin:14px 0 20px; }
+.cc-hero-photo__title em { font-style:normal; color:var(--cc-orange); }
+.cc-hero-photo__lede { font-size:19px; line-height:1.55; color:var(--cc-blue-100); max-width:560px; margin:0 0 30px; }
+.cc-hero-photo__actions { display:flex; gap:12px; flex-wrap:wrap; margin-bottom:32px; }
+.cc-hero-photo__proof { font-family:var(--cc-font-display); font-size:13px; letter-spacing:.04em; color:var(--cc-blue-100); font-weight:600; line-height:1.7; max-width:600px; }
+.cc-hero-photo__proof b { color:#fff; }
+@media (max-width:900px) {
+  .cc-hero-photo { min-height:0; }
+  .cc-hero-photo::after { background:linear-gradient(180deg, rgba(7,27,62,.68) 0%, rgba(7,27,62,.88) 55%, var(--cc-blue-deep) 100%); }
+  .cc-hero-photo__inner { padding:64px 32px; }
+  .cc-hero-photo__title { font-size:clamp(38px,9vw,56px); }
+}
+@media (max-width:560px) { .cc-hero-photo__inner { padding:52px 20px; } .cc-hero-photo__title { font-size:34px; } }
+
 /* ---------- Section ---------- */
 .cc-section { max-width:var(--cc-maxw); margin:0 auto; padding:88px 56px; }
 .cc-section--surface { background:var(--cc-bg); max-width:none; }
