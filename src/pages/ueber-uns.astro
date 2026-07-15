@@ -14,9 +14,18 @@ const team = [
 ];
 
 const certs = [
-  'Content Marketing', 'E-Mail Marketing', 'Growth-Driven Design Agency', 'HubSpot Marketing Hub Software',
-  'HubSpot Sales Hub Software', 'HubSpot Service-Software', 'Inbound Sales', 'Inbound-Marketing',
-  'Inbound-Methodik', 'Reibungsloser Vertrieb', 'Sales-Software', 'Solutions Partner',
+  { label: 'Content Marketing',           img: '/brand/badges/cert-content-marketing.png' },
+  { label: 'E-Mail Marketing',            img: '/brand/badges/cert-email-marketing.png' },
+  { label: 'Growth-Driven Design Agency', img: '/brand/badges/cert-growth-driven-design.png' },
+  { label: 'HubSpot Marketing Hub',       img: '/brand/badges/cert-marketing-hub.png' },
+  { label: 'HubSpot Sales Hub',           img: '/brand/badges/cert-sales-hub.png' },
+  { label: 'HubSpot Service-Software',    img: '/brand/badges/cert-service-software.png' },
+  { label: 'Inbound Sales',               img: '/brand/badges/cert-inbound-sales.png' },
+  { label: 'Inbound-Marketing',           img: '/brand/badges/cert-inbound-marketing.png' },
+  { label: 'Inbound-Methodik',            img: '/brand/badges/cert-inbound-methodik.png' },
+  { label: 'Reibungsloser Vertrieb',      img: '/brand/badges/cert-reibungsloser-vertrieb.png' },
+  { label: 'Sales-Software',              img: '/brand/badges/cert-sales-software.png' },
+  { label: 'Solutions Partner',           img: '/brand/badges/cert-solutions-partner.png' },
 ];
 
 const criteria = [
@@ -77,18 +86,31 @@ const criteria = [
   </section>
 
   <!-- ZERTIFIZIERUNGEN -->
-  <section class="cc-section cc-section--surface">
+  <section class="cc-section cc-section--surface" id="zertifizierungen">
     <div class="cc-section__head cc-reveal">
       <div class="cc-eyebrow">// Belegt</div>
       <h2>Offizieller HubSpot Solutions Partner.</h2>
-      <p class="cc-section__sub">Zertifizierte Tiefe über Marketing, Sales, Service und Inbound — 13 aktuelle HubSpot-Zertifizierungen als nachprüfbares Kompetenzsignal.</p>
+      <p class="cc-section__sub">Zertifizierte Tiefe über Marketing, Sales, Service und Inbound — 12 aktuelle HubSpot-Zertifizierungen als nachprüfbares Kompetenzsignal.</p>
     </div>
-    <div class="cc-grid cc-grid--3 cc-reveal">
+
+    <!-- Partner-Status -->
+    <div class="cc-partner cc-reveal">
+      <img class="cc-partner__badge" src="/brand/badges/hubspot-solutions-partner.svg" alt="HubSpot Solutions Partner — offizielles Partner-Badge" width="140" height="140" />
+      <div class="cc-partner__body">
+        <div class="cc-eyebrow">// Partner-Status</div>
+        <h3>HubSpot Solutions Partner</h3>
+        <p>Anerkannt im offiziellen HubSpot-Partnerprogramm — mit direktem Draht zu HubSpot und einem öffentlich nachprüfbaren Profil im HubSpot Solutions Directory.</p>
+        <a class="cc-textlink" href="https://ecosystem.hubspot.com/de/marketplace/solutions/cognicore" target="_blank" rel="noopener">Im HubSpot-Verzeichnis ansehen ↗</a>
+      </div>
+    </div>
+
+    <!-- Zertifizierungs-Badges -->
+    <div class="cc-badges cc-reveal">
       {certs.map((c) => (
-        <div class="cc-card" style="flex-direction:row; align-items:center; gap:12px; padding:16px 20px">
-          <span class="cc-card__ic" style="width:36px; height:36px; flex:none" set:html={check} />
-          <span style="font-weight:600; font-size:15px; color:var(--cc-blue)">{c}</span>
-        </div>
+        <figure class="cc-badge">
+          <img src={c.img} alt={`HubSpot-Zertifizierung: ${c.label}`} width="120" height="120" loading="lazy" />
+          <figcaption>{c.label}</figcaption>
+        </figure>
       ))}
     </div>
   </section>
