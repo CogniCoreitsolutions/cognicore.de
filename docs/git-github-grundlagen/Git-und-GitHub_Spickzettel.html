@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="de"><head><meta charset="utf-8"><title>Git & GitHub · Spickzettel für Rafael · CogniCore</title>
+<style>
+@font-face{font-family:'Raleway';src:url('assets/fonts/Raleway-VariableFont_wght.ttf') format('truetype-variations');font-weight:100 900;font-style:normal;font-display:swap;}
+@page{size:A4;margin:0}
+*{margin:0;padding:0;box-sizing:border-box}
+html{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+body{font-family:'Raleway',system-ui,sans-serif;color:#071B3E;font-size:11px;line-height:1.5;background:#8892a6}
+.page{width:21cm;min-height:29.7cm;padding:1.25cm 1.6cm 0.95cm;display:flex;flex-direction:column;background:#fff;margin:0 auto}
+.page+.page{margin-top:14px}
+.cmd{font-family:ui-monospace,'SF Mono',Menlo,Consolas,monospace;font-weight:600}
+
+/* ---- Hero (navy, full-bleed) ---- */
+.hero{position:relative;overflow:hidden;background:#071B3E;color:#fff;margin:-1.25cm -1.6cm 0;padding:0.9cm 1.6cm 0.82cm}
+.hero .wm{position:absolute;right:-34px;bottom:-58px;height:196px;opacity:.06}
+.hero .slash{position:absolute;right:1.5cm;top:.74cm;font-style:italic;font-weight:800;font-size:52px;line-height:1;color:#EC6945;opacity:.92}
+.hero .htop{margin-bottom:10px}
+.hero .htop img{height:29px}
+.hero .ey{font-size:10px;letter-spacing:.18em;text-transform:uppercase;font-weight:700;color:#EC6945;margin-bottom:7px}
+.hero h1{font-size:23px;font-weight:700;color:#fff;letter-spacing:-.015em;line-height:1.1;max-width:15cm}
+.hero h1 em{font-style:normal;color:#EC6945}
+.hero .hsub{font-size:11px;color:#C7D0E2;margin-top:7px;max-width:15.5cm;line-height:1.5}
+.gradbar{height:4px;background:linear-gradient(90deg,#EC6945 0%,#071B3E 58%,#C8CFDC 100%);margin:0 -1.6cm 11px}
+
+h2{font-size:11px;text-transform:uppercase;letter-spacing:.14em;color:#071B3E;font-weight:700;margin:13px 0 8px;display:flex;align-items:center;gap:8px}
+h2:before{content:"//";color:#EC6945;font-style:italic;font-weight:800}
+
+/* ---- goldene Regel ---- */
+.rule{position:relative;background:#F9EBD9;border-radius:10px;padding:11px 16px 11px 19px;overflow:hidden}
+.rule:before{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:#EC6945}
+.rule .rk{font-size:9px;letter-spacing:.16em;text-transform:uppercase;font-weight:700;color:#EC6945;margin-bottom:5px}
+.rule .rt{font-size:13px;line-height:1.45;color:#071B3E;font-weight:600}
+.rule .rt .cmd{color:#EC6945}
+.rule .rs{font-size:10.5px;line-height:1.5;color:#3A4763;margin-top:6px}
+
+.lead{font-size:11px;line-height:1.55;color:#3A4763;margin-bottom:2px}
+.lead b{color:#071B3E;font-weight:700}
+
+/* ---- Ablauf-Flow ---- */
+.flow{display:flex;align-items:stretch;gap:6px;margin-top:4px}
+.fstep{flex:1;background:#F4F6FA;border:1px solid #E2E6EF;border-radius:9px;padding:9px 8px;text-align:center;display:flex;flex-direction:column;gap:3px}
+.fstep.key{background:#071B3E;border-color:#071B3E}
+.fstep .fn{font-size:8px;letter-spacing:.13em;text-transform:uppercase;font-weight:700;color:#6B7587}
+.fstep.key .fn{color:#F4A287}
+.fstep .fc{font-size:11.5px;color:#071B3E}
+.fstep.key .fc{color:#fff}
+.fstep .fd{font-size:8.5px;line-height:1.35;color:#6B7587}
+.fstep.key .fd{color:#C7D0E2}
+.farrow{display:flex;align-items:center;font-size:15px;color:#EC6945;font-weight:800}
+
+/* ---- Das grosse Bild: Werkbank vs. Lager ---- */
+.bigpic{display:flex;align-items:stretch;margin-top:10px;border-radius:10px;overflow:hidden;border:1px solid #E2E6EF}
+.bp-side{flex:1;padding:13px 16px;display:flex;flex-direction:column;gap:3px;justify-content:center}
+.bp-side.local{background:#F4F6FA}
+.bp-side.remote{background:#071B3E}
+.bp-k{font-size:8.5px;letter-spacing:.14em;text-transform:uppercase;font-weight:700;color:#EC6945}
+.bp-t{font-size:15px;font-weight:700;color:#071B3E;letter-spacing:-.01em}
+.bp-side.remote .bp-t{color:#fff}
+.bp-d{font-size:9.5px;line-height:1.4;color:#6B7587}
+.bp-side.remote .bp-d{color:#C7D0E2}
+.bp-mid{flex:none;width:4.9cm;background:#fff;display:flex;flex-direction:column;justify-content:center;gap:11px;padding:0 12px;border-left:1px solid #E2E6EF;border-right:1px solid #E2E6EF}
+.bp-arrow .al{font-size:8.5px;letter-spacing:.06em;text-transform:uppercase;font-weight:700;color:#071B3E;text-align:center;margin-bottom:3px}
+.bp-arrow .al .cmd{color:#EC6945}
+.bp-arrow .line{position:relative;height:2px;background:#EC6945;margin:0 3px}
+.bp-arrow.left .line:before{content:"";position:absolute;left:-1px;top:-3px;border:4px solid transparent;border-right-color:#EC6945}
+.bp-arrow.right .line:after{content:"";position:absolute;right:-1px;top:-3px;border:4px solid transparent;border-left-color:#EC6945}
+
+/* ---- Begriffe-Grid ---- */
+.terms{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.term{background:#F4F6FA;border-radius:9px;padding:9px 12px 10px;position:relative}
+.term .th{display:flex;align-items:baseline;gap:8px;margin-bottom:3px;flex-wrap:wrap}
+.term .tt{font-size:12.5px;font-weight:700;color:#071B3E;letter-spacing:-.01em}
+.term .tc{font-size:9.5px;color:#fff;background:#EC6945;border-radius:5px;padding:1.5px 6px}
+.term .tg{font-size:9px;letter-spacing:.06em;text-transform:uppercase;font-weight:700;color:#6B7587;margin-left:auto}
+.term p{font-size:10.3px;line-height:1.45;color:#3A4763}
+.term p b{color:#071B3E;font-weight:700}
+.term p .cmd{color:#071B3E}
+
+/* ---- Nicht-verwechseln (hook navy) ---- */
+.hook{position:relative;overflow:hidden;background:#071B3E;color:#fff;border-radius:10px;padding:13px 18px 14px;margin-top:12px}
+.hook .hslash{position:absolute;right:16px;bottom:-16px;font-style:italic;font-weight:800;font-size:52px;color:#fff;opacity:.06}
+.hook .h{font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:#EC6945;font-weight:700;margin-bottom:8px}
+.hook .hrow{display:flex;gap:18px}
+.hook .hitem{flex:1;position:relative}
+.hook .hitem .ht{font-size:11.5px;font-weight:800;color:#F4A287;margin-bottom:2px}
+.hook .hitem .hb{font-size:10px;line-height:1.45;color:#EAF0FA}
+.hook .hitem .hb .cmd{color:#fff}
+
+footer{margin-top:auto;padding-top:10px;border-top:1px solid #E2E6EF;display:flex;justify-content:space-between;align-items:flex-end;font-size:10.5px;color:#3A4763}
+footer b{color:#071B3E;font-size:12px}
+footer .r{text-align:right;color:#6B7587;font-size:9.5px}
+</style></head>
+<body>
+
+<!-- ============ SEITE 1 ============ -->
+<div class="page">
+  <div class="hero">
+    <img class="wm" src="assets/logos/cognicore-icon-white.png" alt="">
+    <div class="slash">//</div>
+    <div class="htop"><img src="assets/logos/cognicore-logo-white-orange.png" alt="CogniCore"></div>
+    <div class="ey">Intern · Für Rafael</div>
+    <h1>Git & GitHub, einmal in Ruhe <em>erklärt</em></h1>
+    <div class="hsub">Damit du an der Website weiterarbeiten kannst, ohne dass etwas verloren geht. Kein Entwickler-Wissen nötig, nur die Begriffe, die dir in Cloud Code und auf GitHub begegnen.</div>
+  </div>
+  <div class="gradbar"></div>
+
+  <div class="rule">
+    <div class="rk">Die eine Regel, die zählt</div>
+    <div class="rt">Jede Session beginnt mit <span class="cmd">git pull</span> und endet mit <span class="cmd">git push</span>.</div>
+    <div class="rs"><b>Pull</b> holt dir zu Beginn den aktuellen Stand vom Server. <b>Push</b> sichert deine Arbeit am Ende dort wieder. Wenn du den Push vergisst, liegt deine Arbeit nur auf deinem Laptop und niemand sonst sieht sie. Alles andere auf diesem Blatt ist Beiwerk. Das hier ist das Wichtige.</div>
+  </div>
+
+  <h2>Das große Bild</h2>
+  <p class="lead">Stell dir <b>GitHub</b> als gemeinsames Lager vor und deinen <b>Laptop</b> als deine Werkbank. Du holst dir den Stand, arbeitest lokal, und schickst das Ergebnis zurück. Erst nach dem Zurückschicken sehen Dominik, Adrian und Michael deine Änderungen. Solange etwas nur auf deiner Werkbank liegt, sieht es niemand.</p>
+  <div class="bigpic">
+    <div class="bp-side local">
+      <div class="bp-k">Deine Werkbank · lokal</div>
+      <div class="bp-t">Dein Laptop</div>
+      <div class="bp-d">Hier arbeitest du mit Cloud Code. Deine Änderungen liegen erst mal nur hier.</div>
+    </div>
+    <div class="bp-mid">
+      <div class="bp-arrow left">
+        <div class="al"><span class="cmd">git pull</span> · Stand holen</div>
+        <div class="line"></div>
+      </div>
+      <div class="bp-arrow right">
+        <div class="al"><span class="cmd">git push</span> · hochladen</div>
+        <div class="line"></div>
+      </div>
+    </div>
+    <div class="bp-side remote">
+      <div class="bp-k">Das Lager · remote</div>
+      <div class="bp-t">GitHub</div>
+      <div class="bp-d">Der geteilte Stand fürs Team. Was hier liegt, sehen und nutzen alle.</div>
+    </div>
+  </div>
+
+  <h2>Der tägliche Ablauf</h2>
+  <div class="flow">
+    <div class="fstep key">
+      <div class="fn">Schritt 1</div>
+      <div class="fc"><span class="cmd">git pull</span></div>
+      <div class="fd">Stand vom Server holen. Server zu Laptop.</div>
+    </div>
+    <div class="farrow">&rarr;</div>
+    <div class="fstep">
+      <div class="fn">Schritt 2</div>
+      <div class="fc">Arbeiten</div>
+      <div class="fd">In Cloud Code prompten und ändern. Lokal.</div>
+    </div>
+    <div class="farrow">&rarr;</div>
+    <div class="fstep">
+      <div class="fn">Schritt 3</div>
+      <div class="fc">Stage + Commit</div>
+      <div class="fd">Änderungen zu einem Paket sichern. Lokal.</div>
+    </div>
+    <div class="farrow">&rarr;</div>
+    <div class="fstep key">
+      <div class="fn">Schritt 4</div>
+      <div class="fc"><span class="cmd">git push</span></div>
+      <div class="fd">Paket hochladen. Laptop zu Server.</div>
+    </div>
+  </div>
+  <p class="lead" style="margin-top:9px">Das Gute: Cloud Code macht die Schritte 3 und 4 für dich, wenn du am Ende einfach schreibst „committe und pushe“. Du musst dir die Befehle nicht merken. Du musst nur <b>verstehen, was dabei passiert</b>, und am Ende dran denken, dass gepusht wird. Sonst ist die Arbeit nicht gesichert.</p>
+
+  <h2>Und wenn du dich verrennst?</h2>
+  <p class="lead">Kein Problem, hier kann fast nichts kaputtgehen. Jeder Commit ist gespeichert, also lässt sich jederzeit ein früherer Stand wiederherstellen (Rollback). Wir arbeiten hier bewusst frei, wie in einem Sandkasten. Trau dich also ruhig, Sachen auszuprobieren. Und wenn eine Frage offen ist: Frag einfach deine Claude-Session, die erklärt dir jeden dieser Begriffe genauso wie hier, nur auf deinen konkreten Fall bezogen.</p>
+
+  <footer>
+    <div><b>Git & GitHub · Spickzettel</b><br>Zusammengestellt für die Arbeit an cognicore.de · Stand 15.07.2026</div>
+    <div class="r">CogniCore IT Solutions GmbH<br>Intern</div>
+  </footer>
+</div>
+
+<!-- ============ SEITE 2 ============ -->
+<div class="page">
+  <h2>Die Begriffe, kurz und schmerzlos</h2>
+  <div class="terms">
+
+    <div class="term">
+      <div class="th"><span class="tt">Repository</span><span class="tc">Repo</span><span class="tg">Das Ganze</span></div>
+      <p>Das komplette Projekt samt seiner gesamten Änderungshistorie. Unser Repo für die Website heißt <span class="cmd">cognicore.de</span>.</p>
+    </div>
+
+    <div class="term">
+      <div class="th"><span class="tt">Lokal vs. Remote</span><span class="tg">Wo liegt es</span></div>
+      <p><b>Lokal</b> ist die Kopie auf deinem Rechner. <b>Remote</b> ist die gemeinsame Version auf GitHub, mit der alle arbeiten.</p>
+    </div>
+
+    <div class="term">
+      <div class="th"><span class="tt">Pull</span><span class="tc cmd">git pull</span><span class="tg">Holen</span></div>
+      <p>Lädt die neuesten Änderungen von GitHub auf deinen Rechner. Immer zu Beginn, sonst arbeitest du auf einem veralteten Stand.</p>
+    </div>
+
+    <div class="term">
+      <div class="th"><span class="tt">Staging</span><span class="tc cmd">git add</span><span class="tg">Vorbereiten</span></div>
+      <p>Du wählst aus, welche geänderten Dateien in den nächsten Commit sollen. Sie sind dann „gestaged“, also fürs Sichern aufs Tablett gelegt.</p>
+    </div>
+
+    <div class="term">
+      <div class="th"><span class="tt">Commit</span><span class="tc cmd">git commit</span><span class="tg">Sichern</span></div>
+      <p>Fasst die gestageten Änderungen zu einem gespeicherten Paket zusammen, mit kurzer Beschreibung (Commit-Message). Bleibt zunächst <b>lokal</b> bei dir.</p>
+    </div>
+
+    <div class="term">
+      <div class="th"><span class="tt">Push</span><span class="tc cmd">git push</span><span class="tg">Hochladen</span></div>
+      <p>Schickt deine lokalen Commits zu GitHub. <b>Erst jetzt</b> ist deine Arbeit gesichert und für alle anderen sichtbar.</p>
+    </div>
+
+    <div class="term">
+      <div class="th"><span class="tt">main</span><span class="tg">Hauptstand</span></div>
+      <p>Der Branch, auf dem die echte Website liegt. Das, was gilt. Bei uns arbeiten alle meistens direkt hier.</p>
+    </div>
+
+    <div class="term">
+      <div class="th"><span class="tt">Branch</span><span class="tg">Parallelkopie</span></div>
+      <p>Eine abgezweigte Arbeitskopie, um etwas Größeres auszuprobieren, ohne <span class="cmd">main</span> anzufassen. Später wird sie wieder zusammengeführt.</p>
+    </div>
+
+    <div class="term">
+      <div class="th"><span class="tt">Merge</span><span class="tc cmd">git merge</span><span class="tg">Zusammenführen</span></div>
+      <p>Bringt die Änderungen eines Branches in einen anderen, zum Beispiel deinen Branch zurück in <span class="cmd">main</span>.</p>
+    </div>
+
+    <div class="term">
+      <div class="th"><span class="tt">Pull Request</span><span class="tc">PR</span><span class="tg">Freigabe</span></div>
+      <p>In großen Teams üblich: Du schlägst vor, einen Branch in <span class="cmd">main</span> zu übernehmen, jemand schaut drüber und gibt frei. Für unsere Website brauchen wir das normalerweise nicht.</p>
+    </div>
+
+    <div class="term">
+      <div class="th"><span class="tt">Rollback</span><span class="tg">Zurückspulen</span></div>
+      <p>Weil jeder Commit gespeichert ist, kann man jederzeit zu einem früheren Stand zurück. Nichts geht wirklich verloren.</p>
+    </div>
+
+    <div class="term">
+      <div class="th"><span class="tt">Diff</span><span class="tg">Was sich änderte</span></div>
+      <p>Die Vorher-Nachher-Ansicht einer Datei. <b style="color:#c0392b">Rot</b> sind entfernte Zeilen, <b style="color:#1e8449">Grün</b> sind neue Zeilen.</p>
+    </div>
+
+    <div class="term">
+      <div class="th"><span class="tt">Merge-Konflikt</span><span class="tg">Kollision</span></div>
+      <p>Wenn zwei Leute dieselbe Zeile unterschiedlich geändert haben, fragt Git, welche Version gelten soll. Kein Drama, einmal kurz entscheiden.</p>
+    </div>
+
+    <div class="term">
+      <div class="th"><span class="tt">.gitignore</span><span class="tg">Bleibt draußen</span></div>
+      <p>Eine Liste von Dateien, die bewusst nicht hochgeladen werden. Deshalb bleibt zum Beispiel deine lokale <span class="cmd">.claude</span> auf deinem Rechner und landet nie auf dem Server.</p>
+    </div>
+
+  </div>
+
+  <div class="hook">
+    <div class="hslash">//</div>
+    <div class="h">Drei Sätze, die dir Verwirrung ersparen</div>
+    <div class="hrow">
+      <div class="hitem">
+        <div class="ht">Push ist nicht Merge</div>
+        <div class="hb"><span class="cmd">Push</span> bewegt Code zwischen deinem Rechner und GitHub. <span class="cmd">Merge</span> bewegt Code zwischen zwei Branches. Zwei völlig verschiedene Richtungen.</div>
+      </div>
+      <div class="hitem">
+        <div class="ht">Committed heißt noch nicht hochgeladen</div>
+        <div class="hb">Ein Commit liegt erst mal nur lokal bei dir. Erst der <span class="cmd">push</span> bringt ihn zu GitHub. Beides sind zwei getrennte Schritte.</div>
+      </div>
+      <div class="hitem">
+        <div class="ht">Nichts ist live ohne Push</div>
+        <div class="hb">Eine Änderung nur auf deinem Laptop sieht niemand. „Ist online“ stimmt erst, wenn du gepusht hast. Vorher wäre es geschwindelt.</div>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <div><b>Frag im Zweifel deine Claude-Session</b><br>Sie erklärt dir jeden Begriff auf deinen konkreten Fall bezogen.</div>
+    <div class="r">CogniCore IT Solutions GmbH<br>Git & GitHub · Spickzettel · Intern</div>
+  </footer>
+</div>
+
+</body></html>

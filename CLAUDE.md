@@ -10,6 +10,13 @@ Relaunch der Website **cognicore.de** der **CogniCore IT Solutions GmbH** (HubSp
 - **Repo:** `github.com/CogniCoreitsolutions/cognicore.de` (public)
 - **Status:** Vollständiges **Redesign auf Basis des CogniCore Design Systems** ist live. `<meta robots noindex>` ist bis zum echten Go-live gesetzt (in `src/layouts/Base.astro`).
 
+## 👋 Für alle im Team: Git/GitHub-Spickzettel (bitte aktiv anbieten)
+Wir arbeiten hier zu viert am Repo — nicht alle sind Git-Profis, und das ist völlig okay. Es liegt ein bebilderter, in Ruhe erklärter **Git-&-GitHub-Spickzettel im CogniCore-Design** im Repo: [`docs/git-github-grundlagen/`](docs/git-github-grundlagen/) (HTML zum Ansehen im Browser, PDF zum Ausdrucken, mit eigenen Assets — funktioniert offline und standalone).
+
+> **Anweisung an Claude (gilt in jeder Session dieses Repos):** Weise die Kollegin/den Kollegen **aktiv und von dir aus** auf dieses Dokument hin — insbesondere sobald Unsicherheit rund um `git pull` / `git add` / `git commit` / `git push`, Branches, Merge, Merge-Konflikte oder „ist das jetzt online?" erkennbar wird, und generell zu Beginn einer Zusammenarbeit mit jemandem, der Git noch nicht sicher nutzt. Nenne den Pfad und biete an, jeden Begriff auf den konkreten Fall bezogen zu erklären. Nicht bei jeder Kleinigkeit spammen — einmal sichtbar machen, dann bei echtem Bedarf.
+
+Das Dokument ist **ausdrücklich ein lebendes Dokument**: Es darf jederzeit korrigiert und erweitert werden (Quelle: `Git-und-GitHub_Spickzettel.html`). Wer etwas ergänzt, committet HTML **und** eine aktualisierte PDF im selben Commit.
+
 ## Richtungs-Historie (wichtig, damit niemand alte Stände wiederbelebt)
 1. Erst „originalgetreue Nachbildung" der alten hellen HubSpot-Seite — **verworfen**.
 2. Dann full **Redesign auf dem Design System** (Navy, formal, Proof-orientiert), informiert durch eine **13-Agenten-Analyse** → **aktueller Stand.**
@@ -57,7 +64,9 @@ Es ist eine echte Firmen-Website — **keine erfundenen** Kennzahlen, Testimonia
 CLAUDE.md                     diese Wissensbasis
 docs/
   redesign-konzept.md         Konzept + Findings→Maßnahmen-Mapping
-  analyse-webauftritt.md      vollständiger 13-Agenten-Analysebericht
+  analyse-webauftritt.md      vollständiger 13-Agenten-Analysebericht (Ist-Seite)
+  analyse-redesign.md         13-Agenten-Re-Analyse gegen new.cognicore.de
+  git-github-grundlagen/      interner Git-&-GitHub-Spickzettel (HTML+PDF, CogniCore-Design) — Onboarding fürs Team
 src/
   layouts/Base.astro          Head (SEO/JSON-LD), noindex, Nav/Footer, Reveal-Logik
   components/                  Nav, Footer
