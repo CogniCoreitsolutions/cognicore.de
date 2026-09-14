@@ -33,9 +33,12 @@ const itCards = [
 ];
 
 const tiers = [
-  { num: '01', name: 'Essential', who: 'Für den klaren Einstieg', copy: 'Fokussierte Umsetzung mit schnellem Nutzen. Projekt- oder ticketbasiert, ohne langfristige Bindung.' },
-  { num: '02', name: 'Advanced', who: 'Für aktive Weiterentwicklung', copy: 'Workshops, laufende Optimierung und regelmäßige Reviews. Empfohlen als Quartals- oder Jahres-Retainer.' },
-  { num: '03', name: 'Excellence', who: 'Für komplexe Setups', copy: 'Individuelle Strategieberatung, technische Tiefe und SLA-basierter Support für mehrere Teams und Integrationen.' },
+  { num: '01', name: 'Essential', who: 'Für den klaren Einstieg', copy: 'Fokussierte Umsetzung mit schnellem Nutzen. Projekt- oder ticketbasiert, ohne langfristige Bindung.',
+    price: 'ab 4.900 €', unit: 'einmalig für die Einführung', note: 'Mit Datenübernahme aus einem Altsystem ab 9.500 €.' },
+  { num: '02', name: 'Advanced', who: 'Für aktive Weiterentwicklung', copy: 'Workshops, laufende Optimierung und regelmäßige Reviews. Empfohlen als Quartals- oder Jahres-Retainer.',
+    price: 'ab 850 €', unit: 'im Monat', note: '5 Stunden im Monat, feste Ansprechpartner.' },
+  { num: '03', name: 'Excellence', who: 'Für komplexe Setups', copy: 'Individuelle Strategieberatung, technische Tiefe und SLA-basierter Support für mehrere Teams und Integrationen.',
+    price: 'ab 2.900 €', unit: 'im Monat', note: '16 Stunden im Monat, mit SLA.' },
 ];
 
 const steps = [
@@ -55,7 +58,7 @@ const faqs = [
   { q: 'Welche Stufe ist die richtige für uns?', a: 'Im Erstgespräch klären wir Ziele, HubSpot-Reifegrad und Ressourcenlage. Daraus leiten wir ab, ob Essential genügt oder Advanced bzw. Excellence den größeren Mehrwert bringt.' },
   { q: 'Können wir später in eine höhere Stufe wechseln?', a: 'Ja. Alle Stufen bauen aufeinander auf — Sie können jederzeit upgraden, bestehende Einstellungen und Daten bleiben vollständig erhalten.' },
   { q: 'Gibt es Mindestlaufzeiten?', a: 'Essential läuft projekt- oder ticketbasiert ohne langfristige Bindung. Für Advanced und Excellence empfehlen wir Retainer mit fairen Kündigungsfristen.' },
-  { q: 'Was kostet das?', a: 'Konkrete Preise nennen wir transparent im Erstgespräch — abhängig von Umfang und Reifegrad. Der Self-Check und das Erstgespräch sind kostenlos und unverbindlich.' },
+  { q: 'Was kostet das?', a: 'Eine HubSpot-Einführung ohne Datenübernahme startet bei 4.900 € netto, mit Migration aus einem Altsystem bei 9.500 €. Der laufende Betrieb läuft als Stundenkontingent: Advanced ab 850 € im Monat für 5 Stunden, Excellence ab 2.900 € im Monat für 16 Stunden mit SLA. Die HubSpot-Lizenzen zahlen Sie direkt an HubSpot. Den verbindlichen Festpreis bekommen Sie vor Projektstart, nicht als Überraschung danach.' },
 ];
 
 const faqSchema = {
@@ -63,7 +66,7 @@ const faqSchema = {
   mainEntity: faqs.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })),
 };
 ---
-<Base active="leistungen" title="HubSpot-Leistungen: Onboarding, Integration & Managed IT | CogniCore Köln" description="HubSpot Onboarding, Begleitung & Optimierung sowie Prozess- und API-Integration — plus IT-Projekte und Managed IT. Im Drei-Stufen-Modell Essential, Advanced und Excellence.">
+<Base active="leistungen" title="HubSpot-Leistungen: Onboarding, Integration & Managed IT | CogniCore Köln" description="HubSpot Onboarding, Begleitung & Optimierung sowie Prozess- und API-Integration — plus IT-Projekte und Managed IT. Im Drei-Stufen-Modell Essential, Advanced und Excellence, Einführung ab 4.900 €.">
   <!-- HERO -->
   <section class="cc-hero">
     <div class="cc-hero__bg" aria-hidden="true"><img src="/brand/cognicore-icon-white.png" alt="" /></div>
@@ -127,13 +130,20 @@ const faqSchema = {
     <div class="cc-section__head cc-reveal">
       <div class="cc-eyebrow">// Modell</div>
       <h2>Starten Sie auf dem passenden Niveau.</h2>
-      <p class="cc-section__sub">Ein Drei-Stufen-Modell, das mit Ihren Zielen wächst. Konkrete Preise besprechen wir transparent im kostenlosen Erstgespräch — abhängig von Umfang und Reifegrad.</p>
+      <p class="cc-section__sub">Ein Drei-Stufen-Modell, das mit Ihren Zielen wächst. Was Ihr Fall kostet, hängt vor allem daran, ob Daten aus einem Altsystem übernommen werden. Den verbindlichen Festpreis bekommen Sie vor Projektstart.</p>
     </div>
     <div class="cc-grid cc-grid--3 cc-reveal">
       {tiers.map((t) => (
-        <article class="cc-card"><div class="cc-card__num">{t.num}</div><h3>{t.name}</h3><p style="color:var(--cc-orange-ink); font-weight:600; font-size:13px; margin:-4px 0 0">{t.who}</p><p>{t.copy}</p></article>
+        <article class="cc-card"><div class="cc-card__num">{t.num}</div><h3>{t.name}</h3><p style="color:var(--cc-orange-ink); font-weight:600; font-size:13px; margin:-4px 0 0">{t.who}</p><p>{t.copy}</p>
+          <div style="margin-top:auto; padding-top:16px; border-top:1px solid var(--cc-line)">
+            <p style="font-family:var(--cc-font-display); font-weight:700; font-size:26px; color:var(--cc-blue); margin:0; line-height:1.2">{t.price}</p>
+            <p style="font-size:13px; color:var(--cc-fg-2); margin:2px 0 0">{t.unit}</p>
+            <p style="font-size:13.5px; color:var(--cc-fg-2); margin:8px 0 0">{t.note}</p>
+          </div>
+        </article>
       ))}
     </div>
+    <p class="cc-reveal" style="max-width:840px; margin:20px auto 0; text-align:center; font-size:13.5px; color:var(--cc-fg-2)">Alle Preise netto zzgl. USt. Die HubSpot-Lizenzen zahlen Sie direkt an HubSpot, unser Angebot deckt Aufbau und Betreuung ab.</p>
   </section>
 
   <!-- FAQ -->

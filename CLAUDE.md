@@ -107,7 +107,7 @@ Vollständig in [`docs/analyse-webauftritt.md`](docs/analyse-webauftritt.md). Di
 **Beweis-Schicht (der eigentliche strategische Hebel):**
 - [ ] **Echte Cases** (anonymisiert, quantifiziert) + **externer Reputationslayer** (HubSpot-Directory-Reviews, Google/ProvenExpert, `sameAs`/LinkedIn) — nichts erfinden.
 - [ ] **Tiefe zeigen** statt behaupten: Referenz-/Datenfluss-Schema, Deliverables je Phase, eigene Migrations-Story (HubSpot CMS → Astro) als Proof-of-Build.
-- [ ] **Preis-/Größen-Anker** je Stufe; Tier über Outcome differenzieren statt nur Bindung.
+- [x] **Preis-/Größen-Anker je Stufe** (2026-09-15): ab-Preise auf `/leistungen` — Essential ab 4.900 € (mit Migration ab 9.500 €), Advanced ab 850 €/Monat (5 h), Excellence ab 2.900 €/Monat (16 h, SLA). Nicht geschätzt, sondern aus Clockodo-Ist-Stunden zum Satz 1.250 €/Projekttag hergeleitet und gegen den Markt gespiegelt (HubSpot-Pflicht-Onboarding 1.470/2.930 €, JUNGMUT ab 5.000 €, Postina-Retainer 140 bis 185 €/h). Herleitung und Quellen: CogniHero `03_Projekte/Website-Relaunch_cognicore.de/Preisvorschlag_ab-Preise_new-cognicore-de.md` + `Wettbewerbsrecherche_Onboarding-Preise.md`. **Offen bleibt:** Tier über Outcome differenzieren statt nur über Bindung, und die Mindestlaufzeit für Advanced/Excellence ist bewusst noch nicht auf der Seite (nicht entschieden).
 
 **Weiter (nach Launch, planbar):**
 - [ ] **Datenschutz** final juristisch prüfen; **Self-Check-Funnel** & **PLZ-Doku** im neuen Design bauen.
