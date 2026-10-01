@@ -121,7 +121,8 @@ Vollständig in [`docs/analyse-webauftritt.md`](docs/analyse-webauftritt.md). Di
 **Ausbau 10/2026 (Leistungsmenü, 15 Leistungsseiten, Lösungen, Branche IT-Dienstleister, Preisleiter):**
 - [ ] Ausbaustufen einzeln freigeben oder streichen, Liste in [`docs/ausbaustufen.md`](docs/ausbaustufen.md).
 - [ ] Neue Preise bestätigen: Integrations-Check 1.250 €, HubSpot-Audit ab 1.900 €, KI-Audit mit Pilot ab 6.900 €. (Gruppen-Onboarding 290 € bestätigt 01.10.2026.)
-- [ ] Gruppen-Onboarding buchbar machen: je Termin ein HubSpot-Zahlungslink (Stripe), Terminliste mit „Jetzt buchen“ auf der Leistungsseite.
+- [x] Gruppen-Onboarding buchbar (01.10.2026): Terminliste mit „Jetzt buchen“ auf der Leistungsseite, Termine im Feld `termine` in `src/data/leistungen.ts`, vergangene blendet die Seite selbst aus. Ohne `zahlungslink` öffnet der Knopf eine vorbereitete Buchungs-Mail an info@ (Zahlung per Rechnung).
+- [ ] Je Termin einen HubSpot-Zahlungslink (Stripe) ins Feld `zahlungslink` eintragen, sobald Stripe im Portal verbunden ist.
 - [ ] Neue Leistung anlegen = Eintrag in `src/data/leistungen.ts`, Menü, Übersicht und Detailseite entstehen automatisch.
 
 ## Arbeitskonventionen

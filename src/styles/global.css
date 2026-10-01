@@ -454,3 +454,11 @@ a { color:inherit; text-decoration:none; }
   .cc-foot__cols { grid-template-columns:1fr 1fr; }
   .cc-foot__cols > div { min-width:0; overflow-wrap:anywhere; }
 }
+
+/* ---------- Buchbare Termine ---------- */
+.cc-termin { gap:6px; }
+.cc-termin__tag { font-family:var(--cc-font-display); font-size:12px; letter-spacing:.12em; text-transform:uppercase; font-weight:700; color:var(--cc-orange-ink); }
+.cc-termin__datum { font-family:var(--cc-font-display); font-size:28px; font-weight:700; color:var(--cc-blue); line-height:1.15; }
+.cc-termin__zeit { font-size:14.5px; color:var(--cc-fg-2); }
+.cc-termin .cc-btn { margin-top:14px; align-self:flex-start; }
+.cc-termine__leer { margin:8px 0 0; color:var(--cc-fg-2); }

@@ -14,7 +14,7 @@ Status: **Geliefert** = es gibt einen Beleg · **Teilweise** = Teile geliefert o
 | `/leistungen/hubspot-audit` | HubSpot | Geliefert | Preis ab 1.900 € bestätigen |
 | `/leistungen/hubspot-entwicklung` | HubSpot | Geliefert | |
 | `/leistungen/hubspot-managed-service` | HubSpot | Teilweise | Ticketweg und Quartalsreview prüfen |
-| `/leistungen/hubspot-gruppen-onboarding` | HubSpot | Ausbaustufe | Preis 290 € und Format bestätigt (01.10.2026): Teams-Webinar, zweiter Dienstag im Monat 14:00 bis 15:30, keine Mindestteilnehmerzahl. Offen: Zahlungslinks je Termin |
+| `/leistungen/hubspot-gruppen-onboarding` | HubSpot | Ausbaustufe | Preis 290 € und Format bestätigt (01.10.2026): Teams-Webinar, zweiter Dienstag im Monat 14:00 bis 15:30, keine Mindestteilnehmerzahl. Neun Termine bis 13.07.2027 buchbar, vorerst per vorbereiteter Mail mit Rechnung. Offen: Zahlungslink je Termin (Feld `zahlungslink` in `src/data/leistungen.ts`) |
 | `/leistungen/schnittstellen` | Daten und Integration | Teilweise | Betrieb als Pauschale klären |
 | `/leistungen/microsoft-integration` | Daten und Integration | Teilweise | |
 | `/leistungen/datenbereinigung` | Daten und Integration | Ausbaustufe | prüfen, ob schon als Paket verkauft |

@@ -16,6 +16,36 @@ const faqSchema = {
   '@context': 'https://schema.org', '@type': 'FAQPage',
   mainEntity: l.faq.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })),
 };
+// Buchbare Termine: vergangene fallen beim Build und im Browser raus
+const heute = new Date().toISOString().slice(0, 10);
+const wochentage = ['Sonntag', 'Montag', 'Dienstag', 'Mittwoch', 'Donnerstag', 'Freitag', 'Samstag'];
+const ort = l.terminOrt ?? 'online';
+const titel = l.terminTitel ?? l.nav;
+const termine = (l.termine ?? []).filter((t) => t.datum >= heute).map((t) => {
+  const [y, m, d] = t.datum.split('-');
+  const tag = wochentage[new Date(Date.UTC(+y, +m - 1, +d)).getUTCDay()];
+  const anzeige = `${d}.${m}.${y}`;
+  const betreff = `Buchung ${titel} am ${anzeige}`;
+  const text = [
+    'Hallo CogniCore-Team,',
+    '',
+    `wir buchen das ${titel} am ${tag}, ${anzeige}, von ${t.von} bis ${t.bis} Uhr (${ort}) zum Preis von ${l.preis.wert} netto ${l.preis.einheit ?? ''}.`.replace(/ \./, '.'),
+    '',
+    'Unternehmen:',
+    'Rechnungsadresse:',
+    'USt-IdNr. (falls vorhanden):',
+    'Ansprechpartner:',
+    'Teilnehmende (Name und E-Mail):',
+    '',
+    'Die Storno-Regel ist uns bekannt: kostenlos umbuchen bis drei Werktage vorher, danach keine Erstattung.',
+    '',
+    'Viele Grüße',
+  ].join('\n');
+  const href = t.zahlungslink ?? `mailto:info@cognicore.de?subject=${encodeURIComponent(betreff)}&body=${encodeURIComponent(text)}`;
+  return { ...t, tag, anzeige, href, extern: Boolean(t.zahlungslink) };
+});
+const perMail = termine.some((t) => !t.extern);
+
 const serviceSchema = {
   '@context': 'https://schema.org', '@type': 'Service',
   name: l.nav, description: l.lede, serviceType: saeule.title,
@@ -39,11 +69,53 @@ const serviceSchema = {
           <a class="cc-btn cc-btn--accent" href="/kontakt#termin">Erstgespräch vereinbaren</a>
           {l.extern
             ? <a class="cc-btn cc-btn--ghost-light" href={l.extern.href} target="_blank" rel="noopener">{l.extern.label} ↗</a>
-            : <a class="cc-btn cc-btn--ghost-light" href="#preis">Preis ansehen</a>}
+            : termine.length > 0
+              ? <a class="cc-btn cc-btn--ghost-light" href="#termine">Termine ansehen</a>
+              : <a class="cc-btn cc-btn--ghost-light" href="#preis">Preis ansehen</a>}
         </div>
       </div>
     </div>
   </section>
+
+  <!-- TERMINE (nur wenn buchbare Termine gepflegt sind) -->
+  {l.termine && l.termine.length > 0 && (
+    <section class="cc-section" id="termine">
+      <div class="cc-section__head cc-reveal">
+        <div class="cc-eyebrow">// Termine</div>
+        <h2>Termin wählen und buchen.</h2>
+        <p class="cc-section__sub">{l.preis.wert} netto {l.preis.einheit}, online über {ort}.</p>
+      </div>
+      <div class="cc-grid cc-grid--3 cc-reveal">
+        {termine.map((t) => (
+          <article class="cc-card cc-termin" data-datum={t.datum}>
+            <span class="cc-termin__tag">{t.tag}</span>
+            <span class="cc-termin__datum">{t.anzeige}</span>
+            <span class="cc-termin__zeit">{t.von} bis {t.bis} Uhr · {ort}</span>
+            <a class="cc-btn cc-btn--accent" href={t.href} target={t.extern ? '_blank' : undefined} rel={t.extern ? 'noopener' : undefined}>Jetzt buchen</a>
+          </article>
+        ))}
+      </div>
+      <p class="cc-termine__leer" hidden={termine.length > 0}>Die nächsten Termine veröffentlichen wir in Kürze. Schreiben Sie uns gern an <a class="cc-textlink" href="mailto:info@cognicore.de">info@cognicore.de</a>.</p>
+      <p class="cc-ladder__foot cc-reveal">
+        {perMail
+          ? <>Mit „Jetzt buchen“ öffnet sich eine vorbereitete E-Mail an <a class="cc-textlink" href="mailto:info@cognicore.de">info@cognicore.de</a>. Sie bekommen eine Bestätigung mit Rechnung und vor dem Termin den Teams-Link.</>
+          : <>Mit „Jetzt buchen“ kommen Sie zur sicheren Zahlung. Danach bekommen Sie eine Bestätigung und vor dem Termin den Teams-Link.</>}
+        {' '}Kostenlos umbuchen bis drei Werktage vorher, danach keine Erstattung. Buchbar nur für Unternehmen.
+      </p>
+      <script is:inline>
+        (function () {
+          var d = new Date();
+          var heute = d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0');
+          var offen = 0;
+          document.querySelectorAll('.cc-termin').forEach(function (el) {
+            if (el.getAttribute('data-datum') < heute) el.remove(); else offen++;
+          });
+          var leer = document.querySelector('.cc-termine__leer');
+          if (leer && offen === 0) leer.hidden = false;
+        })();
+      </script>
+    </section>
+  )}
 
   <!-- WORUM ES GEHT / FÜR WEN -->
   <section class="cc-section">
