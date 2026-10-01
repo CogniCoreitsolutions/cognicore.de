@@ -120,7 +120,8 @@ Vollständig in [`docs/analyse-webauftritt.md`](docs/analyse-webauftritt.md). Di
 
 **Ausbau 10/2026 (Leistungsmenü, 15 Leistungsseiten, Lösungen, Branche IT-Dienstleister, Preisleiter):**
 - [ ] Ausbaustufen einzeln freigeben oder streichen, Liste in [`docs/ausbaustufen.md`](docs/ausbaustufen.md).
-- [ ] Neue Preise bestätigen: Gruppen-Onboarding 290 €, Integrations-Check 1.250 €, HubSpot-Audit ab 1.900 €, KI-Audit mit Pilot ab 6.900 €.
+- [ ] Neue Preise bestätigen: Integrations-Check 1.250 €, HubSpot-Audit ab 1.900 €, KI-Audit mit Pilot ab 6.900 €. (Gruppen-Onboarding 290 € bestätigt 01.10.2026.)
+- [ ] Gruppen-Onboarding buchbar machen: je Termin ein HubSpot-Zahlungslink (Stripe), Terminliste mit „Jetzt buchen“ auf der Leistungsseite.
 - [ ] Neue Leistung anlegen = Eintrag in `src/data/leistungen.ts`, Menü, Übersicht und Detailseite entstehen automatisch.
 
 ## Arbeitskonventionen

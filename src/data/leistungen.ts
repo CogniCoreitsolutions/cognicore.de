@@ -218,7 +218,7 @@ export const leistungen: Leistung[] = [
     nav: 'Gruppen-Onboarding',
     kurz: 'HubSpot-Grundlagen im Live-Webinar für kleine Teams, zum Festpreis.',
     title: 'HubSpot-Grundlagen im Live-Webinar.',
-    lede: 'Für Teams, die HubSpot gerade gekauft haben und schnell arbeitsfähig sein wollen: 90 Minuten live mit einem HubSpot-Berater, mit Zeit für Ihre Fragen.',
+    lede: 'Für Teams, die HubSpot gerade gekauft haben und schnell arbeitsfähig sein wollen: 90 Minuten live über Microsoft Teams mit einem HubSpot-Berater, mit Zeit für Ihre Fragen.',
     kontext: [
       'Nicht jede Einführung braucht ein Projekt. Wenn Sie wenige Nutzer haben und HubSpot weitgehend im Standard einsetzen, reicht oft ein strukturierter Einstieg.',
       'Im Webinar zeigen wir die Abläufe, die Ihr Team ab dem ersten Tag braucht, und beantworten Ihre Fragen live.',
@@ -229,7 +229,7 @@ export const leistungen: Leistung[] = [
       'Neue Mitarbeitende in bestehenden Portalen',
     ],
     ablauf: [
-      { t: 'Termin wählen', d: 'Feste Termine jeden Monat, online.' },
+      { t: 'Termin wählen', d: 'Einmal im Monat dienstags von 14:00 bis 15:30, online über Microsoft Teams.' },
       { t: 'Live-Session', d: '60 Minuten Grundlagen, 30 Minuten für Ihre Fragen.' },
       { t: 'Unterlagen', d: 'Checkliste für die ersten Wochen im System.' },
     ],
@@ -238,14 +238,15 @@ export const leistungen: Leistung[] = [
       'Checkliste für die ersten Wochen',
       'Klarheit, ob Sie mehr Unterstützung brauchen',
     ],
-    preis: { wert: '290 €', einheit: 'je Unternehmen', hinweis: 'Bis zu zehn Teilnehmende je Unternehmen.' },
+    preis: { wert: '290 €', einheit: 'je Unternehmen', hinweis: 'Bis zu zehn Teilnehmende je Unternehmen. Buchbar nur für Unternehmen.' },
     faq: [
       { q: 'Ersetzt das eine Einführung?', a: 'Für einfache Setups ja. Wenn Daten übernommen oder Systeme angebunden werden müssen, ist die HubSpot-Einführung der richtige Weg.' },
-      { q: 'Wie melden wir uns an?', a: 'Über ein Erstgespräch oder das Kontaktformular. Wir schicken Ihnen die nächsten Termine.' },
+      { q: 'Wie melden wir uns an?', a: 'Schreiben Sie an info@cognicore.de oder rufen Sie an. Wir schicken Ihnen die nächsten Termine.' },
+      { q: 'Was, wenn wir einen Termin nicht wahrnehmen können?', a: 'Sie können bis drei Werktage vor dem Termin kostenlos auf einen späteren Termin umbuchen. Danach ist keine Erstattung möglich.' },
     ],
     related: ['hubspot-einfuehrung', 'ki-schulungen', 'hubspot-managed-service'],
     seoTitle: 'HubSpot-Gruppen-Onboarding im Live-Webinar, 290 € | CogniCore',
-    seoDesc: 'HubSpot-Grundlagen für kleine Teams: 90 Minuten live mit einem HubSpot-Berater, Fragen inklusive. 290 € je Unternehmen.',
+    seoDesc: 'HubSpot-Grundlagen für kleine Teams: 90 Minuten live über Microsoft Teams mit einem HubSpot-Berater, Fragen inklusive. 290 € je Unternehmen.',
     status: 'ausbaustufe',
   },
 
