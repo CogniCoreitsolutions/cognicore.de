@@ -19,6 +19,7 @@ const canonical = new URL(Astro.url.pathname, Astro.site ?? 'https://new.cognico
 const jsonLd = {
   '@context': 'https://schema.org',
   '@type': 'ProfessionalService',
+  '@id': new URL('/#organization', Astro.site ?? 'https://new.cognicore.de').href,
   name: 'CogniCore IT Solutions GmbH',
   description: 'HubSpot Solutions Partner & IT-Dienstleister für den B2B-Mittelstand.',
   url: 'https://cognicore.de',
