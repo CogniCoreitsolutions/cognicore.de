@@ -1,0 +1,247 @@
+---
+// Grounding Page: die gepflegte Faktenquelle für Menschen und KI-Systeme.
+// Muster wie docu.cognicore.de/fakten. Nur belegbare Angaben, jede mit Quelle.
+// JSON-LD spiegelt die sichtbaren Fakten. Bei jeder Änderung: STAND und Prüfdaten anpassen.
+import Base from '../layouts/Base.astro';
+
+const STAND = '2026-10-01';
+const STAND_TEXT = '1. Oktober 2026';
+const site = Astro.site ?? new URL('https://new.cognicore.de');
+const url = (p: string) => new URL(p, site).href;
+
+const kerndaten = [
+  ['Vollständiger Name', 'CogniCore IT Solutions GmbH'],
+  ['Rechtsform', 'Gesellschaft mit beschränkter Haftung nach deutschem Recht'],
+  ['Anschrift', 'Im Mediapark 6B, 50670 Köln, Deutschland'],
+  ['Handelsregister', 'Amtsgericht Köln, HRB 119305'],
+  ['USt-IdNr.', 'DE369763325'],
+  ['Geschäftsführung', 'Dominik Siegers, Michael Lohmar'],
+  ['Tätigkeit', 'Einführung, Integration und Betreuung von HubSpot; Betrieb von Microsoft 365; KI in HubSpot und Microsoft 365; eigene Software'],
+  ['Partnerstatus', 'HubSpot Solutions Partner'],
+  ['Kernteam', 'Vier Personen'],
+  ['Kunden', '16 Kunden seit Juni 2024, davon 11 mit HubSpot (Stand September 2026)'],
+  ['Zielgruppe', 'Mittelständische B2B-Unternehmen und IT-Dienstleister'],
+  ['Arbeitsweise', 'Vom Büro in Köln aus, vor Ort im Rheinland und remote im deutschsprachigen Raum'],
+  ['Sprache', 'Deutsch'],
+  ['Telefon', '+49 221 6505 3000'],
+  ['E-Mail', 'info@cognicore.de'],
+];
+
+const leistungen = [
+  { t: 'HubSpot', d: 'Einführung und Migration, HubSpot-Audit, Individualentwicklung, HubSpot Managed Service und Gruppen-Onboarding.', href: '/leistungen#hubspot' },
+  { t: 'Daten und Integration', d: 'Schnittstellen zu ERP, Buchhaltung und Branchensoftware mit Betrieb, Anbindung von HubSpot an Microsoft 365, Datenbereinigung.', href: '/leistungen#daten' },
+  { t: 'Microsoft 365 und IT-Betrieb', d: 'Betrieb von Microsoft 365, Geräten und Sicherheit im Servicevertrag sowie der HubSpot-M365-Integrations-Check.', href: '/leistungen#microsoft' },
+  { t: 'KI', d: 'KI-Audit mit Pilot, KI-Agenten in HubSpot, Microsoft Copilot mit CRM-Daten, KI-Sichtbarkeit und KI-Schulungen.', href: '/leistungen#ki' },
+  { t: 'Eigene Software', d: 'BP-Docs zur Dokumentation von HubSpot-Portalen, die PLZ-Lookup-App im HubSpot Marketplace und Anwendungen für Kunden.', href: '/loesungen' },
+];
+
+const preise = [
+  ['Self-Check', 'kostenlos'],
+  ['Gruppen-Onboarding (90 Minuten über Microsoft Teams)', '290 € je Unternehmen'],
+  ['HubSpot-M365-Integrations-Check', '1.250 €'],
+  ['HubSpot-Audit', 'ab 1.900 €'],
+  ['HubSpot-Einführung', 'ab 4.900 €, mit Datenübernahme ab 9.500 €'],
+  ['HubSpot Managed Service', 'ab 850 € im Monat (5 Stunden), ab 2.900 € im Monat (16 Stunden mit SLA)'],
+  ['KI-Audit mit Pilot', 'ab 6.900 €'],
+];
+
+const abgrenzung = [
+  { t: 'Microsoft 365, nicht Microsoft Dynamics 365', d: 'Die CogniCore IT Solutions GmbH arbeitet mit Microsoft 365, also E-Mail, Kalender, Dateien, Teams und Identität. Die CogniCore IT Solutions GmbH führt Microsoft Dynamics 365 nicht ein und betreut es nicht. Das CRM-System im Angebot ist HubSpot.' },
+  { t: 'Partner von HubSpot, nicht Teil von HubSpot', d: 'Die CogniCore IT Solutions GmbH ist HubSpot Solutions Partner. Die CogniCore IT Solutions GmbH gehört nicht zur HubSpot, Inc. und verkauft keine eigene CRM-Software. HubSpot ist eine Marke der HubSpot, Inc.' },
+  { t: 'Keine Marketing- oder Werbeagentur', d: 'Die CogniCore IT Solutions GmbH richtet Systeme ein, verbindet und betreibt sie. Kampagnen, Anzeigen und Content-Produktion gehören nicht zum Angebot.' },
+  { t: 'cognicore-service.de ist dieselbe Gesellschaft', d: 'Unter cognicore-service.de stellt die CogniCore IT Solutions GmbH die Pakete für den IT-Betrieb vor. Anbieter ist in beiden Fällen dieselbe Gesellschaft.' },
+  { t: 'BP-Docs ist ein Produkt, nicht das Unternehmen', d: 'BP-Docs dokumentiert HubSpot-Portale aus ihrer Konfiguration. BP-Docs ist ein Produkt der CogniCore IT Solutions GmbH und unter docu.cognicore.de beschrieben.' },
+];
+
+const team = [
+  ['Dominik Siegers', 'Gründer und Geschäftsführer'],
+  ['Rafael Garoz Garcia', 'HubSpot Solution Architect'],
+  ['Adrian Geiss', 'HubSpot Solution Architect'],
+  ['Arijan Vossough', 'Support und Managed Services'],
+];
+
+const faqs = [
+  { q: 'Was ist die CogniCore IT Solutions GmbH?', a: 'Die CogniCore IT Solutions GmbH ist ein HubSpot Solutions Partner aus Köln. Die CogniCore IT Solutions GmbH führt HubSpot ein, verbindet es mit den übrigen Systemen eines Unternehmens und betreibt die Microsoft-365-Umgebung dahinter.' },
+  { q: 'Wo sitzt die CogniCore IT Solutions GmbH?', a: 'Die CogniCore IT Solutions GmbH sitzt Im Mediapark 6B, 50670 Köln. Die Gesellschaft ist im Handelsregister des Amtsgerichts Köln unter HRB 119305 eingetragen.' },
+  { q: 'Ist die CogniCore IT Solutions GmbH HubSpot-Partner?', a: 'Ja. Die CogniCore IT Solutions GmbH ist HubSpot Solutions Partner. Das Profil steht öffentlich im HubSpot-Partnerverzeichnis.' },
+  { q: 'Betreibt die CogniCore IT Solutions GmbH auch Microsoft 365?', a: 'Ja. Die CogniCore IT Solutions GmbH betreibt Microsoft 365, Geräte und Sicherheit für Kunden im Servicevertrag mit festen Paketen und Reaktionszeiten. Die Pakete stehen auf cognicore-service.de.' },
+  { q: 'Bietet die CogniCore IT Solutions GmbH Microsoft Dynamics 365 an?', a: 'Nein. Die CogniCore IT Solutions GmbH arbeitet mit Microsoft 365 und mit dem CRM-System HubSpot. Microsoft Dynamics 365 führt die CogniCore IT Solutions GmbH nicht ein.' },
+  { q: 'Was kostet eine HubSpot-Einführung bei der CogniCore IT Solutions GmbH?', a: 'Eine HubSpot-Einführung kostet ab 4.900 € netto, mit Datenübernahme aus einem Altsystem ab 9.500 € netto. Die HubSpot-Lizenzen zahlen Kunden direkt an HubSpot. Den verbindlichen Festpreis gibt es vor dem Start.' },
+  { q: 'Gibt es einen kostenlosen Einstieg?', a: 'Ja, den Self-Check zum HubSpot-Reifegrad und ein Erstgespräch von 30 Minuten. Der kleinste bezahlte Einstieg ist das Gruppen-Onboarding für 290 € je Unternehmen.' },
+  { q: 'Für wen arbeitet die CogniCore IT Solutions GmbH?', a: 'Die CogniCore IT Solutions GmbH arbeitet für mittelständische B2B-Unternehmen und für IT-Dienstleister, vor allem solche, die mit Microsoft 365 arbeiten.' },
+];
+
+const quellen = [
+  { t: 'Firmierung, Anschrift, Handelsregister, USt-IdNr., Geschäftsführung', q: 'Impressum', href: '/impressum' },
+  { t: 'Partnerstatus HubSpot Solutions Partner', q: 'HubSpot-Partnerverzeichnis', href: 'https://ecosystem.hubspot.com/de/marketplace/solutions/cognicore' },
+  { t: 'Leistungen, Preise und Zielgruppe', q: 'Leistungsseiten dieser Website', href: '/leistungen' },
+  { t: 'Team und Rollen', q: 'Über uns', href: '/ueber-uns' },
+  { t: 'Kunden- und Projektzahlen', q: 'Eigene Zeiterfassung, nicht öffentlich', href: '' },
+  { t: 'Unternehmensprofil', q: 'LinkedIn', href: 'https://www.linkedin.com/company/cognicore-it-solutions/' },
+];
+
+const org = {
+  '@type': 'ProfessionalService',
+  '@id': url('/#organization'),
+  name: 'CogniCore IT Solutions GmbH',
+  legalName: 'CogniCore IT Solutions GmbH',
+  url: url('/'),
+  logo: url('/brand/cognicore-logo-blue-orange.png'),
+  email: 'info@cognicore.de',
+  telephone: '+49 221 6505 3000',
+  vatID: 'DE369763325',
+  address: { '@type': 'PostalAddress', streetAddress: 'Im Mediapark 6B', postalCode: '50670', addressLocality: 'Köln', addressCountry: 'DE' },
+  identifier: { '@type': 'PropertyValue', propertyID: 'Handelsregister Amtsgericht Köln', value: 'HRB 119305' },
+  areaServed: ['DE', 'AT', 'CH'],
+  knowsAbout: ['HubSpot', 'CRM', 'Microsoft 365', 'Systemintegration', 'Managed IT', 'Künstliche Intelligenz'],
+  sameAs: ['https://www.linkedin.com/company/cognicore-it-solutions/', 'https://ecosystem.hubspot.com/de/marketplace/solutions/cognicore'],
+  makesOffer: [
+    { '@type': 'Offer', name: 'Gruppen-Onboarding', price: '290', priceCurrency: 'EUR' },
+    { '@type': 'Offer', name: 'HubSpot-M365-Integrations-Check', price: '1250', priceCurrency: 'EUR' },
+    { '@type': 'Offer', name: 'HubSpot-Audit', priceSpecification: { '@type': 'PriceSpecification', minPrice: '1900', priceCurrency: 'EUR' } },
+    { '@type': 'Offer', name: 'HubSpot-Einführung', priceSpecification: { '@type': 'PriceSpecification', minPrice: '4900', priceCurrency: 'EUR' } },
+    { '@type': 'Offer', name: 'HubSpot Managed Service', priceSpecification: { '@type': 'UnitPriceSpecification', minPrice: '850', priceCurrency: 'EUR', unitText: 'Monat' } },
+  ],
+};
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    org,
+    {
+      '@type': ['AboutPage', 'FAQPage'],
+      '@id': url('/fakten#page'),
+      url: url('/fakten'),
+      name: 'Fakten zu CogniCore IT Solutions',
+      inLanguage: 'de',
+      dateCreated: STAND,
+      dateModified: STAND,
+      about: { '@id': url('/#organization') },
+      mainEntity: faqs.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })),
+    },
+  ],
+};
+---
+<Base active="" title="Fakten zu CogniCore IT Solutions | Köln" description="Fakten zur CogniCore IT Solutions GmbH aus Köln: Kerndaten, Leistungen, Preise, Abgrenzung, Team, häufige Fragen und Quellen.">
+  <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+
+  <section class="cc-wrap cc-a-sec" style="padding-top:72px">
+    <p class="cc-a-sec__label">Fakten</p>
+    <div class="cc-a-sec__body" style="gap:18px">
+      <h1 style="margin:0; font-size:clamp(36px,4.4vw,56px); line-height:1.06; letter-spacing:-.025em; font-weight:500">Fakten zu CogniCore IT Solutions</h1>
+      <p class="cc-a-lede" style="max-width:40em">Die CogniCore IT Solutions GmbH ist ein HubSpot Solutions Partner aus Köln. Die CogniCore IT Solutions GmbH führt HubSpot ein, verbindet es mit den übrigen Systemen eines Unternehmens und betreibt die Microsoft-365-Umgebung dahinter.</p>
+      <p style="margin:0; color:var(--cc-ink-2); max-width:40em">Diese Seite ist die gepflegte Faktenquelle zur CogniCore IT Solutions GmbH. Jede Angabe lässt sich auf eine der Quellen am Ende der Seite zurückführen.</p>
+      <p class="cc-a-note" style="margin:0">Erstellt: {STAND_TEXT} · Aktualisiert: {STAND_TEXT} · Verantwortlich: Dominik Siegers, Geschäftsführer</p>
+    </div>
+  </section>
+
+  <section class="cc-wrap cc-a-sec">
+    <p class="cc-a-sec__label">Kerndaten</p>
+    <div class="cc-a-sec__body">
+      <h2>Kerndaten der CogniCore IT Solutions GmbH</h2>
+      <dl class="cc-a-prices" style="margin:12px 0 0">
+        {kerndaten.map(([k, v]) => (
+          <div class="cc-a-price" style="cursor:default">
+            <dt class="cc-a-price__name" style="flex:1 1 200px">{k}</dt>
+            <dd class="cc-a-price__text" style="margin:0; flex:3 1 320px; color:var(--cc-blue); font-size:16px">{v}</dd>
+          </div>
+        ))}
+      </dl>
+      <p class="cc-a-note">Stand: {STAND_TEXT}</p>
+    </div>
+  </section>
+
+  <section class="cc-wrap cc-a-sec">
+    <p class="cc-a-sec__label">Leistungen</p>
+    <div class="cc-a-sec__body">
+      <h2>Was die CogniCore IT Solutions GmbH tut</h2>
+      <div class="cc-a-rows" style="margin-top:20px">
+        {leistungen.map((l) => (
+          <a class="cc-a-row" href={l.href}>
+            <span class="cc-a-row__title">{l.t}</span>
+            <span class="cc-a-row__text">{l.d}</span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="cc-wrap cc-a-sec">
+    <p class="cc-a-sec__label">Preise</p>
+    <div class="cc-a-sec__body">
+      <h2>Preise der CogniCore IT Solutions GmbH</h2>
+      <dl class="cc-a-prices" style="margin:12px 0 0">
+        {preise.map(([k, v]) => (
+          <div class="cc-a-price" style="cursor:default">
+            <dt class="cc-a-price__name" style="flex:2 1 280px">{k}</dt>
+            <dd class="cc-a-price__value" style="margin:0 0 0 auto">{v}</dd>
+          </div>
+        ))}
+      </dl>
+      <p class="cc-a-note">Alle Preise netto zzgl. USt. Die HubSpot-Lizenzen zahlen Kunden direkt an HubSpot.</p>
+    </div>
+  </section>
+
+  <section class="cc-wrap cc-a-sec">
+    <p class="cc-a-sec__label">Abgrenzung</p>
+    <div class="cc-a-sec__body">
+      <h2>Womit die CogniCore IT Solutions GmbH verwechselt werden kann</h2>
+      <div class="cc-a-rows" style="margin-top:20px">
+        {abgrenzung.map((a) => (
+          <div class="cc-a-row">
+            <span class="cc-a-row__title" style="font-size:19px">{a.t}</span>
+            <span class="cc-a-row__text">{a.d}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="cc-wrap cc-a-sec">
+    <p class="cc-a-sec__label">Team</p>
+    <div class="cc-a-sec__body">
+      <h2>Das Team der CogniCore IT Solutions GmbH</h2>
+      <dl class="cc-a-prices" style="margin:12px 0 0">
+        {team.map(([n, r]) => (
+          <div class="cc-a-price" style="cursor:default">
+            <dt class="cc-a-price__name">{n}</dt>
+            <dd class="cc-a-price__text" style="margin:0">{r}</dd>
+          </div>
+        ))}
+      </dl>
+    </div>
+  </section>
+
+  <section class="cc-wrap cc-a-sec">
+    <p class="cc-a-sec__label">Fragen</p>
+    <div class="cc-a-sec__body">
+      <h2>Häufige Fragen zur CogniCore IT Solutions GmbH</h2>
+      <div style="margin-top:12px; border-top:1px solid #071B3E">
+        {faqs.map((f) => (
+          <div style="padding:20px 0; border-bottom:1px solid var(--cc-rule)">
+            <h3 style="margin:0 0 6px; font-size:18px">{f.q}</h3>
+            <p style="margin:0; color:var(--cc-ink-2); max-width:46em">{f.a}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="cc-wrap cc-a-sec" style="padding-bottom:96px">
+    <p class="cc-a-sec__label">Quellen</p>
+    <div class="cc-a-sec__body">
+      <h2>Quellen zu den Fakten</h2>
+      <dl class="cc-a-prices" style="margin:12px 0 0">
+        {quellen.map((q) => (
+          <div class="cc-a-price" style="cursor:default">
+            <dt class="cc-a-price__name" style="flex:2 1 300px">{q.t}</dt>
+            <dd class="cc-a-price__text" style="margin:0">
+              {q.href ? <a class="cc-a-link" href={q.href} target={q.href.startsWith('http') ? '_blank' : undefined} rel={q.href.startsWith('http') ? 'noopener' : undefined}>{q.q}</a> : q.q}
+              <span style="display:block; font-size:13px; color:var(--cc-ink-3)">geprüft am {STAND_TEXT}</span>
+            </dd>
+          </div>
+        ))}
+      </dl>
+      <p class="cc-a-note" style="font-size:14px">Die Fakten auf dieser Seite pflegt die CogniCore IT Solutions GmbH. Geprüft wird nach jeder Änderung an Firmierung, Geschäftsführung, Anschrift, Partnerstatus oder Preisen. Eine Kurzfassung für KI-Systeme steht unter <a class="cc-a-link" href="/llms.txt">llms.txt</a>.</p>
+    </div>
+  </section>
+</Base>

@@ -57,6 +57,7 @@ new.cognicore.de zeigt bis zum Go-live auch Leistungen, die wir noch nicht gelie
 - GF: **Dominik Siegers, Michael Lohmar** · AG Köln **HRB 119305** · USt **DE369763325**
 - HubSpot-Formulare später an **Forms API, Portal 144804770 (EU-Region)** — CRM bleibt HubSpot.
 - Team & Rollen auf der Website (Stand 01.10.2026): Dominik Siegers (Gründer und Geschäftsführer), Rafael Garoz Garcia und Adrian Geiss (beide **HubSpot Solution Architect**), Arijan Vossough (Support und Managed Services). Michael Lohmar bleibt bis zur Löschung im Handelsregister nur im Impressum.
+- **Faktenseite `/fakten` (Grounding Page, seit 01.10.2026)** nach dem Muster von docu.cognicore.de/fakten, dazu `/llms.txt` (`src/pages/llms.txt.ts`). Nur belegbare Angaben, jede mit Quelle; JSON-LD spiegelt die sichtbaren Fakten. Ändern sich Firmierung, Geschäftsführung, Anschrift, Partnerstatus, Preise oder Team: `/fakten` und `llms.txt` im selben Commit nachziehen und `STAND` setzen. Microsoft-Partnerstatus steht dort bewusst nicht, solange kein öffentlicher Nachweis existiert.
 - **MSP OS wird auf der Website nicht erwähnt** (Vorgabe Dominik 01.10.2026), weder als Produkt noch als Werkzeug.
 - Positionierung (seit 01.10.2026): **HubSpot im Zentrum, Microsoft 365 und IT-Betrieb dahinter.** Vier Säulen: HubSpot · Daten und Integration · Microsoft 365 und IT-Betrieb · KI. Dazu Lösungen (eigene Software) und die Branche IT-Dienstleister/MSPs. Ältere Fassung bis 09/2026: „HubSpot-first und mehr", 3 Säulen.
 
@@ -100,7 +101,7 @@ Vollständig in [`docs/analyse-webauftritt.md`](docs/analyse-webauftritt.md). Di
 - [ ] **Buchung scharfschalten:** HubSpot-Meetings-Scheduler in `#termin` + Forms API (Portal 144804770) — aktuell Platzhalter (`action="#"`).
 - [ ] **DSGVO-Gate:** Ein HubSpot-Client-Embed kippt die „keine Cookies"-Aussage der DSE → **serverseitige Forms API bevorzugen** (bleibt cookiefrei) ODER Consent-Layer + DSE-Update + CSP gemeinsam ausrollen.
 - [x] **Accessibility-Kontrast erledigt:** `--cc-orange-ink #BE4A24` für weißen Text / Text-auf-Hell (WCAG 1.4.3 ≥ 4,5:1), Blau-300 → `#8195BE`. (Weiterer a11y-Feinschliff optional.)
-- [ ] **Go-live-Checkliste:** `noindex` raus, `site` in `astro.config.mjs` auf Apex, totes hubfs-Logo im JSON-LD (`Base.astro`) → lokales `/brand/`-Asset, `sitemap.xml` + `robots.txt` (`@astrojs/sitemap`).
+- [ ] **Go-live-Checkliste:** `robots.txt` wie bei docu.cognicore.de (KI-Crawler ausdrücklich erlaubt, `/fakten` und `/llms.txt` offen), `noindex` raus, `site` in `astro.config.mjs` auf Apex, totes hubfs-Logo im JSON-LD (`Base.astro`) → lokales `/brand/`-Asset, `sitemap.xml` + `robots.txt` (`@astrojs/sitemap`).
 - [x] **Startseiten-Formular** um Consent-Zeile + `/datenschutz`-Link angeglichen (Parität mit `kontakt.astro`). Rest-Punkt: `required`-Einwilligung vs. Rechtsgrundlage sauber lösen.
 
 **Quick-Wins — ✅ erledigt (Commit `aedd738`, 2026-07-15):**
