@@ -1,0 +1,31 @@
+---
+interface Props { eyebrow?: string; title?: string; em?: string; text?: string }
+const {
+  eyebrow = '// Nächster Schritt',
+  title = 'Lassen Sie uns über Ihr',
+  em = 'Vorhaben',
+  text = 'Ein Erstgespräch, 30 Minuten. Wir sagen ehrlich, ob und wie wir helfen können.',
+} = Astro.props;
+---
+<section class="cc-contact" id="termin">
+  <div class="cc-contact__left" style="max-width:none; justify-self:stretch; padding-left:56px">
+    <div class="cc-eyebrow cc-eyebrow--on-dark">{eyebrow}</div>
+    <h2>{title} <em>{em}</em> sprechen.</h2>
+    <p>{text}</p>
+    <div style="margin-top:24px; display:flex; gap:12px; flex-wrap:wrap">
+      <a class="cc-btn cc-btn--accent" href="/kontakt#termin">Erstgespräch vereinbaren</a>
+      <a class="cc-btn cc-btn--ghost-light" href="/kontakt">Zur Kontaktseite</a>
+    </div>
+  </div>
+  <aside class="cc-contact__right">
+    <div class="cc-contact__card">
+      <img src="/brand/cognicore-icon-white-orange.png" alt="" />
+      <h3>Kurzer Draht</h3>
+      <dl>
+        <dt>Telefon</dt><dd><a href="tel:+4922165053000">+49 221 6505 3000</a></dd>
+        <dt>E-Mail</dt><dd><a href="mailto:info@cognicore.de">info@cognicore.de</a></dd>
+        <dt>Büro</dt><dd>Im Mediapark 6B<br/>50670 Köln</dd>
+      </dl>
+    </div>
+  </aside>
+</section>

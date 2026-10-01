@@ -1,20 +1,48 @@
 ---
+import { saeulen, inSaeule } from '../data/leistungen';
 interface Props { active?: string }
 const { active } = Astro.props;
-const links = [
-  { href: '/leistungen', label: 'Leistungen', key: 'leistungen' },
-  { href: '/ueber-uns', label: 'Über uns', key: 'ueber-uns' },
-  { href: '/kontakt', label: 'Kontakt', key: 'kontakt' },
-];
+const chevron = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>';
+const cls = (key: string) => `cc-nav__link${active === key ? ' is-active' : ''}`;
 ---
 <header class="cc-nav" id="site-header">
   <a class="cc-nav__logo" href="/" aria-label="CogniCore IT Solutions — Startseite">
     <img src="/brand/cognicore-logo-blue-orange.png" alt="CogniCore IT Solutions" width="150" height="34" />
   </a>
   <nav class="cc-nav__links" aria-label="Hauptnavigation">
-    {links.map((l) => (
-      <a href={l.href} class={`cc-nav__link${active === l.key ? ' is-active' : ''}`}>{l.label}</a>
-    ))}
+    <div class="cc-nav__item">
+      <a href="/leistungen" class={cls('leistungen')} aria-haspopup="true">Leistungen<Fragment set:html={chevron} /></a>
+      <div class="cc-mega">
+        <div class="cc-mega__panel">
+          <div class="cc-mega__cols">
+            {saeulen.map((s) => (
+              <div class="cc-mega__col">
+                <b>{s.title}</b>
+                {inSaeule(s.key).map((l) => <a href={`/leistungen/${l.slug}`}>{l.nav}</a>)}
+              </div>
+            ))}
+          </div>
+          <div class="cc-mega__foot">
+            <a href="/leistungen">Alle Leistungen und Preise →</a>
+            <span>HubSpot Solutions Partner · Köln</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <a href="/loesungen" class={cls('loesungen')}>Lösungen</a>
+    <div class="cc-nav__item cc-nav__item--small">
+      <a href="/branchen/it-dienstleister" class={cls('branchen')} aria-haspopup="true">Branchen<Fragment set:html={chevron} /></a>
+      <div class="cc-mega">
+        <div class="cc-mega__panel">
+          <div class="cc-mega__cols">
+            <div class="cc-mega__col">
+              <a href="/branchen/it-dienstleister">IT-Dienstleister und MSPs<small>HubSpot vorkonfiguriert für Serviceverträge</small></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <a href="/ueber-uns" class={cls('ueber-uns')}>Über uns</a>
   </nav>
   <div class="cc-nav__cta">
     <a class="cc-btn cc-btn--ghost" href="/kontakt">Kontakt</a>
@@ -24,7 +52,20 @@ const links = [
     <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
   </button>
   <div class="cc-mobile" id="cc-mobile">
-    {links.map((l) => (<a href={l.href}>{l.label}</a>))}
+    <details class="cc-mobile__group">
+      <summary>Leistungen</summary>
+      <a href="/leistungen">Übersicht und Preise</a>
+      {saeulen.map((s) => (
+        <>
+          <span>{s.title}</span>
+          {inSaeule(s.key).map((l) => <a href={`/leistungen/${l.slug}`}>{l.nav}</a>)}
+        </>
+      ))}
+    </details>
+    <a href="/loesungen">Lösungen</a>
+    <a href="/branchen/it-dienstleister">Für IT-Dienstleister und MSPs</a>
+    <a href="/ueber-uns">Über uns</a>
+    <a href="/kontakt">Kontakt</a>
     <a class="cc-btn cc-btn--accent cc-btn--block" href="/kontakt#termin">Erstgespräch vereinbaren</a>
   </div>
 </header>

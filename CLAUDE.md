@@ -49,7 +49,7 @@ Quelle: `src/styles/ds/tokens.css` + `src/styles/ds/marketing.css` (kopiert aus 
 - Brand-Mark als dezentes Wasserzeichen auf dunklen Sektionen (Opazität ~6 %).
 
 ## Inhaltliche Integritätsregeln (nicht verhandelbar)
-Es ist eine echte Firmen-Website — **keine erfundenen** Kennzahlen, Testimonials, Kundenlogos oder Preise. Nur **belegbare** Aussagen. Partner-Tier korrekt: „Solutions Partner" (Basisstufe). Team-Fotos nur, wenn vorhanden — sonst Initialen-Avatar, keine erfundenen Bilder.
+new.cognicore.de zeigt bis zum Go-live auch Leistungen, die wir noch nicht geliefert haben (**Ausbaustufen** des Geschäftsmodells, Entscheidung Dominik 01.10.2026). **Das Angebot darf Ausbaustufe sein, Belege nie:** keine erfundenen Kennzahlen, Testimonials, Kundenlogos, Zertifikate oder Erfahrungsangaben. Auf Seiten mit Ausbaustufen stehen Vorgehen, Ergebnis und Preis, aber keine Aussagen wie „seit Jahren", „bewährt" oder „in X Projekten". Jede Ausbaustufe steht mit Status in [`docs/ausbaustufen.md`](docs/ausbaustufen.md) und im Feld `status` in `src/data/leistungen.ts` und wird **vor dem Entfernen von `noindex`** einzeln freigegeben oder gestrichen. Zahlen auf der Seite (Kunden, Projekte, Anwendungen) nur mit Stand und Quelle. Partner-Tier korrekt: „Solutions Partner" (Basisstufe). Team-Fotos nur, wenn vorhanden, sonst Initialen-Avatar, keine erfundenen Bilder. INQA nie als Finanzierung der HubSpot- oder IT-Umsetzung darstellen, Coaching und Umsetzung sind nach den Förderregeln getrennt.
 
 ## Fakten (für Impressum, Footer, Kontakt, JSON-LD)
 - CogniCore IT Solutions GmbH · Im Mediapark 6B · 50670 Köln
@@ -57,7 +57,7 @@ Es ist eine echte Firmen-Website — **keine erfundenen** Kennzahlen, Testimonia
 - GF: **Dominik Siegers, Michael Lohmar** · AG Köln **HRB 119305** · USt **DE369763325**
 - HubSpot-Formulare später an **Forms API, Portal 144804770 (EU-Region)** — CRM bleibt HubSpot.
 - Team & Rollen: Dominik Siegers & Michael Lohmar (Gründer/GF), Rafael (Consultant), Adrian (Junior Consultant), Arijan (Werkstudent), Lisa (Kommunikation), Lara (Recruiting & HR).
-- Positionierung: **HubSpot-first — „und mehr"** (3 Säulen: HubSpot · IT-Projekte · IT-Struktur/Managed IT). POV: „kein klassisches Marketing, sondern Tiefgang in Datenmodell & Solution Design".
+- Positionierung (seit 01.10.2026): **HubSpot im Zentrum, Microsoft 365 und IT-Betrieb dahinter.** Vier Säulen: HubSpot · Daten und Integration · Microsoft 365 und IT-Betrieb · KI. Dazu Lösungen (eigene Software) und die Branche IT-Dienstleister/MSPs. Ältere Fassung bis 09/2026: „HubSpot-first und mehr", 3 Säulen.
 
 ## Repo-Struktur
 ```
@@ -69,10 +69,13 @@ docs/
   git-github-grundlagen/      interner Git-&-GitHub-Spickzettel (HTML+PDF, CogniCore-Design) — Onboarding fürs Team
 src/
   layouts/Base.astro          Head (SEO/JSON-LD), noindex, Nav/Footer, Reveal-Logik
-  components/                  Nav, Footer
+  components/                  Nav (mit Leistungsmenü aus src/data), Footer, CtaBand, Preisleiter
+  data/leistungen.ts          Säulen und alle Leistungsseiten (Texte, Ablauf, Preis, FAQ, status) — eine Quelle für Menü, Übersicht und Detailseiten
   styles/global.css           Web-Design-System (cc-*)
   styles/ds/                   Tokens + Marketing-CSS aus dem Design System
-  pages/                       Start, Leistungen, Über-uns, Kontakt, Impressum, Datenschutz, Haftungsausschluss
+  pages/                       Start, Leistungen, Lösungen, Über-uns, Kontakt, Impressum, Datenschutz, Haftungsausschluss
+  pages/leistungen/[slug].astro  Vorlage für alle Leistungsseiten (/leistungen/<slug>)
+  pages/branchen/              Branchenseiten (heute: it-dienstleister)
 public/
   brand/                      Logo-/Icon-Varianten
   img/                        Team- & Content-Fotos (optimiert)
@@ -114,6 +117,11 @@ Vollständig in [`docs/analyse-webauftritt.md`](docs/analyse-webauftritt.md). Di
 - [ ] **Karriere** ausbauen (echte Rolle, Recruiting-Kontakt Lara statt `info@`, Nav-Punkt); **Team** konsistent (Nachnamen/LinkedIn/Fotos für Delivery-Rollen).
 - [ ] **Content-/Wissens-Hub** + dedizierte Leistungs-Landingpages (SEO-Tiefe); cookiefreies Analytics (Plausible/Matomo) — eigenes Dogfooding sichtbar machen.
 - [ ] **Positionierung schärfen:** HubSpot-Kern über „und mehr" stellen, Managed IT nachordnen, Signatur-Claim durchtragen.
+
+**Ausbau 10/2026 (Leistungsmenü, 15 Leistungsseiten, Lösungen, Branche IT-Dienstleister, Preisleiter):**
+- [ ] Ausbaustufen einzeln freigeben oder streichen, Liste in [`docs/ausbaustufen.md`](docs/ausbaustufen.md).
+- [ ] Neue Preise bestätigen: Gruppen-Onboarding 290 €, Integrations-Check 1.250 €, HubSpot-Audit ab 1.900 €, KI-Audit mit Pilot ab 6.900 €.
+- [ ] Neue Leistung anlegen = Eintrag in `src/data/leistungen.ts`, Menü, Übersicht und Detailseite entstehen automatisch.
 
 ## Arbeitskonventionen
 - **Sprache:** deutsche Inhalte, „Sie". Commit-Messages knapp und aussagekräftig.
