@@ -56,7 +56,8 @@ new.cognicore.de zeigt bis zum Go-live auch Leistungen, die wir noch nicht gelie
 - Tel **+49 221 6505 3000** · **info@cognicore.de**
 - GF: **Dominik Siegers, Michael Lohmar** · AG Köln **HRB 119305** · USt **DE369763325**
 - HubSpot-Formulare später an **Forms API, Portal 144804770 (EU-Region)** — CRM bleibt HubSpot.
-- Team & Rollen: Dominik Siegers & Michael Lohmar (Gründer/GF), Rafael (Consultant), Adrian (Junior Consultant), Arijan (Werkstudent), Lisa (Kommunikation), Lara (Recruiting & HR).
+- Team & Rollen auf der Website (Stand 01.10.2026): Dominik Siegers (Gründer und Geschäftsführer), Rafael Garoz Garcia und Adrian Geiss (beide **HubSpot Solution Architect**), Arijan Vossough (Support und Managed Services). Michael Lohmar bleibt bis zur Löschung im Handelsregister nur im Impressum.
+- **MSP OS wird auf der Website nicht erwähnt** (Vorgabe Dominik 01.10.2026), weder als Produkt noch als Werkzeug.
 - Positionierung (seit 01.10.2026): **HubSpot im Zentrum, Microsoft 365 und IT-Betrieb dahinter.** Vier Säulen: HubSpot · Daten und Integration · Microsoft 365 und IT-Betrieb · KI. Dazu Lösungen (eigene Software) und die Branche IT-Dienstleister/MSPs. Ältere Fassung bis 09/2026: „HubSpot-first und mehr", 3 Säulen.
 
 ## Repo-Struktur
