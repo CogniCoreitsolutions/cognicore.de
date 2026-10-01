@@ -348,3 +348,109 @@ a { color:inherit; text-decoration:none; }
 .cc-mobile { display:none; position:absolute; top:var(--cc-nav-h); left:0; right:0; flex-direction:column; gap:4px; background:#fff; border-bottom:1px solid var(--cc-line); padding:16px 20px 20px; box-shadow:var(--cc-shadow-2); }
 .cc-mobile a { font-family:var(--cc-font-display); font-weight:600; font-size:16px; color:var(--cc-fg-1); padding:10px 4px; text-decoration:none; }
 .cc-mobile .cc-btn { margin-top:8px; }
+
+/* ============================================================
+   Ausbau 10/2026: Leistungsmenü, Leistungsseiten, Preisleiter
+   ============================================================ */
+
+/* ---------- Nav: Dropdowns ---------- */
+.cc-nav__links { align-items:center; }
+.cc-nav__item { display:flex; align-items:center; }
+.cc-nav__item--small { position:relative; }
+.cc-nav__link svg { width:14px; height:14px; margin-left:4px; vertical-align:-2px; transition:transform var(--cc-dur-fast) var(--cc-ease-out); }
+.cc-nav__item:hover .cc-nav__link svg, .cc-nav__item:focus-within .cc-nav__link svg { transform:rotate(180deg); }
+.cc-mega { display:none; position:absolute; top:calc(100% - 28px); left:50%; transform:translateX(-50%); padding-top:28px; width:min(980px, calc(100vw - 48px)); z-index:60; }
+.cc-nav__item--small .cc-mega { left:0; transform:none; width:300px; top:100%; padding-top:18px; }
+.cc-nav__item:hover .cc-mega, .cc-nav__item:focus-within .cc-mega { display:block; }
+.cc-mega__panel { background:#fff; border:1px solid var(--cc-line); border-radius:var(--cc-r-lg); box-shadow:var(--cc-shadow-3); padding:26px 28px 18px; }
+.cc-mega__cols { display:grid; grid-template-columns:repeat(4,1fr); gap:24px; }
+.cc-nav__item--small .cc-mega__cols { grid-template-columns:1fr; }
+.cc-mega__col b { display:block; font-family:var(--cc-font-display); font-size:11.5px; letter-spacing:.12em; text-transform:uppercase; font-weight:700; color:var(--cc-orange-ink); margin-bottom:10px; }
+.cc-mega__col a { display:block; font-family:var(--cc-font-display); font-size:14px; font-weight:600; color:var(--cc-fg-1); padding:6px 0; line-height:1.35; }
+.cc-mega__col a:hover { color:var(--cc-orange-ink); }
+.cc-mega__col a small { display:block; font-weight:500; font-size:12.5px; color:var(--cc-fg-3); margin-top:2px; }
+.cc-mega__foot { margin-top:16px; padding-top:14px; border-top:1px solid var(--cc-line); display:flex; justify-content:space-between; gap:16px; flex-wrap:wrap; font-family:var(--cc-font-display); font-size:13.5px; font-weight:700; }
+.cc-mega__foot a { color:var(--cc-orange-ink); }
+.cc-mega__foot span { color:var(--cc-fg-3); font-weight:500; }
+
+/* ---------- Mobile: Gruppen ---------- */
+.cc-mobile__group { border-bottom:1px solid var(--cc-line); padding-bottom:6px; margin-bottom:4px; }
+.cc-mobile__group summary { list-style:none; cursor:pointer; font-family:var(--cc-font-display); font-weight:600; font-size:16px; color:var(--cc-fg-1); padding:10px 4px; display:flex; justify-content:space-between; }
+.cc-mobile__group summary::-webkit-details-marker { display:none; }
+.cc-mobile__group summary::after { content:"+"; color:var(--cc-orange); font-weight:700; }
+.cc-mobile__group[open] summary::after { content:"–"; }
+.cc-mobile__group span { display:block; font-family:var(--cc-font-display); font-size:11px; letter-spacing:.12em; text-transform:uppercase; font-weight:700; color:var(--cc-orange-ink); padding:10px 4px 2px 12px; }
+.cc-mobile .cc-mobile__group a { font-size:14.5px; padding:6px 4px 6px 12px; display:block; }
+.cc-mobile { max-height:calc(100vh - var(--cc-nav-h)); overflow-y:auto; }
+
+/* ---------- Breadcrumb im Hero ---------- */
+.cc-crumbs { font-family:var(--cc-font-display); font-size:13px; font-weight:600; color:var(--cc-blue-300); margin-bottom:18px; }
+.cc-crumbs a { color:var(--cc-blue-100); }
+.cc-crumbs a:hover { color:#fff; }
+
+/* ---------- Leistungsseite ---------- */
+.cc-steps { display:grid; grid-template-columns:repeat(auto-fit, minmax(190px, 1fr)); gap:20px; }
+.cc-steps .cc-card h3 { font-size:18px; }
+.cc-price { background:var(--cc-blue); color:#fff; border-radius:var(--cc-r-lg); padding:30px 30px 26px; position:relative; overflow:hidden; display:flex; flex-direction:column; gap:6px; }
+.cc-price::before { content:""; position:absolute; inset:0; opacity:.07; background:url('/brand/cognicore-icon-white.png') no-repeat; background-size:300px; background-position:120% 130%; pointer-events:none; }
+.cc-price > * { position:relative; }
+.cc-price__wert { font-family:var(--cc-font-display); font-weight:700; font-size:40px; line-height:1.1; letter-spacing:-.015em; color:#fff; margin:6px 0 0; }
+.cc-price__einheit { color:var(--cc-blue-100); font-size:14px; margin:0; }
+.cc-price__hinweis { color:var(--cc-blue-100); font-size:14.5px; margin:12px 0 0; }
+.cc-price__fuss { color:var(--cc-blue-300); font-size:12.5px; margin:14px 0 0; }
+.cc-price .cc-btn { margin-top:18px; align-self:flex-start; }
+.cc-saeule { padding-top:8px; }
+.cc-saeule + .cc-saeule { margin-top:64px; }
+.cc-saeule__head { display:flex; justify-content:space-between; align-items:flex-end; gap:24px; flex-wrap:wrap; margin-bottom:24px; }
+.cc-saeule__head h2 { font-size:34px; line-height:1.1; color:var(--cc-blue); margin:6px 0 6px; }
+.cc-saeule__head p { margin:0; max-width:60ch; }
+
+/* ---------- Preisleiter ---------- */
+.cc-ladder { display:grid; grid-template-columns:repeat(6,1fr); gap:14px; align-items:end; }
+.cc-ladder__step { background:#fff; border:1px solid var(--cc-line); border-radius:var(--cc-r-lg); padding:20px 18px; display:flex; flex-direction:column; gap:8px; text-decoration:none; transition:box-shadow var(--cc-dur-base) var(--cc-ease-out), transform var(--cc-dur-base) var(--cc-ease-out); }
+.cc-ladder__step:hover { box-shadow:var(--cc-shadow-2); transform:translateY(-2px); }
+.cc-ladder__n { font-family:var(--cc-font-display); font-size:11px; letter-spacing:.14em; font-weight:700; color:var(--cc-fg-3); }
+.cc-ladder__t { font-family:var(--cc-font-display); font-weight:700; font-size:16.5px; color:var(--cc-blue); line-height:1.25; }
+.cc-ladder__p { font-family:var(--cc-font-display); font-weight:700; font-size:21px; color:var(--cc-orange-ink); line-height:1.15; }
+.cc-ladder__d { font-size:13.5px; color:var(--cc-fg-2); line-height:1.45; }
+.cc-ladder__step:nth-child(1) { min-height:180px; } .cc-ladder__step:nth-child(2) { min-height:196px; }
+.cc-ladder__step:nth-child(3) { min-height:212px; } .cc-ladder__step:nth-child(4) { min-height:228px; }
+.cc-ladder__step:nth-child(5) { min-height:244px; } .cc-ladder__step:nth-child(6) { min-height:260px; background:var(--cc-blue); border-color:transparent; }
+.cc-ladder__step:nth-child(6) .cc-ladder__t, .cc-ladder__step:nth-child(6) .cc-ladder__p { color:#fff; }
+.cc-ladder__step:nth-child(6) .cc-ladder__d, .cc-ladder__step:nth-child(6) .cc-ladder__n { color:var(--cc-blue-100); }
+.cc-ladder__foot { margin:18px 0 0; font-size:13.5px; color:var(--cc-fg-2); }
+
+/* ---------- Anwendungen (Lösungen) ---------- */
+.cc-app__meta { font-family:var(--cc-font-display); font-size:12px; letter-spacing:.1em; text-transform:uppercase; font-weight:700; color:var(--cc-green); }
+.cc-app__meta--plan { color:var(--cc-orange-ink); }
+
+@media (max-width:1180px) {
+  .cc-nav__links { gap:20px; }
+  .cc-nav__cta .cc-btn--ghost { display:none; }
+}
+@media (max-width:1080px) {
+  .cc-ladder { grid-template-columns:repeat(3,1fr); align-items:stretch; }
+  .cc-ladder__step { min-height:0 !important; }
+  .cc-mega__cols { grid-template-columns:repeat(2,1fr); }
+}
+@media (max-width:900px) {
+  .cc-steps { grid-template-columns:1fr 1fr; }
+}
+@media (max-width:560px) {
+  .cc-ladder { grid-template-columns:1fr 1fr; }
+  .cc-steps { grid-template-columns:1fr; }
+  .cc-price__wert { font-size:32px; }
+  .cc-saeule__head h2 { font-size:28px; }
+}
+
+/* ---------- Mobile-Korrekturen (kein seitliches Scrollen) ---------- */
+.cc-grid > * { min-width:0; }
+@media (max-width:900px) {
+  .cc-grid--2 { grid-template-columns:1fr; }
+}
+@media (max-width:560px) {
+  .cc-grid--4 { grid-template-columns:1fr 1fr; gap:12px; }
+  .cc-grid--4 .cc-card { padding:18px 12px; }
+  .cc-foot__cols { grid-template-columns:1fr 1fr; }
+  .cc-foot__cols > div { min-width:0; overflow-wrap:anywhere; }
+}

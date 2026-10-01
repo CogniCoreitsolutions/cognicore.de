@@ -1,5 +1,6 @@
 ---
 import Base from '../layouts/Base.astro';
+import Preisleiter from '../components/Preisleiter.astro';
 
 const ic = {
   rocket: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/><path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"/><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/></svg>',
@@ -13,12 +14,12 @@ const ic = {
 };
 
 const services = [
-  { n: '01', tone: 'navy', ic: ic.rocket, id: 'hubspot', title: 'HubSpot Onboarding', copy: 'Von der Zieldefinition über das Datenmodell bis zum produktiven Go-Live — sauber aufgesetzt statt zusammengeklickt.', bullets: ['Datenmodell, Pipelines & Properties', 'Migration aus Salesforce, Pipedrive, Excel', 'Team-Enablement & strukturierter Go-Live'] },
-  { n: '02', tone: 'orange', ic: ic.refresh, id: 'optimierung', title: 'Begleitung & Optimierung', copy: 'Laufende Weiterentwicklung Ihres Portals — proaktiv, mitdenkend, mit festen Ansprechpartnern.', bullets: ['Workflows, Automatisierung & Playbooks', 'Reporting & Dashboards', 'Regelmäßige Reviews statt Ticket-Warteschleife'] },
-  { n: '03', tone: 'green', ic: ic.branch, id: 'integration', title: 'Prozess- & API-Integration', copy: 'HubSpot als Schaltzentrale — verbunden mit Ihrer Systemlandschaft, sauber und wartbar.', bullets: ['ERP, DATEV, SAP, Abrechnung', 'Make, n8n, Zapier & Custom-APIs', 'Sync-Richtung, Auth & Monitoring definiert'] },
-  { n: '04', tone: 'navy', ic: ic.search, id: 'audit', title: 'CRM-Audit & Health-Check', copy: 'Bestehendes HubSpot wieder in Form bringen — strukturiert, dokumentiert, mit Maßnahmenplan.', bullets: ['Datenqualität & Hygiene', 'Architektur- & Lizenz-Review', 'Konkreter Fahrplan zur Behebung'] },
-  { n: '05', tone: 'orange', ic: ic.cap, id: 'enablement', title: 'Enablement & Schulung', copy: 'Damit Ihr Team mit dem System arbeitet — nicht daneben. Vor Ort oder remote.', bullets: ['Admin-Coaching', 'Sales- & Service-Trainings', 'Adoption-Tracking'] },
-  { n: '06', tone: 'green', ic: ic.server, id: 'it', title: 'IT-Projekte & Managed IT', copy: 'Und mehr als HubSpot: Solution Design, Datenintegration und der IT-Betrieb dahinter — für den Mittelstand.', bullets: ['Microsoft 365, Security & Compliance', 'Managed IT im Satelliten-Modell', 'IT-Systemanalyse & Automatisierung'] },
+  { n: '01', tone: 'navy', id: 'hubspot', title: 'HubSpot', copy: 'Einführung, Audit, Individualentwicklung und feste Betreuung Ihres Portals.', bullets: ['Einführung und Migration', 'HubSpot-Audit', 'HubSpot Managed Service'], href: '/leistungen#hubspot' },
+  { n: '02', tone: 'orange', id: 'daten', title: 'Daten und Integration', copy: 'HubSpot verbunden mit ERP, Buchhaltung und Microsoft 365, sauber und überwacht.', bullets: ['Schnittstellen und Betrieb', 'HubSpot und Microsoft 365', 'Datenbereinigung'], href: '/leistungen#daten' },
+  { n: '03', tone: 'green', id: 'microsoft', title: 'Microsoft 365 und IT-Betrieb', copy: 'Die IT hinter dem CRM: Microsoft 365, Geräte und Sicherheit im Servicevertrag.', bullets: ['Betrieb von Microsoft 365', 'Lizenzen, Mail-Security, Backup', 'HubSpot-M365-Integrations-Check'], href: '/leistungen#microsoft' },
+  { n: '04', tone: 'navy', id: 'ki', title: 'KI', copy: 'KI dort einsetzen, wo Ihre Daten liegen: in HubSpot und Microsoft 365.', bullets: ['KI-Audit mit Pilot', 'KI-Agenten in HubSpot', 'Copilot und HubSpot'], href: '/leistungen#ki' },
+  { n: '05', tone: 'orange', id: 'loesungen', title: 'Eigene Software', copy: 'Anwendungen, wenn der Standard Ihren Fall nicht wirtschaftlich abdeckt.', bullets: ['BP Docs für HubSpot-Portale', 'PLZ-Lookup-App im Marketplace', 'Anwendungen für Kunden'], href: '/loesungen' },
+  { n: '06', tone: 'green', id: 'msp', title: 'Für IT-Dienstleister', copy: 'HubSpot vorkonfiguriert für Serviceverträge, Verlängerungen und PSA-Anbindung.', bullets: ['Pipelines für Projekt und Vertrag', 'Verträge als eigenes Objekt', 'Berichte zu wiederkehrendem Umsatz'], href: '/branchen/it-dienstleister' },
 ];
 
 const steps = [
@@ -30,10 +31,10 @@ const steps = [
 ];
 
 const proof = [
+  { num: '43', label: 'Projekte seit Juni 2024' },
+  { num: '11', label: 'HubSpot-Kunden seit 2024' },
+  { num: '8', label: 'eigene Anwendungen seit April 2026' },
   { num: '12', label: 'HubSpot-Zertifizierungen' },
-  { num: '10+', label: 'Jahre HubSpot-Erfahrung der Gründer' },
-  { num: '1', label: 'eigene App im HubSpot Marketplace' },
-  { num: '3', label: 'Säulen: HubSpot · IT-Projekte · Managed IT' },
 ];
 
 const team = [
@@ -59,7 +60,7 @@ const team = [
           <a class="cc-btn cc-btn--accent" href="/kontakt#termin">Erstgespräch vereinbaren</a>
           <a class="cc-btn cc-btn--ghost-light" href="/leistungen">Leistungen ansehen</a>
         </div>
-        <div class="cc-hero-photo__proof"><b>Michael Lohmar &amp; Dominik Siegers</b> · Gründer · Offizieller HubSpot Solutions Partner · 12 Zertifizierungen · Mediapark Köln</div>
+        <div class="cc-hero-photo__proof"><b>Offizieller HubSpot Solutions Partner</b> · 16 Kunden seit Juni 2024, 11 davon auf HubSpot · 43 Projekte · Mediapark Köln</div>
       </div>
     </div>
   </section>
@@ -86,13 +87,13 @@ const team = [
         <span class="cc-card__ic" set:html={ic.rocket} />
         <h3>Sie planen den HubSpot-Einstieg</h3>
         <p>Wir setzen HubSpot von Grund auf richtig auf — Zielbild, Datenmodell, Migration und ein Go-Live, der im Alltag trägt.</p>
-        <a class="cc-card__link" href="/leistungen#hubspot">Onboarding ansehen →</a>
+        <a class="cc-card__link" href="/leistungen/hubspot-einfuehrung">Einführung ansehen →</a>
       </article>
       <article class="cc-card cc-card--orange">
         <span class="cc-card__ic" set:html={ic.refresh} />
         <h3>Sie nutzen HubSpot schon</h3>
         <p>Wir bringen ein bestehendes Portal in Form: Audit, Optimierung, Automatisierung und Integrationen — oder ein schneller Reifegrad-Check.</p>
-        <a class="cc-card__link" href="/leistungen#optimierung">Optimierung &amp; Audit →</a>
+        <a class="cc-card__link" href="/leistungen/hubspot-audit">HubSpot-Audit ansehen →</a>
       </article>
     </div>
   </section>
@@ -102,7 +103,7 @@ const team = [
     <div class="cc-section__head cc-reveal">
       <div class="cc-eyebrow">// Leistungen</div>
       <h2>Von der Einführung bis zum laufenden Betrieb.</h2>
-      <p class="cc-section__sub">Sechs Bausteine, die aufeinander aufbauen — HubSpot-first, mit der IT-Tiefe dahinter, wenn Sie sie brauchen.</p>
+      <p class="cc-section__sub">HubSpot steht im Zentrum. Dazu kommen die Systeme drumherum, der Betrieb von Microsoft 365, KI und eigene Software.</p>
     </div>
     <div class="cc-grid cc-grid--3 cc-reveal">
       {services.map((s) => (
@@ -111,11 +112,14 @@ const team = [
           <h3>{s.title}</h3>
           <p>{s.copy}</p>
           <ul>{s.bullets.map((b) => <li>{b}</li>)}</ul>
-          <a class="cc-card__link" href="/leistungen">Mehr erfahren →</a>
+          <a class="cc-card__link" href={s.href}>Mehr erfahren →</a>
         </article>
       ))}
     </div>
   </section>
+
+  <!-- ===================== PREISLEITER ===================== -->
+  <Preisleiter surface />
 
   <!-- ===================== VORGEHEN ===================== -->
   <section class="cc-section cc-section--surface" id="vorgehen">
@@ -150,6 +154,7 @@ const team = [
           <div class="cc-stat"><div class="cc-stat__num">{s.num}</div><div class="cc-stat__label">{s.label}</div></div>
         ))}
       </div>
+      <p class="cc-reveal" style="margin:28px 0 0; font-size:13px; color:var(--cc-blue-300)">Stand September 2026. Kunden und Projekte mit abgerechneten Leistungen laut eigener Zeiterfassung, eine Unternehmensgruppe zählt einmal.</p>
     </div>
   </section>
 
@@ -166,7 +171,7 @@ const team = [
           <li set:html={ic.check + ' Und: Diese Website und unser eigener Betrieb laufen auf demselben Stack'} />
         </ul>
         <div style="display:flex; gap:12px; flex-wrap:wrap; margin-top:20px">
-          <a class="cc-btn cc-btn--primary" href="/leistungen#integration">Integration &amp; APIs ansehen</a>
+          <a class="cc-btn cc-btn--primary" href="/loesungen">Unsere Lösungen ansehen</a>
           <a class="cc-btn cc-btn--ghost" href="https://ecosystem.hubspot.com/de/marketplace/solutions/cognicore" target="_blank" rel="noopener">Im HubSpot-Verzeichnis ansehen ↗</a>
         </div>
       </div>
@@ -222,10 +227,11 @@ const team = [
         <label>Worum geht es?
           <select name="topic">
             <option>HubSpot Einführung / Onboarding</option>
-            <option>Optimierung &amp; Automatisierung</option>
-            <option>Prozess- &amp; API-Integration</option>
-            <option>CRM-Audit / Health-Check</option>
-            <option>IT-Projekte &amp; Managed IT</option>
+            <option>HubSpot-Audit / Managed Service</option>
+            <option>Schnittstellen &amp; Integration</option>
+            <option>Microsoft 365 &amp; IT-Betrieb</option>
+            <option>KI in HubSpot oder Microsoft 365</option>
+            <option>Eigene Anwendung / Software</option>
           </select>
         </label>
         <label>Nachricht<textarea name="message" rows="3" placeholder="Was beschäftigt Sie gerade?"></textarea></label>

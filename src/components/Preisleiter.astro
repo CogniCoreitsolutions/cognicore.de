@@ -1,0 +1,32 @@
+---
+interface Props { surface?: boolean }
+const { surface = false } = Astro.props;
+const steps = [
+  { t: 'Self-Check', p: 'kostenlos', d: 'Ihr HubSpot-Reifegrad in wenigen Minuten.', href: '/kontakt#termin' },
+  { t: 'Gruppen-Onboarding', p: '290 €', d: 'HubSpot-Grundlagen im Live-Webinar.', href: '/leistungen/hubspot-gruppen-onboarding' },
+  { t: 'Integrations-Check', p: '1.250 €', d: 'HubSpot und Microsoft 365 an einem Beratertag geprüft.', href: '/leistungen/integrations-check' },
+  { t: 'HubSpot-Audit', p: 'ab 1.900 €', d: 'Bestehendes Portal mit Maßnahmenplan.', href: '/leistungen/hubspot-audit' },
+  { t: 'Einführung', p: 'ab 4.900 €', d: 'Mit Datenübernahme ab 9.500 €.', href: '/leistungen/hubspot-einfuehrung' },
+  { t: 'Betreuung', p: 'ab 850 € im Monat', d: 'HubSpot Managed Service mit festem Kontingent.', href: '/leistungen/hubspot-managed-service' },
+];
+---
+<section class={`cc-section${surface ? ' cc-section--surface' : ''}`} id="einstieg">
+  <div>
+  <div class="cc-section__head cc-reveal">
+    <div class="cc-eyebrow">// Einstieg</div>
+    <h2>Klein anfangen, dann ausbauen.</h2>
+    <p class="cc-section__sub">Jeder Schritt hat einen festen Preis oder eine feste Untergrenze. Nach jedem Schritt entscheiden Sie, ob es weitergeht.</p>
+  </div>
+  <div class="cc-ladder cc-reveal">
+    {steps.map((s, i) => (
+      <a class="cc-ladder__step" href={s.href}>
+        <span class="cc-ladder__n">{String(i + 1).padStart(2, '0')}</span>
+        <span class="cc-ladder__t">{s.t}</span>
+        <span class="cc-ladder__p">{s.p}</span>
+        <span class="cc-ladder__d">{s.d}</span>
+      </a>
+    ))}
+  </div>
+  <p class="cc-ladder__foot cc-reveal">Alle Preise netto zzgl. USt. Die HubSpot-Lizenzen zahlen Sie direkt an HubSpot.</p>
+  </div>
+</section>

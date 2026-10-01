@@ -1,0 +1,112 @@
+---
+import Base from '../layouts/Base.astro';
+import CtaBand from '../components/CtaBand.astro';
+
+const check = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>';
+
+// Quelle: interne Faktenbasis, Stand 29.09.2026. Kundenanwendungen ohne Namen, Kundenbezug nur mit Freigabe.
+const produkte = [
+  {
+    name: 'BP Docs', meta: 'Live', plan: false,
+    copy: 'Governance- und Audit-Layer für HubSpot-Portale, nur lesend. BP Docs hält täglich fest, was in Ihrem Portal gilt und seit wann, dokumentiert Workflows und ordnet sie den Phasen Ihres Umsatzprozesses zu.',
+    bullets: ['Täglicher Stand mit Änderungen zum Vortag', 'Dokumentation, die nicht an einzelnen Admins hängt', '249 € im Monat je HubSpot-Portal'],
+    link: { href: 'https://docu.cognicore.de', label: 'docu.cognicore.de ↗' },
+  },
+  {
+    name: 'PLZ-Lookup-App', meta: 'Im HubSpot Marketplace', plan: false,
+    copy: 'Reichert Kontakte und Unternehmen in HubSpot automatisch geografisch an, mit Bundesland, Landkreis und Stadt auf Basis offizieller Daten.',
+    bullets: ['Öffentlich im HubSpot Marketplace', 'Arbeitet über die HubSpot-API'],
+    link: { href: 'https://ecosystem.hubspot.com/de/marketplace/solutions/cognicore', label: 'Im HubSpot-Verzeichnis ↗' },
+  },
+  {
+    name: 'MSP OS', meta: 'In Vorbereitung', plan: true,
+    copy: 'Portal für Serviceverträge: Onboarding neuer Kunden, Leistungsnachweis und Abrechnung an einer Stelle. Wir setzen es heute im eigenen IT-Betrieb ein, die Produktversion für andere IT-Dienstleister ist in Arbeit.',
+    bullets: ['Für IT-Dienstleister mit Serviceverträgen', 'Verbindet Vertrag, Leistung und Abrechnung'],
+    link: { href: '/branchen/it-dienstleister', label: 'Für IT-Dienstleister →' },
+  },
+];
+
+const anwendungen = [
+  { name: 'Stammdatenportal', copy: 'Kunden eines Softwareherstellers bestätigen ihre Stammdaten selbst. Der Rücklauf geht direkt nach HubSpot.', status: 'Live seit September 2026' },
+  { name: 'Saleskonfigurator', copy: 'Erstellt Angebote für technische Anlagen und legt sie als Deal und Angebot in HubSpot an.', status: 'An den Kunden übergeben' },
+  { name: 'Assessment-Anwendung', copy: 'Bildet das Assessment-Geschäft eines Beratungshauses digital ab.', status: 'Produktiv' },
+  { name: 'Kompetenz-Mapping', copy: 'Übersetzt Assessment-Ergebnisse in das Kompetenzmodell des jeweiligen Kunden.', status: 'Produktiv' },
+  { name: 'QM-Portal', copy: 'Richtlinien und Prozesse für die gesamte Belegschaft an einem Ort.', status: 'Produktiv' },
+  { name: 'CogniCore OS', copy: 'Unser eigenes Betriebssystem für die Firma, verbunden mit Zeiterfassung, HubSpot, Microsoft 365 und Buchhaltung.', status: 'Live seit Mai 2026' },
+];
+---
+<Base active="loesungen" title="Lösungen: eigene Software und Anwendungen | CogniCore Köln" description="BP Docs, PLZ-Lookup-App und Anwendungen für Kunden, wenn der Standard einen Fall nicht wirtschaftlich abdeckt. Gebaut nach festem Prozess.">
+  <!-- HERO -->
+  <section class="cc-hero">
+    <div class="cc-hero__bg" aria-hidden="true"><img src="/brand/cognicore-icon-white.png" alt="" /></div>
+    <div class="cc-hero__inner" style="grid-template-columns:1fr; padding-bottom:64px">
+      <div class="cc-hero__copy" style="max-width:800px">
+        <div class="cc-eyebrow">// Lösungen</div>
+        <h1 class="cc-hero__title" style="font-size:56px">Software, die wir <em>selbst</em> bauen.</h1>
+        <p class="cc-hero__lede" style="max-width:660px">Wenn der Standard einen Fall nicht wirtschaftlich abdeckt, bauen wir die Anwendung. Seit April 2026 sind so acht Anwendungen entstanden, für Kunden und für uns selbst.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRODUKTE -->
+  <section class="cc-section">
+    <div class="cc-section__head cc-reveal">
+      <div class="cc-eyebrow">// Produkte</div>
+      <h2>Eigene Produkte rund um HubSpot und IT-Betrieb.</h2>
+    </div>
+    <div class="cc-grid cc-grid--3 cc-reveal">
+      {produkte.map((p) => (
+        <article class="cc-card">
+          <span class={`cc-app__meta${p.plan ? ' cc-app__meta--plan' : ''}`}>{p.meta}</span>
+          <h3>{p.name}</h3>
+          <p>{p.copy}</p>
+          <ul class="cc-checks" style="margin-top:4px">{p.bullets.map((b) => <li set:html={check + ' ' + b} style="font-size:14.5px" />)}</ul>
+          <a class="cc-card__link" href={p.link.href} target={p.link.href.startsWith('http') ? '_blank' : undefined} rel={p.link.href.startsWith('http') ? 'noopener' : undefined}>{p.link.label}</a>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <!-- ANWENDUNGEN -->
+  <section class="cc-section cc-section--surface">
+    <div>
+    <div class="cc-section__head cc-reveal">
+      <div class="cc-eyebrow">// Anwendungen</div>
+      <h2>Gebaut für Kunden und für uns selbst.</h2>
+      <p class="cc-section__sub">Eine Auswahl. Kundennamen nennen wir nur mit Freigabe.</p>
+    </div>
+    <div class="cc-grid cc-grid--3 cc-reveal">
+      {anwendungen.map((a) => (
+        <article class="cc-card">
+          <span class="cc-app__meta">{a.status}</span>
+          <h3>{a.name}</h3>
+          <p>{a.copy}</p>
+        </article>
+      ))}
+    </div>
+    </div>
+  </section>
+
+  <!-- SO BAUEN WIR -->
+  <section class="cc-section">
+    <div class="cc-split cc-reveal" style="align-items:start">
+      <div class="cc-split__body">
+        <div class="cc-eyebrow">// So bauen wir</div>
+        <h2 style="font-size:34px; color:var(--cc-blue); margin-top:8px">Nach festen Regeln, mit KI als Werkzeug.</h2>
+        <p style="font-size:16.5px">Wir entwickeln mit Claude Code nach einem festen Prozess, mit Versionsverwaltung, automatischen Deployments und Dokumentation. Das macht uns schnell, ohne dass am Ende niemand mehr versteht, was gebaut wurde.</p>
+        <p style="font-size:16.5px">Für Sie heißt das: Sie entscheiden an einer lauffähigen ersten Version, ob es weitergeht.</p>
+      </div>
+      <div class="cc-card" style="padding:30px">
+        <div class="cc-eyebrow">// Wann eine eigene Anwendung sinnvoll ist</div>
+        <ul class="cc-checks" style="margin-top:6px">
+          <li set:html={check + ' Der Prozess ist ein Wettbewerbsvorteil und passt in keine Standardsoftware'} />
+          <li set:html={check + ' Daten aus mehreren Systemen müssen an einer Stelle zusammenkommen'} />
+          <li set:html={check + ' Kunden oder Partner sollen selbst Daten liefern oder bestätigen'} />
+        </ul>
+        <a class="cc-card__link" href="/leistungen/hubspot-entwicklung">Individualentwicklung in HubSpot →</a>
+      </div>
+    </div>
+  </section>
+
+  <CtaBand title="Lassen Sie uns über Ihre" em="Anwendung" />
+</Base>
