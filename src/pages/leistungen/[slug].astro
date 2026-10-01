@@ -81,7 +81,7 @@ const serviceSchema = {
   {l.termine && l.termine.length > 0 && (
     <section class="cc-section" id="termine">
       <div class="cc-section__head cc-reveal">
-        <div class="cc-eyebrow">// Termine</div>
+        <div class="cc-eyebrow">Termine</div>
         <h2>Termin wählen und buchen.</h2>
         <p class="cc-section__sub">{l.preis.wert} netto {l.preis.einheit}, online über {ort}.</p>
       </div>
@@ -121,11 +121,11 @@ const serviceSchema = {
   <section class="cc-section">
     <div class="cc-split cc-reveal" style="align-items:start">
       <div class="cc-split__body">
-        <div class="cc-eyebrow">// Worum es geht</div>
+        <div class="cc-eyebrow">Worum es geht</div>
         {l.kontext.map((p, i) => <p style={i === 0 ? 'font-size:19px; color:var(--cc-blue); margin-top:12px' : 'font-size:16.5px'}>{p}</p>)}
       </div>
-      <div class="cc-card" style="padding:30px">
-        <div class="cc-eyebrow">// Für wen</div>
+      <div class="cc-card">
+        <div class="cc-eyebrow">Für wen</div>
         <ul class="cc-checks" style="margin-top:6px">{l.fuerWen.map((b) => <li set:html={check + ' ' + b} />)}</ul>
       </div>
     </div>
@@ -135,7 +135,7 @@ const serviceSchema = {
   <section class="cc-section cc-section--surface">
     <div>
     <div class="cc-section__head cc-reveal">
-      <div class="cc-eyebrow">// Ablauf</div>
+      <div class="cc-eyebrow">Ablauf</div>
       <h2>So gehen wir vor.</h2>
     </div>
     <div class="cc-steps cc-reveal">
@@ -154,12 +154,12 @@ const serviceSchema = {
   <section class="cc-section" id="preis">
     <div class="cc-grid cc-grid--2 cc-reveal" style="align-items:start; gap:40px">
       <div>
-        <div class="cc-eyebrow">// Ergebnis</div>
+        <div class="cc-eyebrow">Ergebnis</div>
         <h2 style="font-size:34px; color:var(--cc-blue); margin-top:8px">Was Sie bekommen.</h2>
         <ul class="cc-checks">{l.ergebnis.map((b) => <li set:html={check + ' ' + b} />)}</ul>
       </div>
       <div class="cc-price">
-        <div class="cc-eyebrow cc-eyebrow--on-dark">// Preis</div>
+        <div class="cc-eyebrow cc-eyebrow--on-dark">Preis</div>
         <p class="cc-price__wert">{l.preis.wert}</p>
         {l.preis.einheit && <p class="cc-price__einheit">{l.preis.einheit}</p>}
         {l.preis.hinweis && <p class="cc-price__hinweis">{l.preis.hinweis}</p>}
@@ -176,7 +176,7 @@ const serviceSchema = {
     <>
       <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
       <section class="cc-section cc-section--surface">
-        <div class="cc-section__head center cc-reveal"><div class="cc-eyebrow">// FAQ</div><h2>Häufige Fragen.</h2></div>
+        <div class="cc-section__head center cc-reveal"><div class="cc-eyebrow">FAQ</div><h2>Häufige Fragen.</h2></div>
         <div class="cc-legal" style="max-width:840px">
           {l.faq.map((f) => (
             <details style="border-bottom:1px solid var(--cc-line)">
@@ -192,7 +192,7 @@ const serviceSchema = {
   <!-- PASST DAZU -->
   <section class="cc-section">
     <div class="cc-section__head cc-reveal">
-      <div class="cc-eyebrow">// Passt dazu</div>
+      <div class="cc-eyebrow">Passt dazu</div>
       <h2>Was oft zusammen gebraucht wird.</h2>
     </div>
     <div class="cc-grid cc-grid--3 cc-reveal">

@@ -1,259 +1,155 @@
 ---
 import Base from '../layouts/Base.astro';
 import Preisleiter from '../components/Preisleiter.astro';
+import CtaBand from '../components/CtaBand.astro';
+import { bySlug } from '../data/leistungen';
 
-const ic = {
-  rocket: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/><path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"/><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/></svg>',
-  refresh: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"/><path d="M8 16H3v5"/></svg>',
-  branch: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><line x1="6" x2="6" y1="3" y2="15"/><circle cx="18" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M18 9a9 9 0 0 1-9 9"/></svg>',
-  search: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/><path d="m8 11 2 2 4-4"/></svg>',
-  cap: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>',
-  server: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="8" x="2" y="2" rx="2"/><rect width="20" height="8" x="2" y="14" rx="2"/><path d="M6 6h.01M6 18h.01"/></svg>',
-  check: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>',
-  arrow: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>',
-};
-
-const services = [
-  { n: '01', tone: 'navy', id: 'hubspot', title: 'HubSpot', copy: 'Einführung, Audit, Individualentwicklung und feste Betreuung Ihres Portals.', bullets: ['Einführung und Migration', 'HubSpot-Audit', 'HubSpot Managed Service'], href: '/leistungen#hubspot' },
-  { n: '02', tone: 'orange', id: 'daten', title: 'Daten und Integration', copy: 'HubSpot verbunden mit ERP, Buchhaltung und Microsoft 365, sauber und überwacht.', bullets: ['Schnittstellen und Betrieb', 'HubSpot und Microsoft 365', 'Datenbereinigung'], href: '/leistungen#daten' },
-  { n: '03', tone: 'green', id: 'microsoft', title: 'Microsoft 365 und IT-Betrieb', copy: 'Die IT hinter dem CRM: Microsoft 365, Geräte und Sicherheit im Servicevertrag.', bullets: ['Betrieb von Microsoft 365', 'Lizenzen, Mail-Security, Backup', 'HubSpot-M365-Integrations-Check'], href: '/leistungen#microsoft' },
-  { n: '04', tone: 'navy', id: 'ki', title: 'KI', copy: 'KI dort einsetzen, wo Ihre Daten liegen: in HubSpot und Microsoft 365.', bullets: ['KI-Audit mit Pilot', 'KI-Agenten in HubSpot', 'Copilot und HubSpot'], href: '/leistungen#ki' },
-  { n: '05', tone: 'orange', id: 'loesungen', title: 'Eigene Software', copy: 'Anwendungen, wenn der Standard Ihren Fall nicht wirtschaftlich abdeckt.', bullets: ['BP Docs für HubSpot-Portale', 'PLZ-Lookup-App im Marketplace', 'Anwendungen für Kunden'], href: '/loesungen' },
-  { n: '06', tone: 'green', id: 'msp', title: 'Für IT-Dienstleister', copy: 'HubSpot eingerichtet auf Serviceverträge, von einem Partner, der selbst IT-Betrieb macht.', bullets: ['Verträge mit Laufzeit und Kontingent', 'Kontingentverbrauch je Vertrag', 'PSA- und RMM-Anbindung'], href: '/branchen/it-dienstleister' },
+// Startseite in Gestaltung A · Sachlich (Entwurf vom 01.10.2026)
+const saeulen = [
+  { t: 'HubSpot', d: 'Einführung, Migration, Audit, Individualentwicklung und feste Betreuung Ihres Portals.', href: '/leistungen#hubspot' },
+  { t: 'Daten und Integration', d: 'Schnittstellen zu ERP, Buchhaltung und Microsoft 365, die wir nach dem Go-live auch betreiben.', href: '/leistungen#daten' },
+  { t: 'Microsoft 365 und IT-Betrieb', d: 'Microsoft 365, Geräte, Sicherheit und Backup im Servicevertrag mit festen Reaktionszeiten.', href: '/leistungen#microsoft' },
+  { t: 'KI', d: 'KI-Audit mit laufendem Pilot, KI-Agenten in HubSpot und Copilot mit Ihren CRM-Daten.', href: '/leistungen#ki' },
 ];
 
-const steps = [
-  { n: '01', w: 'Woche 1', t: 'Discovery', d: 'Prozesse, Daten, Stakeholder und Ziele aufnehmen.' },
-  { n: '02', w: 'Woche 2–3', t: 'Konzept', d: 'Datenmodell, Pipelines und Module definieren.' },
-  { n: '03', w: 'Woche 4–6', t: 'Build', d: 'Setup, Migration und Integrationen umsetzen.', active: true },
-  { n: '04', w: 'Woche 7', t: 'Enablement', d: 'Schulung und Admin-Coaching für Ihr Team.' },
-  { n: '05', w: 'Woche 8', t: 'Go-Live', d: 'Produktivstart mit Hypercare und Reporting.' },
+const fakten = [
+  { n: '16', l: 'Kunden seit Juni 2024' },
+  { n: '11', l: 'davon arbeiten mit HubSpot' },
+  { n: '43', l: 'Projekte abgerechnet' },
+  { n: '8', l: 'eigene Anwendungen seit April 2026' },
 ];
 
-const proof = [
-  { num: '43', label: 'Projekte seit Juni 2024' },
-  { num: '11', label: 'HubSpot-Kunden seit 2024' },
-  { num: '8', label: 'eigene Anwendungen seit April 2026' },
-  { num: '12', label: 'HubSpot-Zertifizierungen' },
+// Termine kommen aus derselben Quelle wie die Buchungsseite
+const wochentage = ['Sonntag', 'Montag', 'Dienstag', 'Mittwoch', 'Donnerstag', 'Freitag', 'Samstag'];
+const heute = new Date().toISOString().slice(0, 10);
+const termine = (bySlug('hubspot-gruppen-onboarding')?.termine ?? [])
+  .filter((t) => t.datum >= heute)
+  .map((t) => {
+    const [y, m, d] = t.datum.split('-');
+    return { ...t, tag: wochentage[new Date(Date.UTC(+y, +m - 1, +d)).getUTCDay()], anzeige: `${d}.${m}.${y}` };
+  });
+
+const itPunkte = [
+  'Der Vertrag als eigenes Objekt',
+  'Kontingentverbrauch je Vertrag',
+  'PSA und RMM am Kunden',
+  'Eingerichtet von einem IT-Dienstleister',
 ];
 
 const team = [
-  { name: 'Dominik Siegers', role: 'Gründer & Geschäftsführer', img: '/img/team-dominik.jpg' },
-  { name: 'Michael Lohmar', role: 'Gründer & Geschäftsführer', img: '/img/team-michael.jpg' },
-  { name: 'Rafael', role: 'Consultant', img: '/img/team-rafael.jpg' },
-  { name: 'Adrian', role: 'Junior Consultant', img: '/img/team-adrian.jpg' },
+  { name: 'Dominik Siegers', role: 'Geschäftsführung, Vertrieb, INQA-Coach', img: '/img/team-dominik.jpg' },
+  { name: 'Rafael Garoz Garcia', role: 'HubSpot- und RevOps-Beratung', img: '/img/team-rafael.jpg' },
+  { name: 'Adrian Geiss', role: 'Technik und Entwicklung', img: '/img/team-adrian.jpg' },
+  { name: 'Arijan Vossough', role: 'Support und Managed Services', initials: 'AV' },
 ];
 ---
-<Base active="start">
-  <!-- ===================== HERO (Editorial, Foto-getragen) ===================== -->
-  <section class="cc-hero-photo" id="top">
-    <div class="cc-hero-photo__bg" aria-hidden="true"><img src="/img/founder-hero.jpg" alt="Michael Lohmar und Dominik Siegers, Gründer von CogniCore, im Büro im Mediapark Köln" /></div>
-    <div class="cc-hero-photo__inner">
-      <div class="cc-hero-photo__copy">
-        <div class="cc-eyebrow">// HubSpot Solutions Partner · Köln</div>
-        <h1 class="cc-hero-photo__title">HubSpot, das <em>skaliert</em> — nicht eskaliert.</h1>
-        <p class="cc-hero-photo__lede">
-          Wir bauen HubSpot bis auf die API-Ebene, vom Datenmodell bis zur Schnittstelle.
-          Von den Leuten, die es selbst umsetzen.
-        </p>
-        <div class="cc-hero-photo__actions">
-          <a class="cc-btn cc-btn--accent" href="/kontakt#termin">Erstgespräch vereinbaren</a>
-          <a class="cc-btn cc-btn--ghost-light" href="/leistungen">Leistungen ansehen</a>
-        </div>
-        <div class="cc-hero-photo__proof"><b>Offizieller HubSpot Solutions Partner</b> · 16 Kunden seit Juni 2024, 11 davon auf HubSpot · 43 Projekte · Mediapark Köln</div>
+<Base active="start" title="HubSpot-Partner für den Microsoft-geprägten Mittelstand | CogniCore Köln" description="CogniCore führt HubSpot ein, verbindet es mit Ihren Systemen und betreibt die Microsoft-Umgebung dahinter. HubSpot Solutions Partner aus dem Mediapark Köln, Preise vorab.">
+
+  <!-- Seitenkopf -->
+  <section class="cc-wrap cc-a-hero">
+    <div class="cc-a-hero__copy">
+      <p class="cc-a-kicker">CogniCore IT Solutions, Mediapark Köln</p>
+      <h1>HubSpot für den Mittelstand, der mit Microsoft arbeitet.</h1>
+      <p class="cc-a-lede">Wir führen HubSpot ein, verbinden es mit Ihren Systemen und betreiben die Microsoft-Umgebung dahinter. Wir sind vier Leute in Köln, und unsere Preise stehen vorher fest.</p>
+      <div class="cc-a-actions">
+        <a class="cc-btn cc-btn--accent" href="/kontakt#termin">Erstgespräch vereinbaren</a>
+        <a class="cc-a-link" href="#einstieg">Preise ansehen</a>
       </div>
     </div>
+    <figure class="cc-a-figure">
+      <img src="/img/card-integration.jpg" alt="Dominik Siegers am Laptop im Besprechungsraum" width="1100" height="834" />
+      <figcaption>Dominik Siegers, Geschäftsführer, im Büro im Mediapark.</figcaption>
+    </figure>
   </section>
 
-  <!-- ===================== HALTUNG (Gründer-Statement) ===================== -->
-  <section class="cc-section cc-section--beige">
-    <div class="cc-quote cc-reveal">
-      <div class="cc-quote__slash">//</div>
-      <blockquote>Wir bauen Systeme, die die Prozesse abbilden, die es im Haus schon gibt. HubSpot ist dabei das Mittel, nicht das Ziel.</blockquote>
-      <div class="cc-quote__who">
-        <div style="display:flex">
-          <img src="/img/team-michael.jpg" alt="Michael Lohmar" width="48" height="48" style="width:48px; height:48px; border-radius:999px; object-fit:cover; border:2px solid var(--cc-beige)" />
-          <img src="/img/team-dominik.jpg" alt="Dominik Siegers" width="48" height="48" style="width:48px; height:48px; border-radius:999px; object-fit:cover; border:2px solid var(--cc-beige); margin-left:-14px" />
-        </div>
-        <div><b>Michael Lohmar &amp; Dominik Siegers</b><span>Gründer &amp; Geschäftsführer, CogniCore</span></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===================== ZWEI EINSTIEGSPFADE ===================== -->
-  <section class="cc-section">
-    <div class="cc-grid cc-grid--2 cc-reveal">
-      <article class="cc-card">
-        <span class="cc-card__ic" set:html={ic.rocket} />
-        <h3>Sie planen den HubSpot-Einstieg</h3>
-        <p>Wir setzen HubSpot von Grund auf richtig auf — Zielbild, Datenmodell, Migration und ein Go-Live, der im Alltag trägt.</p>
-        <a class="cc-card__link" href="/leistungen/hubspot-einfuehrung">Einführung ansehen →</a>
-      </article>
-      <article class="cc-card cc-card--orange">
-        <span class="cc-card__ic" set:html={ic.refresh} />
-        <h3>Sie nutzen HubSpot schon</h3>
-        <p>Wir bringen ein bestehendes Portal in Form: Audit, Optimierung, Automatisierung und Integrationen — oder ein schneller Reifegrad-Check.</p>
-        <a class="cc-card__link" href="/leistungen/hubspot-audit">HubSpot-Audit ansehen →</a>
-      </article>
-    </div>
-  </section>
-
-  <!-- ===================== LEISTUNGEN ===================== -->
-  <section class="cc-section" id="leistungen">
-    <div class="cc-section__head cc-reveal">
-      <div class="cc-eyebrow">// Leistungen</div>
-      <h2>Von der Einführung bis zum laufenden Betrieb.</h2>
-      <p class="cc-section__sub">HubSpot steht im Zentrum. Dazu kommen die Systeme drumherum, der Betrieb von Microsoft 365, KI und eigene Software.</p>
-    </div>
-    <div class="cc-grid cc-grid--3 cc-reveal">
-      {services.map((s) => (
-        <article class={`cc-card cc-card--${s.tone}`} id={s.id}>
-          <div class="cc-card__num">{s.n}</div>
-          <h3>{s.title}</h3>
-          <p>{s.copy}</p>
-          <ul>{s.bullets.map((b) => <li>{b}</li>)}</ul>
-          <a class="cc-card__link" href={s.href}>Mehr erfahren →</a>
-        </article>
+  <!-- Fakten -->
+  <section class="cc-a-facts">
+    <div class="cc-wrap cc-a-facts__grid">
+      {fakten.map((f) => (
+        <div><span class="cc-a-facts__num">{f.n}</span><span class="cc-a-facts__label">{f.l}</span></div>
       ))}
     </div>
+    <p class="cc-wrap cc-a-facts__note">Stand September 2026, aus unserer Zeiterfassung. Eine Unternehmensgruppe zählt einmal.</p>
   </section>
 
-  <!-- ===================== PREISLEITER ===================== -->
-  <Preisleiter surface />
-
-  <!-- ===================== VORGEHEN ===================== -->
-  <section class="cc-section cc-section--surface" id="vorgehen">
-    <div class="cc-section__head cc-reveal">
-      <div class="cc-eyebrow">// Vorgehen</div>
-      <h2>Vom Kick-off zum Go-Live in fünf Etappen.</h2>
-      <p class="cc-section__sub">Ein nachvollziehbarer Ablauf mit definierten Deliverables je Phase. Sie sehen nach jeder Etappe, was fertig ist.</p>
-    </div>
-    <div class="cc-process cc-reveal">
-      <div class="cc-process__line" aria-hidden="true"></div>
-      {steps.map((s) => (
-        <div class={`cc-process__step${s.active ? ' is-active' : ''}`}>
-          <div class="cc-process__dot">{s.n}</div>
-          <div class="cc-process__week">{s.w}</div>
-          <h3>{s.t}</h3>
-          <p>{s.d}</p>
-        </div>
-      ))}
-    </div>
-  </section>
-
-  <!-- ===================== PROOF-BAND (echte Belege) ===================== -->
-  <section class="cc-stats">
-    <div class="cc-stats__bg" aria-hidden="true"><img src="/brand/cognicore-icon-white.png" alt="" /></div>
-    <div class="cc-stats__inner">
-      <div class="cc-stats__head cc-reveal">
-        <div class="cc-eyebrow cc-eyebrow--on-dark">// Zum Nachprüfen</div>
-        <h2>Was Sie nachprüfen können.</h2>
-      </div>
-      <div class="cc-stats__grid cc-reveal">
-        {proof.map((s) => (
-          <div class="cc-stat"><div class="cc-stat__num">{s.num}</div><div class="cc-stat__label">{s.label}</div></div>
+  <!-- 1 Leistungen -->
+  <section class="cc-wrap cc-a-sec" id="leistungen">
+    <p class="cc-a-sec__label">1 Leistungen</p>
+    <div class="cc-a-sec__body">
+      <h2 style="margin-bottom:32px">Vier Bereiche, ein Team.</h2>
+      <div class="cc-a-rows">
+        {saeulen.map((s) => (
+          <a class="cc-a-row" href={s.href}>
+            <span class="cc-a-row__title">{s.t}</span>
+            <span class="cc-a-row__text">{s.d}</span>
+          </a>
         ))}
       </div>
-      <p class="cc-reveal" style="margin:28px 0 0; font-size:13px; color:var(--cc-blue-300)">Stand September 2026. Kunden und Projekte mit abgerechneten Leistungen laut eigener Zeiterfassung, eine Unternehmensgruppe zählt einmal.</p>
+      <p class="cc-a-note" style="font-size:15px">Wenn der Standard Ihren Fall nicht wirtschaftlich abdeckt, bauen wir die Anwendung selbst. <a class="cc-a-link" href="/loesungen">Zu unseren Lösungen</a></p>
     </div>
   </section>
 
-  <!-- ===================== PROOF OF BUILD (Marketplace-App) ===================== -->
-  <section class="cc-section cc-section--beige">
-    <div class="cc-split cc-reveal">
-      <div class="cc-split__body">
-        <div class="cc-eyebrow">// Proof of Build</div>
-        <h2>Unsere App steht öffentlich im HubSpot Marketplace.</h2>
-        <p>Unsere <b>PLZ-Lookup-App</b> steht öffentlich im HubSpot Marketplace: Sie reichert Kontakte und Unternehmen automatisch geografisch an (Bundesland, Landkreis, Stadt) — auf Basis offizieller Daten. Ein Beleg dafür, dass wir HubSpot bis auf API-Ebene beherrschen.</p>
-        <ul class="cc-checks">
-          <li set:html={ic.check + ' Eigene, veröffentlichte HubSpot-Marketplace-App'} />
-          <li set:html={ic.check + ' Automatische Anreicherung via HubSpot-API'} />
-          <li set:html={ic.check + ' Und: Diese Website und unser eigener Betrieb laufen auf demselben Stack'} />
-        </ul>
-        <div style="display:flex; gap:12px; flex-wrap:wrap; margin-top:20px">
-          <a class="cc-btn cc-btn--primary" href="/loesungen">Unsere Lösungen ansehen</a>
-          <a class="cc-btn cc-btn--ghost" href="https://ecosystem.hubspot.com/de/marketplace/solutions/cognicore" target="_blank" rel="noopener">Im HubSpot-Verzeichnis ansehen ↗</a>
-        </div>
+  <!-- 2 Preise -->
+  <Preisleiter nummer="2" />
+
+  <!-- 3 Termine -->
+  <section class="cc-wrap cc-a-sec">
+    <p class="cc-a-sec__label">3 Termine</p>
+    <div class="cc-a-sec__body">
+      <h2>Gruppen-Onboarding, die nächsten Termine.</h2>
+      <p class="cc-a-sec__intro">Jeweils dienstags von 14:00 bis 15:30 über Microsoft Teams, 290 € je Unternehmen.</p>
+      <div class="cc-a-dates">
+        {termine.map((t) => (
+          <div class="cc-a-date" data-datum={t.datum}>
+            <span class="cc-a-date__day">{t.tag}</span>
+            <span class="cc-a-date__date">{t.anzeige}</span>
+            <a class="cc-a-link" href="/leistungen/hubspot-gruppen-onboarding#termine" style="font-size:15px; align-self:flex-start">Jetzt buchen</a>
+          </div>
+        ))}
       </div>
-      <div class="cc-split__media">
-        <img src="/img/card-integration.jpg" alt="CogniCore Team bei der HubSpot-Integration" width="640" height="480" loading="lazy" />
+      <a class="cc-a-link" href="/leistungen/hubspot-gruppen-onboarding#termine" style="margin-top:18px; font-size:15px; align-self:flex-start">Alle Termine</a>
+      <script is:inline>
+        (function () {
+          var d = new Date();
+          var heute = d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0');
+          document.querySelectorAll('.cc-a-date').forEach(function (el) {
+            if (el.getAttribute('data-datum') < heute) el.remove();
+          });
+        })();
+      </script>
+    </div>
+  </section>
+
+  <!-- 4 IT-Dienstleister -->
+  <section class="cc-wrap cc-a-sec">
+    <p class="cc-a-sec__label">4 Für IT-Dienstleister</p>
+    <div class="cc-a-sec__body" style="gap:20px">
+      <h2 style="margin:0">Gebaut für Serviceverträge.</h2>
+      <p class="cc-a-sec__intro" style="margin:0">Wir betreiben selbst Microsoft 365 für Kunden. Deshalb richten wir HubSpot für IT-Dienstleister um Verträge herum ein: Laufzeit, Kontingent und Verlängerung, angebunden an Ihr PSA- oder RMM-System.</p>
+      <ol class="cc-a-list">
+        {itPunkte.map((p, i) => <li><span>{i + 1}</span><span>{p}</span></li>)}
+      </ol>
+      <a class="cc-a-link" href="/branchen/it-dienstleister" style="align-self:flex-start">Das Setup für IT-Dienstleister ansehen</a>
+    </div>
+  </section>
+
+  <!-- 5 Team -->
+  <section class="cc-wrap cc-a-sec" style="padding-bottom:96px">
+    <p class="cc-a-sec__label">5 Team</p>
+    <div class="cc-a-sec__body" style="gap:28px">
+      <h2 style="margin:0">Mit wem Sie arbeiten.</h2>
+      <div class="cc-a-team">
+        {team.map((m) => (
+          <figure>
+            {m.img
+              ? <img src={m.img} alt={m.name} width="240" height="240" loading="lazy" />
+              : <div class="cc-a-team__ph" aria-hidden="true">{m.initials}</div>}
+            <figcaption><b>{m.name}</b><span>{m.role}</span></figcaption>
+          </figure>
+        ))}
       </div>
     </div>
   </section>
 
-  <!-- ===================== SELF-CHECK (Micro-Conversion) ===================== -->
-  <section class="cc-section">
-    <div class="cc-card cc-reveal" style="flex-direction:row; align-items:center; justify-content:space-between; gap:32px; padding:36px 40px; flex-wrap:wrap; background:var(--cc-blue); border-color:transparent;">
-      <div style="max-width:640px">
-        <div class="cc-eyebrow cc-eyebrow--on-dark">// Kostenloser Self-Check</div>
-        <h3 style="color:#fff; font-size:26px; margin:8px 0 6px">Testen Sie in wenigen Minuten Ihren HubSpot-Reifegrad.</h3>
-        <p style="color:var(--cc-blue-100); margin:0">Ohne Termin und ohne Verkaufsdruck. Dauert ein paar Minuten.</p>
-      </div>
-      <a class="cc-btn cc-btn--accent" href="/kontakt#termin">Self-Check anfragen</a>
-    </div>
-  </section>
-
-  <!-- ===================== TEAM-TEASER ===================== -->
-  <section class="cc-section cc-section--surface">
-    <div class="cc-section__head cc-reveal">
-      <div class="cc-eyebrow">// Team</div>
-      <h2>Die Köpfe, mit denen Sie arbeiten.</h2>
-      <p class="cc-section__sub">Techniker und Berater in einem, mit festen Ansprechpartnern und Hauptsitz im Mediapark Köln.</p>
-    </div>
-    <div class="cc-grid cc-grid--4 cc-reveal">
-      {team.map((m) => (
-        <figure class="cc-card" style="align-items:center; text-align:center; gap:14px">
-          <img src={m.img} alt={m.name} width="120" height="120" loading="lazy" style="width:104px; height:104px; border-radius:999px; object-fit:cover" />
-          <figcaption><b style="display:block; color:var(--cc-blue); font-weight:700">{m.name}</b><span style="color:var(--cc-orange-ink); font-size:13px; font-weight:600">{m.role}</span></figcaption>
-        </figure>
-      ))}
-    </div>
-    <div style="margin-top:28px"><a class="cc-textlink" href="/ueber-uns">Das ganze Team &amp; unsere Zertifizierungen →</a></div>
-  </section>
-
-  <!-- ===================== KONTAKT-BAND ===================== -->
-  <section class="cc-contact" id="termin">
-    <div class="cc-contact__left">
-      <div class="cc-eyebrow cc-eyebrow--on-dark">// Sprechen wir</div>
-      <h2>Ein <em>Erstgespräch</em>, das Klarheit bringt.</h2>
-      <p>30 Minuten. Wir schauen ins System und sagen Ihnen, ob wir helfen können.</p>
-      <!-- TODO: HubSpot Forms API (Portal 144804770, EU) + Meetings-Embed -->
-      <form class="cc-form" method="post" action="#">
-        <div class="cc-form__row">
-          <label>Name<input type="text" name="name" placeholder="Vor- und Nachname" required /></label>
-          <label>Firma<input type="text" name="company" placeholder="Unternehmen" /></label>
-        </div>
-        <label>E-Mail<input type="email" name="email" placeholder="name@firma.de" required /></label>
-        <label>Worum geht es?
-          <select name="topic">
-            <option>HubSpot Einführung / Onboarding</option>
-            <option>HubSpot-Audit / Managed Service</option>
-            <option>Schnittstellen &amp; Integration</option>
-            <option>Microsoft 365 &amp; IT-Betrieb</option>
-            <option>KI in HubSpot oder Microsoft 365</option>
-            <option>Eigene Anwendung / Software</option>
-          </select>
-        </label>
-        <label>Nachricht<textarea name="message" rows="3" placeholder="Was beschäftigt Sie gerade?"></textarea></label>
-        <label style="flex-direction:row; align-items:flex-start; gap:10px; text-transform:none; letter-spacing:0; font-size:12px; color:var(--cc-blue-100)">
-          <input type="checkbox" name="consent" required style="width:auto; margin-top:2px" />
-          <span>Ich bin einverstanden, dass CogniCore meine Angaben zur Bearbeitung meiner Anfrage verarbeitet. Mehr in der <a href="/datenschutz" style="color:#fff">Datenschutzerklärung</a>.</span>
-        </label>
-        <button type="submit" class="cc-btn cc-btn--accent cc-btn--block">Anfrage senden</button>
-        <small>Wir antworten werktags in der Regel innerhalb von 24 Stunden.</small>
-      </form>
-    </div>
-    <aside class="cc-contact__right">
-      <div class="cc-contact__card">
-        <img src="/brand/cognicore-icon-white-orange.png" alt="" />
-        <h3>Ihr Ansprechpartner</h3>
-        <dl>
-          <dt>Kontakt</dt><dd>Dominik Siegers<br/>Geschäftsführer</dd>
-          <dt>Telefon</dt><dd><a href="tel:+4922165053000">+49 221 6505 3000</a></dd>
-          <dt>E-Mail</dt><dd><a href="mailto:info@cognicore.de">info@cognicore.de</a></dd>
-          <dt>Büro</dt><dd>Im Mediapark 6B<br/>50670 Köln</dd>
-        </dl>
-      </div>
-    </aside>
-  </section>
+  <CtaBand eyebrow="Nächster Schritt" text="30 Minuten. Wir schauen gemeinsam auf Ihr System und sagen Ihnen ehrlich, ob und wie wir helfen können." />
 </Base>

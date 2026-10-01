@@ -462,3 +462,149 @@ a { color:inherit; text-decoration:none; }
 .cc-termin__zeit { font-size:14.5px; color:var(--cc-fg-2); }
 .cc-termin .cc-btn { margin-top:14px; align-self:flex-start; }
 .cc-termine__leer { margin:8px 0 0; color:var(--cc-fg-2); }
+
+/* ============================================================
+   Gestaltung A · Sachlich (seit 10/2026)
+   Warmes Weiß, feine Linien statt Kästen, ruhige Typografie,
+   Orange nur als Markierung. Das //-Motiv wird nicht mehr genutzt.
+   ============================================================ */
+:root { --cc-ground:#F7F6F2; --cc-rule:#D9DCE3; --cc-ink-2:#3A4763; --cc-ink-3:#4A556B; }
+body { background:var(--cc-ground); font-size:17px; line-height:1.6; }
+h2 { font-weight:500; }
+h3 { font-weight:600; }
+
+/* Kopf und Menü */
+.cc-nav { background:rgba(247,246,242,.94); border-bottom:1px solid var(--cc-rule); }
+.cc-nav__link.is-active { border-bottom-color:#071B3E; }
+.cc-mega__panel { border-radius:2px; box-shadow:0 12px 32px rgba(7,27,62,.10); }
+.cc-mega__col b { color:var(--cc-ink-3); letter-spacing:.08em; }
+
+/* Buttons: Navy auf Hell, Orange nur auf Dunkel */
+.cc-btn { border-radius:2px; font-size:15px; padding:14px 20px; }
+.cc-btn--accent { background:#071B3E; color:#fff; }
+.cc-btn--accent:hover { background:#0E2A5C; }
+.cc-btn--ghost-light { color:#071B3E; border-color:#C8CFDC; }
+.cc-btn--ghost-light:hover { border-color:#071B3E; background:transparent; }
+.cc-contact .cc-btn--accent { background:#EC6945; color:#071B3E; }
+.cc-contact .cc-btn--accent:hover { background:#F4A287; }
+.cc-contact .cc-btn--ghost-light { color:#fff; border-color:rgba(255,255,255,.45); }
+.cc-contact .cc-btn--ghost-light:hover { border-color:#fff; }
+
+/* Randtitel statt Eyebrow */
+.cc-eyebrow { color:var(--cc-ink-3); font-size:13px; font-weight:700; letter-spacing:.08em; }
+.cc-eyebrow--on-dark { color:#C7D0E2; }
+.cc-hero .cc-eyebrow, .cc-legal-hero .cc-eyebrow { color:var(--cc-ink-3); }
+
+/* Seitenkopf hell */
+.cc-hero { background:var(--cc-ground); color:var(--cc-blue); border-bottom:1px solid var(--cc-rule); }
+.cc-hero__bg { display:none; }
+.cc-hero__inner { padding-top:88px; }
+.cc-hero__title { color:var(--cc-blue); font-weight:500; letter-spacing:-.028em; line-height:1.05; font-size:clamp(38px,5vw,64px) !important; }
+.cc-hero__title em { color:inherit; }
+.cc-hero__lede { color:var(--cc-ink-2); }
+.cc-crumbs { color:var(--cc-ink-3); }
+.cc-crumbs a { color:var(--cc-ink-2); }
+.cc-crumbs a:hover { color:#BE4A24; }
+.cc-legal-hero { background:var(--cc-ground); color:var(--cc-blue); border-bottom:1px solid var(--cc-rule); }
+.cc-legal-hero h1 { color:var(--cc-blue); font-weight:500; letter-spacing:-.02em; }
+.cc-legal-hero p { color:var(--cc-ink-2); }
+
+/* Abschnitte */
+.cc-section--surface { background:#fff; border-top:1px solid var(--cc-rule); border-bottom:1px solid var(--cc-rule); }
+.cc-section--beige { background:var(--cc-ground); }
+.cc-section__head h2 { font-weight:500; letter-spacing:-.02em; font-size:clamp(30px,3.4vw,44px); line-height:1.1; }
+.cc-section__sub { color:var(--cc-ink-2); }
+
+/* Karten werden zu Linien */
+.cc-card { background:transparent; border:0; border-top:1px solid #071B3E; border-radius:0; padding:20px 0 0; box-shadow:none; }
+.cc-card:hover { box-shadow:none; transform:none; }
+.cc-card h3 { font-weight:600; font-size:20px; }
+.cc-card__num, .cc-card--orange .cc-card__num, .cc-card--green .cc-card__num { width:auto; height:auto; background:none; color:#BE4A24; border-radius:0; font-size:14px; font-weight:700; justify-content:flex-start; }
+.cc-card__ic { background:none; width:auto; height:auto; justify-content:flex-start; color:var(--cc-ink-3); }
+.cc-card__link { color:#071B3E; text-decoration:underline; text-decoration-color:#EC6945; text-underline-offset:5px; text-decoration-thickness:2px; }
+.cc-card__link:hover { color:#BE4A24; }
+.cc-checks svg { color:var(--cc-ink-3); width:18px; height:18px; }
+
+/* Ablauf ohne Kreise */
+.cc-process__line { display:none; }
+.cc-process__step { border-top:1px solid #071B3E; padding-top:16px; }
+.cc-process__dot, .cc-process__step.is-active .cc-process__dot { width:auto; height:auto; border:0; background:none; color:#BE4A24; font-size:14px; justify-content:flex-start; }
+
+/* Bilder, Partner, Initialen */
+.cc-split__media img { border-radius:0; }
+.cc-partner { border:0; border-top:1px solid #071B3E; border-radius:0; box-shadow:none; background:transparent; padding:28px 0; }
+.cc-quote__avatar { border-radius:0; background:#E4E2DB; color:var(--cc-ink-3); }
+
+/* Preisbox hell */
+.cc-price { background:#fff; color:#071B3E; border-top:2px solid #071B3E; border-radius:0; }
+.cc-price::before { display:none; }
+.cc-price__wert { color:#071B3E; font-weight:600; }
+.cc-price__einheit, .cc-price__hinweis { color:var(--cc-ink-2); }
+.cc-price__fuss { color:var(--cc-ink-3); }
+.cc-price .cc-eyebrow--on-dark { color:var(--cc-ink-3); }
+
+/* Kontaktband einfarbig */
+.cc-contact__right { background:#071B3E; border-left:1px solid rgba(255,255,255,.14); }
+.cc-contact__right::before { display:none; }
+.cc-contact__card img { display:none; }
+.cc-contact__card dt { color:#C7D0E2; }
+.cc-contact__left h2 { font-weight:500; }
+.cc-contact__left h2 em { color:inherit; }
+@media (max-width:900px) { .cc-contact__right { border-left:0; border-top:1px solid rgba(255,255,255,.14); } }
+
+/* Rechtliches */
+.cc-legal-card { border:0; border-top:1px solid var(--cc-rule); border-radius:0; box-shadow:none; background:transparent; padding:22px 0; }
+.cc-legal-card a { color:#BE4A24; }
+
+/* ---------- Bausteine der Startseite ---------- */
+.cc-wrap { max-width:1200px; margin:0 auto; padding-left:clamp(20px,5vw,64px); padding-right:clamp(20px,5vw,64px); }
+.cc-a-hero { display:flex; flex-wrap:wrap; gap:48px 56px; align-items:end; padding-top:88px; padding-bottom:72px; }
+.cc-a-hero__copy { flex:1.35 1 520px; min-width:min(520px,100%); display:flex; flex-direction:column; gap:28px; }
+.cc-a-hero h1 { margin:0; font-size:clamp(38px,4.6vw,62px); line-height:1.04; letter-spacing:-.028em; font-weight:500; text-wrap:balance; }
+.cc-a-kicker { margin:0; font-size:14px; font-weight:600; color:var(--cc-ink-3); display:flex; align-items:center; gap:10px; }
+.cc-a-kicker::before { content:""; width:8px; height:8px; background:#EC6945; display:inline-block; }
+.cc-a-lede { margin:0; font-size:19px; color:var(--cc-ink-2); max-width:34em; }
+.cc-a-actions { display:flex; gap:28px; align-items:center; flex-wrap:wrap; }
+.cc-a-link { font-weight:600; color:#071B3E; text-decoration:underline; text-decoration-color:#EC6945; text-underline-offset:6px; text-decoration-thickness:2px; }
+.cc-a-link:hover { color:#BE4A24; }
+.cc-a-figure { flex:1 1 360px; margin:0; display:flex; flex-direction:column; gap:10px; }
+.cc-a-figure img { width:100%; height:auto; aspect-ratio:4/3; object-fit:cover; object-position:78% 50%; }
+.cc-a-figure figcaption { font-size:13px; color:var(--cc-ink-3); }
+.cc-a-facts { background:#fff; border-top:1px solid var(--cc-rule); border-bottom:1px solid var(--cc-rule); }
+.cc-a-facts__grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(min(200px,100%),1fr)); gap:24px; padding-top:28px; padding-bottom:10px; }
+.cc-a-facts__grid > div { display:flex; flex-direction:column; }
+.cc-a-facts__num { font-size:30px; font-weight:600; font-variant-numeric:tabular-nums; line-height:1.3; }
+.cc-a-facts__label { font-size:14px; color:var(--cc-ink-3); }
+.cc-a-facts__note { margin:0 auto; padding-bottom:20px; font-size:12.5px; color:var(--cc-ink-3); }
+.cc-a-sec { display:flex; flex-wrap:wrap; gap:20px 40px; padding-top:88px; padding-bottom:16px; }
+.cc-a-sec__label { flex:1 1 180px; margin:0; font-size:13px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:var(--cc-ink-3); }
+.cc-a-sec__body { flex:999 1 0; min-width:min(560px,100%); display:flex; flex-direction:column; }
+.cc-a-sec h2 { margin:0 0 12px; font-size:clamp(30px,3.4vw,44px); line-height:1.1; letter-spacing:-.02em; font-weight:500; }
+.cc-a-sec__intro { margin:0 0 28px; color:var(--cc-ink-2); max-width:38em; }
+.cc-a-rows { display:flex; flex-direction:column; border-top:1px solid #071B3E; }
+.cc-a-row { display:grid; grid-template-columns:repeat(auto-fit,minmax(min(220px,100%),1fr)); gap:8px 32px; padding:24px 0; border-bottom:1px solid var(--cc-rule); color:#071B3E; text-decoration:none; }
+.cc-a-row__title { font-size:22px; font-weight:600; }
+.cc-a-row__text { color:var(--cc-ink-2); }
+a.cc-a-row:hover .cc-a-row__title { color:#BE4A24; }
+.cc-a-prices { display:flex; flex-direction:column; border-top:1px solid #071B3E; }
+.cc-a-price { display:flex; flex-wrap:wrap; gap:4px 20px; padding:16px 0; border-bottom:1px solid var(--cc-rule); align-items:baseline; color:#071B3E; text-decoration:none; }
+.cc-a-price__name { flex:1 1 180px; font-weight:600; }
+.cc-a-price__text { flex:2 1 240px; color:var(--cc-ink-2); font-size:15px; }
+.cc-a-price__value { margin-left:auto; font-weight:600; font-variant-numeric:tabular-nums; }
+a.cc-a-price:hover .cc-a-price__name { color:#BE4A24; }
+.cc-a-note { margin:14px 0 0; font-size:13px; color:var(--cc-ink-3); }
+.cc-a-dates { display:grid; grid-template-columns:repeat(auto-fit,minmax(min(220px,100%),1fr)); border-top:1px solid #071B3E; }
+.cc-a-date { display:flex; flex-direction:column; gap:6px; padding:22px 24px 22px 0; border-bottom:1px solid var(--cc-rule); }
+.cc-a-date:nth-child(n+4) { display:none; }
+.cc-a-date__day { font-size:13px; color:var(--cc-ink-3); }
+.cc-a-date__date { font-size:26px; font-weight:600; font-variant-numeric:tabular-nums; }
+.cc-a-list { margin:8px 0 0; padding:0; list-style:none; display:grid; grid-template-columns:repeat(auto-fit,minmax(min(260px,100%),1fr)); column-gap:40px; }
+.cc-a-list li { display:flex; gap:14px; padding:16px 0; border-top:1px solid var(--cc-rule); }
+.cc-a-list li span:first-child { color:#BE4A24; font-weight:700; font-variant-numeric:tabular-nums; }
+.cc-a-team { display:grid; grid-template-columns:repeat(auto-fit,minmax(min(180px,100%),1fr)); gap:28px; }
+.cc-a-team figure { margin:0; display:flex; flex-direction:column; gap:10px; }
+.cc-a-team img, .cc-a-team__ph { width:100%; height:auto; aspect-ratio:1; object-fit:cover; }
+.cc-a-team__ph { background:#E4E2DB; display:flex; align-items:center; justify-content:center; font-size:32px; font-weight:600; color:var(--cc-ink-3); }
+.cc-a-team figcaption { display:flex; flex-direction:column; }
+.cc-a-team figcaption b { font-weight:600; }
+.cc-a-team figcaption span { font-size:14px; color:var(--cc-ink-3); }

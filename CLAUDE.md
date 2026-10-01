@@ -39,11 +39,11 @@ Push auf **`main`** → GitHub Action (`.github/workflows/deploy.yml`, `withastr
 ## Design System — die Invarianten (bitte einhalten)
 Quelle: `src/styles/ds/tokens.css` + `src/styles/ds/marketing.css` (kopiert aus dem externen **CogniCore Design System**, Skill `cognicore-design`). Alle Web-Styles: `src/styles/global.css` (`cc-*`-Klassen).
 
-- **Navy `#071B3E` ist die dominante Farbe** (große Flächen, Hero, Footer, Primär-Buttons).
-- **Orange `#EC6945` nur als Akzent** — Eyebrows, ein CTA, aktiver Zustand, das `//`-Motiv. **Nie** als große Fläche, nie Orange-auf-Weiß für Fließtext.
-- **Beige `#F9EBD9`** als warme Sekundärfläche; **Grün `#4A7B52`** für Erfolg/Tags.
+- **Gestaltung A · Sachlich (seit 01.10.2026, Entscheidung Dominik):** warmes Weiß `#F7F6F2` als Grund, Navy `#071B3E` für Text, Primär-Buttons, Kontaktband und Footer. Feine Linien (`#D9DCE3`, Navy 1px) statt Kästen: keine Karten mit Rand, Schatten oder runden Ecken, keine Nummern-Badges, keine Kreise im Ablauf. Seitenköpfe hell, Überschriften Raleway 500 mit engem Laufweiten. Ziel: Die Seite soll nicht nach generiertem Template aussehen. Die Overrides stehen am Ende von `global.css` (Block „Gestaltung A“), die Startseiten-Bausteine heißen `cc-a-*`.
+- **Orange `#EC6945` nur als Markierung** (kleines Quadrat, Unterstreichung von Links, Ziffern in `#BE4A24`). Nie als Fläche, nie für Fließtext. Orange-Button nur auf dunklem Grund (Kontaktband).
+- **Kein `//`-Motiv mehr** (bis 09/2026 Section-Marker). Randtitel sind kleine Großbuchstaben in `#4A556B`, auf der Startseite nummeriert („1 Leistungen“).
+- **Grün `#4A7B52`** für Status-Hinweise (z. B. „Live“ auf /loesungen).
 - **Schrift: Raleway** (self-hosted, `public/fonts/`), keine Google Fonts.
-- **`//`-Doppelslash** als Section-Marker (Eyebrows: `// Leistungen`).
 - **Icons:** Lucide-Stil (stroke-width 1.75, `currentColor`) — inline als SVG (kein CDN wegen GitHub-Pages-CSP).
 - **Voice: selbstbewusst, direkt, „Sie" (formell), kein Marketing-Sprech, keine Ausrufezeichen, keine Emoji.**
 - Brand-Mark als dezentes Wasserzeichen auf dunklen Sektionen (Opazität ~6 %).
