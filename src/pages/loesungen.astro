@@ -18,12 +18,6 @@ const produkte = [
     bullets: ['Öffentlich im HubSpot Marketplace', 'Arbeitet über die HubSpot-API'],
     link: { href: 'https://ecosystem.hubspot.com/de/marketplace/solutions/cognicore', label: 'Im HubSpot-Verzeichnis ↗' },
   },
-  {
-    name: 'MSP OS', meta: 'In Vorbereitung', plan: true,
-    copy: 'Portal für Serviceverträge: Onboarding neuer Kunden, Leistungsnachweis und Abrechnung an einer Stelle. Wir setzen es heute im eigenen IT-Betrieb ein, die Produktversion für andere IT-Dienstleister ist in Arbeit.',
-    bullets: ['Für IT-Dienstleister mit Serviceverträgen', 'Verbindet Vertrag, Leistung und Abrechnung'],
-    link: { href: '/branchen/it-dienstleister', label: 'Für IT-Dienstleister →' },
-  },
 ];
 
 const anwendungen = [
@@ -52,9 +46,9 @@ const anwendungen = [
   <section class="cc-section">
     <div class="cc-section__head cc-reveal">
       <div class="cc-eyebrow">Produkte</div>
-      <h2>Eigene Produkte rund um HubSpot und IT-Betrieb.</h2>
+      <h2>Eigene Produkte rund um HubSpot.</h2>
     </div>
-    <div class="cc-grid cc-grid--3 cc-reveal">
+    <div class="cc-grid cc-grid--2 cc-reveal">
       {produkte.map((p) => (
         <article class="cc-card">
           <span class={`cc-app__meta${p.plan ? ' cc-app__meta--plan' : ''}`}>{p.meta}</span>

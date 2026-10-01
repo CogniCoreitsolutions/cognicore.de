@@ -31,7 +31,6 @@ Status: **Geliefert** = es gibt einen Beleg · **Teilweise** = Teile geliefert o
 | Element | Status | Freigabe |
 |---|---|---|
 | `/loesungen`: BP Docs, PLZ-Lookup-App | Geliefert | |
-| `/loesungen`: MSP OS als Produkt | Ausbaustufe | intern im Einsatz, Produktversion in Arbeit |
 | `/loesungen`: Anwendungen für Kunden | Geliefert | ohne Kundennamen; Namen nur mit dokumentierter Freigabe |
 | `/branchen/it-dienstleister`: vorkonfiguriertes Setup, PSA/RMM-Anbindung | Ausbaustufe | |
 | Startseite: Zahlen 16 Kunden, 11 HubSpot-Kunden, 43 Projekte, 8 Anwendungen | Geliefert | Stand September 2026, jährlich aktualisieren |
