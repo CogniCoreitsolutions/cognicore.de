@@ -5,10 +5,16 @@ import CtaBand from '../../components/CtaBand.astro';
 const check = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>';
 
 const bausteine = [
-  { t: 'Pipelines für Projekt und Vertrag', d: 'Getrennte Pipelines für Projektgeschäft, Serviceverträge und Verlängerungen, mit Phasen, die zu Ihrem Vertrieb passen.' },
-  { t: 'Verträge als eigenes Objekt', d: 'Laufzeit, Paket, Arbeitsplätze und Kündigungsfrist am Vertrag, mit Erinnerung rechtzeitig vor der Verlängerung.' },
-  { t: 'Anbindung an PSA und RMM', d: 'Tickets, Geräte und Kontingente aus Ihrem PSA- oder RMM-System im CRM sichtbar, damit der Vertrieb weiß, wie es beim Kunden läuft.' },
-  { t: 'Berichte für die Geschäftsführung', d: 'Wiederkehrender Umsatz, Verlängerungen und Kontingentverbrauch je Vertrag in einem Dashboard.' },
+  { t: 'Der Vertrag als eigenes Objekt', d: 'Laufzeit, Paket, Arbeitsplätze, Kündigungsfrist und Kontingent stehen am Vertrag selbst. Sie sehen jederzeit, welche Verträge laufen und wann sie enden.' },
+  { t: 'Kontingentverbrauch je Vertrag', d: 'Der Verbrauch kommt aus Ihrer Zeiterfassung oder dem PSA ins CRM. Liegt ein Kunde über Monate über seinem Kontingent, erfährt der Vertrieb es, bevor die Marge leidet.' },
+  { t: 'PSA und RMM am Kunden', d: 'Tickets, Geräte und offene Störungen aus Ihrem PSA- oder RMM-System stehen am Kunden. Wer eine Verlängerung oder ein Upgrade anbietet, weiß, wie es dort gerade läuft.' },
+  { t: 'Eingerichtet von einem IT-Dienstleister', d: 'Wir betreiben selbst Serviceverträge mit festen Paketen und Reaktionszeiten. Auf die Fragen, die Ihr Setup beantworten muss, brauchen wir für unsere eigenen Verträge jeden Monat selbst eine Antwort.' },
+];
+
+const auchDabei = [
+  'Pipelines für Neukunden, Bestandskunden und Verlängerungen',
+  'Erinnerung rechtzeitig vor jeder Verlängerung',
+  'Dashboard mit wiederkehrendem Umsatz, Verlängerungen und Kontingentverbrauch',
 ];
 
 const ablauf = [
@@ -26,7 +32,7 @@ const ablauf = [
       <div class="cc-hero__copy" style="max-width:820px">
         <div class="cc-eyebrow">// Branche · IT-Dienstleister und MSPs</div>
         <h1 class="cc-hero__title" style="font-size:56px">HubSpot für <em>IT-Dienstleister</em>.</h1>
-        <p class="cc-hero__lede" style="max-width:680px">Wir betreiben selbst Microsoft 365 für Kunden, mit Serviceverträgen, Paketen und Verlängerungen. Genau diese Abläufe bilden wir in HubSpot ab, vom ersten Kontakt bis zur Vertragsverlängerung.</p>
+        <p class="cc-hero__lede" style="max-width:700px">Wir betreiben selbst Microsoft 365 für Kunden, mit Serviceverträgen, Paketen und Verlängerungen. Deshalb richten wir HubSpot so ein, dass es Ihre Verträge abbildet: Laufzeit, Kontingent und Verlängerung, angebunden an Ihr PSA- oder RMM-System.</p>
         <div class="cc-hero__actions" style="margin-bottom:0">
           <a class="cc-btn cc-btn--accent" href="/kontakt#termin">Erstgespräch vereinbaren</a>
           <a class="cc-btn cc-btn--ghost-light" href="#setup">Das Setup ansehen</a>
@@ -35,13 +41,37 @@ const ablauf = [
     </div>
   </section>
 
+  <!-- SETUP: was über eine Vertriebsvorlage hinausgeht -->
+  <section class="cc-section cc-section--surface" id="setup">
+    <div>
+    <div class="cc-section__head cc-reveal">
+      <div class="cc-eyebrow">// Vorkonfiguriertes Setup</div>
+      <h2>Gebaut für Serviceverträge.</h2>
+      <p class="cc-section__sub">Pipelines für Neukunden und Bestandskunden sind schnell eingerichtet. Bei IT-Dienstleistern hängt der Umsatz aber an laufenden Verträgen, und die bildet ein reines Vertriebs-Setup kaum ab.</p>
+    </div>
+    <div class="cc-grid cc-grid--2 cc-reveal">
+      {bausteine.map((b, i) => (
+        <article class={`cc-card${i === 3 ? ' cc-card--orange' : ''}`}>
+          <div class="cc-card__num">{String(i + 1).padStart(2, '0')}</div>
+          <h3>{b.t}</h3>
+          <p>{b.d}</p>
+        </article>
+      ))}
+    </div>
+    <div class="cc-card cc-reveal" style="margin-top:20px; padding:24px 28px">
+      <div class="cc-eyebrow">// Außerdem im Setup</div>
+      <ul class="cc-checks" style="margin-top:6px">{auchDabei.map((x) => <li set:html={check + ' ' + x} />)}</ul>
+    </div>
+    </div>
+  </section>
+
   <!-- WORUM ES GEHT -->
   <section class="cc-section">
     <div class="cc-split cc-reveal" style="align-items:start">
       <div class="cc-split__body">
         <div class="cc-eyebrow">// Worum es geht</div>
-        <p style="font-size:19px; color:var(--cc-blue); margin-top:12px">Bei IT-Dienstleistern hängt der Umsatz an laufenden Verträgen. Ein Standard-CRM ist auf den einzelnen Abschluss ausgelegt, Laufzeiten, Kontingente und Verlängerungen kommen darin kaum vor.</p>
-        <p style="font-size:16.5px">Wir kennen das aus dem eigenen Betrieb. Serviceverträge mit festen Paketen und Reaktionszeiten sind ein Teil unseres Geschäfts, und für ihre Verwaltung haben wir mit MSP OS ein eigenes Werkzeug gebaut.</p>
+        <p style="font-size:19px; color:var(--cc-blue); margin-top:12px">Ein Standard-CRM ist auf den einzelnen Abschluss ausgelegt. Laufzeiten, Kontingente und Verlängerungen kommen darin kaum vor, dabei entscheiden sie bei IT-Dienstleistern über Umsatz und Marge.</p>
+        <p style="font-size:16.5px">Wir kennen das aus dem eigenen Betrieb. Für die Verwaltung unserer Serviceverträge haben wir mit MSP OS sogar ein eigenes Werkzeug gebaut.</p>
       </div>
       <div class="cc-card" style="padding:30px">
         <div class="cc-eyebrow">// Für wen</div>
@@ -51,26 +81,6 @@ const ablauf = [
           <li set:html={check + ' IT-Dienstleister, die HubSpot neu einführen oder neu aufsetzen wollen'} />
         </ul>
       </div>
-    </div>
-  </section>
-
-  <!-- SETUP -->
-  <section class="cc-section cc-section--surface" id="setup">
-    <div>
-    <div class="cc-section__head cc-reveal">
-      <div class="cc-eyebrow">// Vorkonfiguriertes Setup</div>
-      <h2>Was im Setup für IT-Dienstleister steckt.</h2>
-      <p class="cc-section__sub">Ein Ausgangspunkt, den wir an Ihre Pakete und Abläufe anpassen.</p>
-    </div>
-    <div class="cc-grid cc-grid--2 cc-reveal">
-      {bausteine.map((b, i) => (
-        <article class={`cc-card${i % 2 ? ' cc-card--orange' : ''}`}>
-          <div class="cc-card__num">{String(i + 1).padStart(2, '0')}</div>
-          <h3>{b.t}</h3>
-          <p>{b.d}</p>
-        </article>
-      ))}
-    </div>
     </div>
   </section>
 
@@ -93,7 +103,7 @@ const ablauf = [
         <div class="cc-eyebrow cc-eyebrow--on-dark">// Preis</div>
         <p class="cc-price__wert">ab 4.900 €</p>
         <p class="cc-price__einheit">einmalig für die Einführung</p>
-        <p class="cc-price__hinweis">Mit Datenübernahme aus einem Altsystem ab 9.500 €. Anbindungen an PSA oder RMM als Festpreis nach der Bestandsaufnahme.</p>
+        <p class="cc-price__hinweis">Enthalten sind Vertragsobjekt, Kontingentlogik, Pipelines, Berichte und Schulung. Mit Datenübernahme aus einem Altsystem ab 9.500 €. Die Anbindung an PSA oder RMM bekommt einen Festpreis nach der Bestandsaufnahme.</p>
         <p class="cc-price__fuss">Alle Preise netto zzgl. USt. Die HubSpot-Lizenzen zahlen Sie direkt an HubSpot.</p>
         <a class="cc-btn cc-btn--accent" href="/kontakt#termin">Erstgespräch vereinbaren</a>
       </div>
