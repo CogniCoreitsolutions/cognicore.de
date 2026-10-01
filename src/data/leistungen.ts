@@ -13,6 +13,16 @@ export interface Saeule {
   intro: string;
 }
 
+// Buchbare Termine. Ohne zahlungslink öffnet "Jetzt buchen" eine vorbereitete Buchungs-Mail
+// (Zahlung per Rechnung). Mit zahlungslink (HubSpot-Zahlungslink, Stripe) führt der Knopf direkt dorthin.
+// Vergangene Termine blendet die Seite automatisch aus.
+export interface Termin {
+  datum: string; // ISO, z. B. 2026-11-10
+  von: string;
+  bis: string;
+  zahlungslink?: string;
+}
+
 export interface Leistung {
   slug: string;
   saeule: string;
@@ -28,6 +38,9 @@ export interface Leistung {
   faq: { q: string; a: string }[];
   related: string[];
   extern?: { href: string; label: string };
+  termine?: Termin[];
+  terminOrt?: string;
+  terminTitel?: string; // Name in der Buchungs-Mail, z. B. „HubSpot-Gruppen-Onboarding“
   seoTitle: string;
   seoDesc: string;
   status: Status;
@@ -241,10 +254,23 @@ export const leistungen: Leistung[] = [
     preis: { wert: '290 €', einheit: 'je Unternehmen', hinweis: 'Bis zu zehn Teilnehmende je Unternehmen. Buchbar nur für Unternehmen.' },
     faq: [
       { q: 'Ersetzt das eine Einführung?', a: 'Für einfache Setups ja. Wenn Daten übernommen oder Systeme angebunden werden müssen, ist die HubSpot-Einführung der richtige Weg.' },
-      { q: 'Wie melden wir uns an?', a: 'Schreiben Sie an info@cognicore.de oder rufen Sie an. Wir schicken Ihnen die nächsten Termine.' },
+      { q: 'Wie buchen wir?', a: 'Wählen Sie oben einen Termin und klicken Sie auf „Jetzt buchen“. Es öffnet sich eine vorbereitete E-Mail an uns. Sie bekommen eine Bestätigung mit Rechnung und vor dem Termin den Teams-Link.' },
       { q: 'Was, wenn wir einen Termin nicht wahrnehmen können?', a: 'Sie können bis drei Werktage vor dem Termin kostenlos auf einen späteren Termin umbuchen. Danach ist keine Erstattung möglich.' },
     ],
     related: ['hubspot-einfuehrung', 'ki-schulungen', 'hubspot-managed-service'],
+    terminOrt: 'Microsoft Teams',
+    terminTitel: 'HubSpot-Gruppen-Onboarding',
+    termine: [
+      { datum: '2026-11-10', von: '14:00', bis: '15:30' },
+      { datum: '2026-12-08', von: '14:00', bis: '15:30' },
+      { datum: '2027-01-12', von: '14:00', bis: '15:30' },
+      { datum: '2027-02-16', von: '14:00', bis: '15:30' },
+      { datum: '2027-03-09', von: '14:00', bis: '15:30' },
+      { datum: '2027-04-13', von: '14:00', bis: '15:30' },
+      { datum: '2027-05-11', von: '14:00', bis: '15:30' },
+      { datum: '2027-06-08', von: '14:00', bis: '15:30' },
+      { datum: '2027-07-13', von: '14:00', bis: '15:30' },
+    ],
     seoTitle: 'HubSpot-Gruppen-Onboarding im Live-Webinar, 290 € | CogniCore',
     seoDesc: 'HubSpot-Grundlagen für kleine Teams: 90 Minuten live über Microsoft Teams mit einem HubSpot-Berater, Fragen inklusive. 290 € je Unternehmen.',
     status: 'ausbaustufe',
