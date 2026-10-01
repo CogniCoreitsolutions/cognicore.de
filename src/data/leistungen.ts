@@ -49,25 +49,25 @@ export interface Leistung {
 export const saeulen: Saeule[] = [
   {
     key: 'hubspot',
-    ey: '// HubSpot',
+    ey: 'HubSpot',
     title: 'HubSpot',
     intro: 'Vom ersten Datenmodell bis zur laufenden Betreuung Ihres Portals.',
   },
   {
     key: 'daten',
-    ey: '// Daten und Integration',
+    ey: 'Daten und Integration',
     title: 'Daten und Integration',
     intro: 'HubSpot im Zusammenspiel mit Ihren übrigen Systemen, auch mit Microsoft 365.',
   },
   {
     key: 'microsoft',
-    ey: '// Microsoft 365 und IT-Betrieb',
+    ey: 'Microsoft 365 und IT-Betrieb',
     title: 'Microsoft 365 und IT-Betrieb',
     intro: 'Die IT hinter dem CRM: Microsoft 365, Geräte und Sicherheit aus derselben Hand.',
   },
   {
     key: 'ki',
-    ey: '// KI',
+    ey: 'KI',
     title: 'KI',
     intro: 'KI dort einsetzen, wo Ihre Daten schon liegen: in HubSpot und Microsoft 365.',
   },

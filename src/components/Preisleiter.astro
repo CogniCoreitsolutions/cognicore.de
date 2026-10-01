@@ -1,32 +1,32 @@
 ---
-interface Props { surface?: boolean }
-const { surface = false } = Astro.props;
+// Preisliste vom Self-Check bis zur Betreuung (Startseite und Leistungsübersicht).
+interface Props { surface?: boolean; nummer?: string }
+const { surface = false, nummer } = Astro.props;
 const steps = [
-  { t: 'Self-Check', p: 'kostenlos', d: 'Ihr HubSpot-Reifegrad in wenigen Minuten.', href: '/kontakt#termin' },
-  { t: 'Gruppen-Onboarding', p: '290 €', d: 'HubSpot-Grundlagen im Live-Webinar.', href: '/leistungen/hubspot-gruppen-onboarding#termine' },
-  { t: 'Integrations-Check', p: '1.250 €', d: 'HubSpot und Microsoft 365 an einem Beratertag geprüft.', href: '/leistungen/integrations-check' },
-  { t: 'HubSpot-Audit', p: 'ab 1.900 €', d: 'Bestehendes Portal mit Maßnahmenplan.', href: '/leistungen/hubspot-audit' },
-  { t: 'Einführung', p: 'ab 4.900 €', d: 'Mit Datenübernahme ab 9.500 €.', href: '/leistungen/hubspot-einfuehrung' },
-  { t: 'Betreuung', p: 'ab 850 € im Monat', d: 'HubSpot Managed Service mit festem Kontingent.', href: '/leistungen/hubspot-managed-service' },
+  { t: 'Self-Check', d: 'HubSpot-Reifegrad in wenigen Minuten', p: 'kostenlos', href: '/kontakt#termin' },
+  { t: 'Gruppen-Onboarding', d: '90 Minuten live über Teams, je Unternehmen', p: '290 €', href: '/leistungen/hubspot-gruppen-onboarding#termine' },
+  { t: 'Integrations-Check', d: 'HubSpot und Microsoft 365 an einem Beratertag', p: '1.250 €', href: '/leistungen/integrations-check' },
+  { t: 'HubSpot-Audit', d: 'Bestehendes Portal mit Maßnahmenplan', p: 'ab 1.900 €', href: '/leistungen/hubspot-audit' },
+  { t: 'HubSpot-Einführung', d: 'Mit Datenübernahme ab 9.500 €', p: 'ab 4.900 €', href: '/leistungen/hubspot-einfuehrung' },
+  { t: 'Betreuung', d: 'HubSpot Managed Service, 5 Stunden im Monat', p: 'ab 850 € / Monat', href: '/leistungen/hubspot-managed-service' },
 ];
 ---
-<section class={`cc-section${surface ? ' cc-section--surface' : ''}`} id="einstieg">
-  <div>
-  <div class="cc-section__head cc-reveal">
-    <div class="cc-eyebrow">// Einstieg</div>
-    <h2>Klein anfangen, dann ausbauen.</h2>
-    <p class="cc-section__sub">Jeder Schritt hat einen festen Preis oder eine feste Untergrenze. Nach jedem Schritt entscheiden Sie, ob es weitergeht.</p>
-  </div>
-  <div class="cc-ladder cc-reveal">
-    {steps.map((s, i) => (
-      <a class="cc-ladder__step" href={s.href}>
-        <span class="cc-ladder__n">{String(i + 1).padStart(2, '0')}</span>
-        <span class="cc-ladder__t">{s.t}</span>
-        <span class="cc-ladder__p">{s.p}</span>
-        <span class="cc-ladder__d">{s.d}</span>
-      </a>
-    ))}
-  </div>
-  <p class="cc-ladder__foot cc-reveal">Alle Preise netto zzgl. USt. Die HubSpot-Lizenzen zahlen Sie direkt an HubSpot.</p>
+<section class={surface ? 'cc-section--surface' : ''} id="einstieg">
+  <div class="cc-wrap cc-a-sec" style="padding-bottom:72px">
+    <p class="cc-a-sec__label">{nummer ? `${nummer} ` : ''}Preise</p>
+    <div class="cc-a-sec__body">
+      <h2>Was es kostet.</h2>
+      <p class="cc-a-sec__intro">Jeder Schritt hat einen festen Preis oder eine feste Untergrenze. Nach jedem Schritt entscheiden Sie, ob es weitergeht.</p>
+      <div class="cc-a-prices">
+        {steps.map((s) => (
+          <a class="cc-a-price" href={s.href}>
+            <span class="cc-a-price__name">{s.t}</span>
+            <span class="cc-a-price__text">{s.d}</span>
+            <span class="cc-a-price__value">{s.p}</span>
+          </a>
+        ))}
+      </div>
+      <p class="cc-a-note">Alle Preise netto zzgl. USt. Die HubSpot-Lizenzen zahlen Sie direkt an HubSpot.</p>
+    </div>
   </div>
 </section>
