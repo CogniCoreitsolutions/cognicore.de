@@ -17,7 +17,7 @@ Key facts (as of 2026-10-01; the facts page is the maintained source):
 - Partner status: HubSpot Solutions Partner.
 - Services: HubSpot implementation and migration, HubSpot audit, custom development, HubSpot managed service; integrations with ERP, accounting and Microsoft 365, including operation; Microsoft 365 and IT operations under service contracts; AI audit with pilot, AI agents in HubSpot, Microsoft Copilot with CRM data.
 - Own software: BP-Docs (documentation of HubSpot portals, docu.cognicore.de) and a postcode lookup app in the HubSpot Marketplace.
-- Prices (net, plus VAT): self-check free; group onboarding EUR 290 per company; HubSpot-M365 integration check EUR 1,250; HubSpot audit from EUR 1,900; HubSpot implementation from EUR 4,900, with data migration from EUR 9,500; HubSpot managed service from EUR 850 per month.
+- Prices (net, plus VAT): self-check free (https://docu.cognicore.de/self-check); group onboarding EUR 290 per company; HubSpot-M365 integration check EUR 1,250; HubSpot audit from EUR 1,900; HubSpot implementation from EUR 4,900, with data migration from EUR 9,500; HubSpot managed service from EUR 850 per month.
 - Team: four people; Dominik Siegers (founder and managing director), Rafael Garoz Garcia and Adrian Geiss (HubSpot Solution Architects), Arijan Vossough (support and managed services).
 - CogniCore works with Microsoft 365, not with Microsoft Dynamics 365. CogniCore is not part of HubSpot, Inc. and is not a marketing or advertising agency.
 - Language: German.

@@ -115,7 +115,7 @@ Vollständig in [`docs/analyse-webauftritt.md`](docs/analyse-webauftritt.md). Di
 - [x] **Preis-/Größen-Anker je Stufe** (2026-09-15): ab-Preise auf `/leistungen` — Essential ab 4.900 € (mit Migration ab 9.500 €), Advanced ab 850 €/Monat (5 h), Excellence ab 2.900 €/Monat (16 h, SLA). Nicht geschätzt, sondern aus Clockodo-Ist-Stunden zum Satz 1.250 €/Projekttag hergeleitet und gegen den Markt gespiegelt (HubSpot-Pflicht-Onboarding 1.470/2.930 €, JUNGMUT ab 5.000 €, Postina-Retainer 140 bis 185 €/h). Herleitung und Quellen: CogniHero `03_Projekte/Website-Relaunch_cognicore.de/Preisvorschlag_ab-Preise_new-cognicore-de.md` + `Wettbewerbsrecherche_Onboarding-Preise.md`. **Offen bleibt:** Tier über Outcome differenzieren statt nur über Bindung, und die Mindestlaufzeit für Advanced/Excellence ist bewusst noch nicht auf der Seite (nicht entschieden).
 
 **Weiter (nach Launch, planbar):**
-- [ ] **Datenschutz** final juristisch prüfen; **Self-Check-Funnel** & **PLZ-Doku** im neuen Design bauen.
+- [ ] **Datenschutz** final juristisch prüfen; **PLZ-Doku** im neuen Design bauen. Der **Self-Check** läuft auf `docu.cognicore.de/self-check` (BP-Docs) und wird von der Preisliste dorthin verlinkt, nicht hier nachgebaut.
 - [ ] **Karriere** ausbauen (echte Rolle, Recruiting-Kontakt Lara statt `info@`, Nav-Punkt); **Team** konsistent (Nachnamen/LinkedIn/Fotos für Delivery-Rollen).
 - [ ] **Content-/Wissens-Hub** + dedizierte Leistungs-Landingpages (SEO-Tiefe); cookiefreies Analytics (Plausible/Matomo) — eigenes Dogfooding sichtbar machen.
 - [ ] **Positionierung schärfen:** HubSpot-Kern über „und mehr" stellen, Managed IT nachordnen, Signatur-Claim durchtragen.
